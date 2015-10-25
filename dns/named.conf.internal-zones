@@ -1,0 +1,9 @@
+zone "100.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/100.168.192.zone";
+};
+
+zone "toru.local" {
+	type master;
+	file "/etc/bind/toru.local.zone";
+};

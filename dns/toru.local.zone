@@ -1,0 +1,13 @@
+$TTL	86400
+@	IN	SOA	ns2.toru.local. root.toru.local. (
+		       20151027		; Serial
+			  28800		; Refresh
+			  14400		; Retry
+			2419200		; Expire
+			  86400 )	; Negative Cache TTL
+;
+		IN	NS	ns2.toru.local.
+ns2		IN	A	192.168.100.158
+shizumatsu	IN	A	192.168.100.10
+nas		IN	A	192.168.100.6
+
