@@ -15,13 +15,13 @@ Python の開発環境を Docker上に構築する。
 ### docker build
 
 ```cmd
-docker build -t takuver4/python_dev:pyenv .
+docker build -t takuver4/python_dev:python366 .
 ```
 
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work takuver4/python_dev:python3_basic bash --login
+docker run -it -v c:\home\sip:/work takuver4/python_dev:python366 bash --login
 ```
 
 ## Tips
