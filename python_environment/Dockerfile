@@ -17,4 +17,4 @@ RUN yum -y install libSM libXrender libXext
 RUN echo -e 'opencv-python\n cycler\n numpy\n matplotlib\n scipy\n colour-science\n pillow' > requirements.txt && \
     eval "$(pyenv init -)" && \
     pip install -r requirements.txt
-CMD ["pipenv", "--version"]
+CMD ["python", "--version"]

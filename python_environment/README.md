@@ -21,7 +21,7 @@ docker build -t takuver4/python_dev:pyenv .
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work takuver4/python_dev:pyenv bash --login
+docker run -it -v c:\home\sip:/work takuver4/python_dev:python3_basic bash --login
 ```
 
 ## Tips
