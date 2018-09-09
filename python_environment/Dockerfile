@@ -17,4 +17,31 @@ RUN yum -y install libSM libXrender libXext
 RUN echo -e 'opencv-python\n cycler\n numpy\n matplotlib\n scipy\n colour-science\n pillow' > requirements.txt && \
     eval "$(pyenv init -)" && \
     pip install -r requirements.txt
+# install OpenImageIO
+RUN yum -y install boost LibRaw gcc-c++ libtool aclocal autoheader automake autoconf libpng-devel
+RUN yum -y install centos-release-scl-rh && \
+    yum -y install devtoolset-7
+RUN mkdir -p /root/local/src && \
+    cd /root/local/src && \
+    git clone https://gitlab.kitware.com/cmake/cmake.git && \
+    cd cmake && \
+    ./bootstrap && make && make install && \
+    cd .. && \
+    git clone https://gitlab.com/libtiff/libtiff.git && \
+    cd libtiff && \
+    ./autogen.sh && ./configure && make && make install &&\
+    cd .. && \
+    git clone https://github.com/openexr/openexr.git && \
+    cd openexr && \
+    cd OpenEXR && \
+    ./bootstrap && ./configure && make && make install && \
+    cd IlmBase && \
+    ./bootstrap && ./configure && make && make install && \
+    cd ../OpenEXR && \
+    ./bootstrap && ./configure && make && make install && \
+    cd ../../ && \
+    git clone https://github.com/OpenImageIO/oiio.git && \
+    cd oiio && \
+    mkdir build && cd build && cmake ..
+
 CMD ["python", "--version"]
