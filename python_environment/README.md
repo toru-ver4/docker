@@ -21,7 +21,7 @@ docker build -t takuver4/python_dev:python366 .
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work takuver4/python_dev:python366 bash --login
+docker run -it -v c:\home\sip:/work takuver4/python_dev:python366 bash
 ```
 
 ## Tips
