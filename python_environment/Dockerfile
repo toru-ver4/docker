@@ -1,28 +1,34 @@
-FROM fedora:28
-RUN yum -y install libSM libXrender libXext libstdc++-devel python3-tkinter
-RUN python3 -m venv /work && \
-    echo -e "source /work/bin/activate" >> ~/.bashrc
-ENV PYTHONPATH="/work/src/lib"
-RUN source /work/bin/activate && \
-    echo -e 'opencv-python\n cycler\n numpy\n matplotlib\n scipy\n colour-science\n pillow\n pybind11' > requirements.txt && \
-    pip install --upgrade pip && \
-    pip install -r requirements.txt
+FROM ubuntu:18.04
 
-# install OpenImageIO
-RUN yum -y install boost-python3-devel LibRaw gcc-c++ libtool automake autoconf make cmake libpng-devel libtiff OpenEXR-devel libtiff-devel libjpeg-turbo-devel git
+# Install OpenImageIO
+RUN apt-get update && \
+    apt-get -y install cmake g++ gdb git software-properties-common \
+    libtiff5-dev libboost-all-dev libpng-dev libopenexr-dev wget unzip
 RUN mkdir -p /root/local/src && \
     cd /root/local/src && \
     git clone https://github.com/OpenImageIO/oiio.git && \
     cd oiio && \
-    mkdir build && cd build && \
-    cmake -DPYTHON_VERSION=3.6 \
-    -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
-    -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") ..
+    make PYTHON_VERSION=3.6 VERBOSE=1 STOP_ON_WARNING=0 && \
+    make clean
+ENV PATH="$PATH:/root/local/src/oiio/dist/linux64/bin"
+ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/root/local/src/oiio/dist/linux64/lib"
+ENV PYTHONPATH="/root/local/src/oiio/dist/linux64/lib/python3.6/site-packages"
+
+# Install Basic Python Libraries
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get -y install tzdata
+ENV TZ Asia/Tokyo
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    tzdata
+RUN apt-get -y install python3-venv libsm-dev libxrender-dev python3-tk
+RUN python3 -m venv /work && \
+    echo "source /work/bin/activate" >> ~/.bashrc
+ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
+RUN . /work/bin/activate && \
+    echo "opencv-python\n cycler\n numpy\n matplotlib\n scipy\n colour-science\n pillow\n sphinx_rtd_theme\n sympy" > requirements.txt && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt
 
 CMD ["python", "--version"]
-
-# FROM ubuntu:18.04
-# RUN apt-get update && \
-# ENV PATH="$PATH:/root/local/src/oiio/dist/linux64/bin"
-# ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/root/local/src/oiio/dist/linux64/lib"
-# ENV PYTHONPATH="/work/src/lib:/root/local/src/oiio/dist/linux64/lib/python3.6/site-packages"
