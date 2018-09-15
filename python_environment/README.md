@@ -21,7 +21,7 @@ docker build -t takuver4/python_dev:python366 .
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work takuver4/python_dev:python366 bash
+docker run -it -v c:\home\sip:/work/src takuver4/python_dev:python3_venv bash
 ```
 
 ## Tips
@@ -34,3 +34,16 @@ docker run -it -v c:\home\sip:/work takuver4/python_dev:python366 bash
 
 なお、```--login``` オプションを付けることのデメリットは不明である。
 しかし標準で有効になっていないことから、何らかの弊害があるのではと推測している。
+
+
+### VS Code の変更
+
+* terminal.integrated.commandsToSkipShell in your setting and remove "workbench.action.quickOpen" from the list.
+* https://qiita.com/Yuki-Inoue/items/60ec916383025160fbb8#_reference-a2d9244a6c4496f4df05
+
+```json
+{ "key": "alt+j",              "command": "workbench.action.terminal.focus",
+                               "when": "editorTextFocus"},
+{ "key": "alt+k",              "command": "workbench.action.focusFirstEditorGroup",
+                               "when": "terminalFocus"}
+```

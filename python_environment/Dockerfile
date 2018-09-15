@@ -1,40 +1,28 @@
 FROM fedora:28
-# RUN yum -y update && \
-#     yum reinstall -y glibc-common && \
-#     localedef -v -c -i ja_JP -f UTF-8 ja_JP.UTF-8; echo "";
-# ENV LANG=ja_JP.UTF-8
-ENV HOME="/root"
-ENV PYENV_ROOT="$HOME/.pyenv"
-RUN yum -y install gcc zlib-devel bzip2 bzip2-devel readline readline-devel sqlite sqlite-devel openssl openssl-devel git tk-devel && \
-    yum -y groupinstall 'Development Tools' && \
-    git clone https://github.com/pyenv/pyenv.git "$HOME/.pyenv" && \
-    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
-ENV PATH="$PYENV_ROOT/bin:$PATH"
-ENV PYTHONPATH="/work/lib"
-RUN eval "$(pyenv init -)" && \
-    pyenv install 3.6.6 && \
-    pyenv global 3.6.6
-RUN yum -y install libSM libXrender libXext
-RUN echo -e 'opencv-python\n cycler\n numpy\n matplotlib\n scipy\n colour-science\n pillow\n pybind11' > requirements.txt && \
-    eval "$(pyenv init -)" && \
+RUN yum -y install libSM libXrender libXext libstdc++-devel python3-tkinter
+RUN python3 -m venv /work && \
+    echo -e "source /work/bin/activate" >> ~/.bashrc
+ENV PYTHONPATH="/work/src/lib"
+RUN source /work/bin/activate && \
+    echo -e 'opencv-python\n cycler\n numpy\n matplotlib\n scipy\n colour-science\n pillow\n pybind11' > requirements.txt && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
-# RUN eval "$(pyenv init -)" && \
-#     python -m pip install pip==9.0.3
-#     pip install pybind
+
 # install OpenImageIO
-RUN yum -y install boost-devel LibRaw gcc-c++ libtool automake autoconf cmake libpng-devel libtiff OpenEXR-devel libtiff-devel libjpeg-turbo-devel
-ENV PYTHON_EXECUTABLE="/root/.pyenv/versions/3.6.6/bin"
-ENV PYTHON_INCLUDE_DIRS="/root/.pyenv/versions/3.6.6/include"
-ENV PYTHON_LIBRARIES="/root/.pyenv/versions/3.6.6/lib"
+RUN yum -y install boost-python3-devel LibRaw gcc-c++ libtool automake autoconf make cmake libpng-devel libtiff OpenEXR-devel libtiff-devel libjpeg-turbo-devel git
 RUN mkdir -p /root/local/src && \
     cd /root/local/src && \
     git clone https://github.com/OpenImageIO/oiio.git && \
     cd oiio && \
     mkdir build && cd build && \
-    cmake \
-    -DPYTHON_INCLUDE_DIRS="/root/.pyenv/versions/3.6.6/include" \
-    -DPYTHON_LIBRARIES="/root/.pyenv/versions/3.6.6/lib" .. \
-
+    cmake -DPYTHON_VERSION=3.6 \
+    -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+    -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") ..
 
 CMD ["python", "--version"]
+
+# FROM ubuntu:18.04
+# RUN apt-get update && \
+# ENV PATH="$PATH:/root/local/src/oiio/dist/linux64/bin"
+# ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/root/local/src/oiio/dist/linux64/lib"
+# ENV PYTHONPATH="/work/src/lib:/root/local/src/oiio/dist/linux64/lib/python3.6/site-packages"
