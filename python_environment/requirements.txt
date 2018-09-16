@@ -1,0 +1,9 @@
+opencv-python
+cycler
+numpy
+matplotlib
+scipy
+colour-science
+pillow
+sphinx_rtd_theme
+sympy

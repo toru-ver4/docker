@@ -21,7 +21,7 @@ docker build -t takuver4/python_dev:python365 .
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work/src takuver4/python_dev:python365 bash
+docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 takuver4/python_dev:python365 bash
 ```
 
 ## Tips
@@ -35,6 +35,13 @@ docker run -it -v c:\home\sip:/work/src takuver4/python_dev:python365 bash
 なお、```--login``` オプションを付けることのデメリットは不明である。
 しかし標準で有効になっていないことから、何らかの弊害があるのではと推測している。
 
+### GUIに関して
+
+* Qiita の [Docker for WindowsでGUI(sshでX11転送しない方法)](https://qiita.com/kfjt/items/369c48686c849c0042a9)
+を~~丸パクリ~~参考にして構築
+* VcXsrv の起動は同ディレクトリにある config.xlaunch をダブルクリックで行ける（要ソフト本体のインストール）
+* Windows側のHiDPI設定を無効化するには、vcxsrv.exe だけでなく xlaunch.exe も設定が必要
+* 
 
 ### VS Code の変更
 
