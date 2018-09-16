@@ -21,7 +21,7 @@ docker build -t takuver4/python_dev:python365 .
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 takuver4/python_dev:python365 bash
+docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:python365 bash
 ```
 
 ## Tips
