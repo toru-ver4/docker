@@ -26,8 +26,8 @@ docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/p
 
 ## Todo
 
-* Matplotlib の外部フォント指定
-  * 直接 otfファイルを指定できないのでOSにインストールか？
+* ユーザーアカウント作成
+  * rootユーザーじゃなくて一般ユーザーで動かすようにする
 
 ## Tips
 
