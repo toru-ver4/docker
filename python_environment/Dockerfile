@@ -48,6 +48,17 @@ RUN . /work/bin/activate \
     && pip install -r /tmp/requirements.txt
 COPY . /tmp/
 
+# Install Noto Fonts
+RUN mkdir font_install \
+    && cd font_install \
+    && wget https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && unzip NotoSansCJKjp-hinted.zip \
+    && mkdir -p /usr/share/fonts/opentype/noto \
+    && cp *otf /usr/share/fonts/opentype/noto \
+    && fc-cache -f -v \
+    && cd .. \
+    && rm -rf font_install
+
 # Clean
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
