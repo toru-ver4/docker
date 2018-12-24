@@ -14,7 +14,7 @@ RUN apt-get update && apt-get -y install \
     libraw-dev \
     ffmpeg \
     libopenjp2-7-dev \
-    wget \
+    curl \
     unzip
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
@@ -51,13 +51,17 @@ COPY . /tmp/
 # Install Noto Fonts
 RUN mkdir font_install \
     && cd font_install \
-    && wget https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
     && unzip NotoSansCJKjp-hinted.zip \
     && mkdir -p /usr/share/fonts/opentype/noto \
     && cp *otf /usr/share/fonts/opentype/noto \
     && fc-cache -f -v \
     && cd .. \
     && rm -rf font_install
+
+# Install ImageMagick
+RUN apt-get update \
+    && apt-get install -y imagemagick
 
 # Clean
 RUN apt-get clean \
