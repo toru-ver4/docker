@@ -20,11 +20,14 @@ RUN mkdir -p /root/local/src \
     && cd /root/local/src \
     && git clone https://github.com/OpenImageIO/oiio.git \
     && cd oiio \
-    && make PYTHON_VERSION=3.6 VERBOSE=1 STOP_ON_WARNING=0 \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.6 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
     && make clean
-ENV PATH="$PATH:/root/local/src/oiio/dist/linux64/bin"
-ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/root/local/src/oiio/dist/linux64/lib"
-ENV PYTHONPATH="/root/local/src/oiio/dist/linux64/lib/python3.6/site-packages"
+    # && make PYTHON_VERSION=3.6 VERBOSE=1 STOP_ON_WARNING=0 \
+    
+# ENV PATH="$PATH:/root/local/src/oiio/dist/linux64/bin"
+# ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/root/local/src/oiio/dist/linux64/lib"
+# ENV PYTHONPATH="/root/local/src/oiio/dist/linux64/lib/python3.6/site-packages"
+# ENV PYTHONPATH="/usr/local/lib/python3.6/site-packages"
 
 # Install Basic Python Libraries
 ENV DEBIAN_FRONTEND=noninteractive
@@ -47,6 +50,20 @@ RUN . /work/bin/activate \
     && pip install --upgrade pip \
     && pip install -r /tmp/requirements.txt
 COPY . /tmp/
+
+# Install OpenColorIO
+RUN apt-get install freeglut3-dev libglew-dev -y
+
+# export OIIO_LIBRARIES="/root/local/src/oiio"
+ENV OIIO_INCLUDE_DIR="/root/local/src/oiio/dist/linux64/include"
+# export OIIO_LIBRARY_DIR=""
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/imageworks/OpenColorIO.git \
+    && mkdir -p /opt/ocio \
+    && mkdir -p /tmp/ociobuild \
+    && cd /tmp/ociobuild \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local /root/local/src/OpenColorIO
 
 # Install Noto Fonts
 RUN mkdir font_install \
