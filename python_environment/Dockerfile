@@ -14,21 +14,22 @@ RUN apt-get update && apt-get -y install \
     libraw-dev \
     ffmpeg \
     libopenjp2-7-dev \
-    wget \
+    curl \
     unzip
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
     && git clone https://github.com/OpenImageIO/oiio.git \
     && cd oiio \
-    && make PYTHON_VERSION=3.6 VERBOSE=1 STOP_ON_WARNING=0 \
+    && mkdir build \
+    && cd build \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.6 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
+    && make install -j4 \
     && make clean
-ENV PATH="$PATH:/root/local/src/oiio/dist/linux64/bin"
-ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/root/local/src/oiio/dist/linux64/lib"
-ENV PYTHONPATH="/root/local/src/oiio/dist/linux64/lib/python3.6/site-packages"
+ENV PYTHONPATH="/usr/local/lib/python3.6/site-packages"
 
 # Install Basic Python Libraries
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get -y install tzdata
+RUN apt-get update && apt-get -y install tzdata
 ENV TZ Asia/Tokyo
 RUN apt-get update \
     && apt-get upgrade -y \
@@ -48,16 +49,31 @@ RUN . /work/bin/activate \
     && pip install -r /tmp/requirements.txt
 COPY . /tmp/
 
+# Install OpenColorIO
+RUN apt-get install freeglut3-dev libglew-dev -y
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/imageworks/OpenColorIO.git \
+    && mkdir -p /tmp/ociobuild \
+    && cd /tmp/ociobuild \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local /root/local/src/OpenColorIO \
+    && make -j8 \
+    && make install
+
 # Install Noto Fonts
 RUN mkdir font_install \
     && cd font_install \
-    && wget https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
     && unzip NotoSansCJKjp-hinted.zip \
     && mkdir -p /usr/share/fonts/opentype/noto \
     && cp *otf /usr/share/fonts/opentype/noto \
     && fc-cache -f -v \
     && cd .. \
     && rm -rf font_install
+
+# Install ImageMagick
+RUN apt-get update \
+    && apt-get install -y imagemagick
 
 # Clean
 RUN apt-get clean \
