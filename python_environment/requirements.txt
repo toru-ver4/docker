@@ -7,3 +7,4 @@ colour-science
 pillow
 sphinx_rtd_theme
 sympy
+flake8
