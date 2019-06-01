@@ -15,13 +15,13 @@ Python の開発環境を Docker上に構築する。
 ### docker build
 
 ```cmd
-docker build -t takuver4/python_dev:python36_colour13 --no-cache .
+docker build -t takuver4/python_dev:python36_colour13_ctl --no-cache .
 ```
 
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:python36_colour13 bash
+docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:python36_colour13_ctl bash
 ```
 
 ## Todo

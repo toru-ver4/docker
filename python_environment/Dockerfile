@@ -60,6 +60,12 @@ RUN mkdir -p /root/local/src \
     && make -j8 \
     && make install
 
+# Install CTL
+RUN cd /root/local/src \
+    && git clone https://github.com/ampas/CTL.git \
+    && cd CTL \
+    && mkdir build && cd build && cmake .. && make && make install
+
 # Install Noto Fonts
 RUN mkdir font_install \
     && cd font_install \
