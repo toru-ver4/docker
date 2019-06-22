@@ -50,7 +50,7 @@ RUN . /work/bin/activate \
 COPY . /tmp/
 
 # Install OpenColorIO
-RUN apt-get install freeglut3-dev libglew-dev -y
+RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
     && git clone https://github.com/imageworks/OpenColorIO.git \
@@ -80,6 +80,10 @@ RUN mkdir font_install \
 # Install ImageMagick
 RUN apt-get update \
     && apt-get install -y imagemagick
+
+# Git init settings
+RUN git config --global user.name toru.yoshihara \
+    && git config --global user.email toru.ver.11@gmail.com
 
 # Clean
 RUN apt-get clean \
