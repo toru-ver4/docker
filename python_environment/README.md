@@ -21,7 +21,8 @@ docker build -t takuver4/python_dev:python36_colour13_ctl --no-cache .
 ### docker run
 
 ```cmd
-docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:python36_colour13_ctl bash
+docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev05 bash
+docker run -it -v c:\home\sample_code:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev05 bash
 ```
 
 ## Todo
