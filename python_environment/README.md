@@ -22,7 +22,7 @@ docker build -t takuver4/python_dev:rev06 .
 
 ```cmd
 docker run -it -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev06 bash
-docker run -it -v c:\home\sample_code:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev06 bash
+docker run -it --name init_rev06 -v c:\home\sample_code:/work/src -e DISPLAY=10.0.75.1:0.0 takuver4/python_dev:rev06 bash
 docker run -it -d -P --name sample_rev06 -v c:\home\sample_code:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev06
 ```
 

@@ -36,32 +36,33 @@ CMD ["/usr/sbin/sshd", "-D"]
 #     && cd oiio \
 #     && mkdir build \
 #     && cd build \
-#     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.7 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
+#     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.6 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
 #     && make install -j4 \
 #     && make clean
-# ENV PYTHONPATH="/usr/local/lib/python3.7/site-packages"
+# ENV PYTHONPATH="/usr/local/lib/python3.6/site-packages"
 
-# # Install Basic Python Libraries
-# ENV DEBIAN_FRONTEND=noninteractive
-# RUN apt-get update && apt-get -y install tzdata
-# ENV TZ Asia/Tokyo
-# RUN apt-get update \
-#     && apt-get upgrade -y \
-#     && apt-get install -y \
-#     tzdata
-# RUN apt-get update && apt-get -y install \
-#     python3-venv \
-#     libsm-dev \
-#     libxrender-dev \
-#     python3-tk
-# RUN python3 -m venv /work && \
-#     echo "source /work/bin/activate" >> ~/.bashrc
+# Install Basic Python Libraries
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get -y install tzdata
+ENV TZ Asia/Tokyo
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y \
+    tzdata
+RUN apt-get update && apt-get -y install \
+    python3-venv \
+    libsm-dev \
+    libxrender-dev \
+    python3-tk
+RUN mkdir /work && cd /work \
+    && python3 -m venv env \
+    echo "source /work/env/bin/activate" >> ~/.bashrc
 # ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
-# COPY requirements.txt /tmp/
-# RUN . /work/bin/activate \
-#     && pip install --upgrade pip \
-#     && pip install -r /tmp/requirements.txt
-# COPY . /tmp/
+COPY requirements.txt /tmp/
+RUN . /work/env/bin/activate \
+    && pip install --upgrade pip \
+    && pip install -r /tmp/requirements.txt
+COPY . /tmp/
 
 # # Install OpenColorIO
 # RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
