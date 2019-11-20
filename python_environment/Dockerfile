@@ -14,55 +14,60 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
-# # Install OpenImageIO
-# RUN apt-get update && apt-get -y install \
-#     cmake \
-#     g++ \
-#     gdb \
-#     git \
-#     software-properties-common \
-#     libtiff5-dev \
-#     libboost-all-dev \
-#     libpng-dev \
-#     libopenexr-dev \
-#     libraw-dev \
-#     ffmpeg \
-#     libopenjp2-7-dev \
-#     curl \
-#     unzip
-# RUN mkdir -p /root/local/src \
-#     && cd /root/local/src \
-#     && git clone https://github.com/OpenImageIO/oiio.git \
-#     && cd oiio \
-#     && mkdir build \
-#     && cd build \
-#     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.6 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
-#     && make install -j4 \
-#     && make clean
-# ENV PYTHONPATH="/usr/local/lib/python3.6/site-packages"
-
-# Install Basic Python Libraries
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get -y install tzdata
-ENV TZ Asia/Tokyo
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y \
-    tzdata
+# Install OpenImageIO
 RUN apt-get update && apt-get -y install \
-    python3-venv \
-    libsm-dev \
-    libxrender-dev \
-    python3-tk
-RUN mkdir /work && cd /work \
-    && python3 -m venv env \
-    echo "source /work/env/bin/activate" >> ~/.bashrc
-# ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
-COPY requirements.txt /tmp/
-RUN . /work/env/bin/activate \
-    && pip install --upgrade pip \
-    && pip install -r /tmp/requirements.txt
-COPY . /tmp/
+    g++ \
+    gdb \
+    git \
+    software-properties-common \
+    libtiff5-dev \
+    libboost-all-dev \
+    libpng-dev \
+    libopenexr-dev \
+    libraw-dev \
+    ffmpeg \
+    libopenjp2-7-dev \
+    curl \
+    unzip \
+    libssl-dev
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/Kitware/CMake.git \
+    && cd CMake \
+    && ./bootstrap && make && make install
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/OpenImageIO/oiio.git \
+    && cd oiio \
+    && mkdir build \
+    && cd build \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.6 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
+    && make install -j4 \
+    && make clean
+ENV PYTHONPATH="/usr/local/lib/python3.6/site-packages"
+
+# # Install Basic Python Libraries
+# ENV DEBIAN_FRONTEND=noninteractive
+# RUN apt-get update && apt-get -y install tzdata
+# ENV TZ Asia/Tokyo
+# RUN apt-get update \
+#     && apt-get upgrade -y \
+#     && apt-get install -y \
+#     tzdata
+# RUN apt-get update && apt-get -y install \
+#     python3-venv \
+#     libsm-dev \
+#     libxrender-dev \
+#     python3-tk
+# RUN mkdir /work && cd /work \
+#     && python3 -m venv env \
+#     echo "source /work/env/bin/activate" >> ~/.bashrc
+# # ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
+# COPY requirements.txt /tmp/
+# RUN . /work/env/bin/activate \
+#     && pip install --upgrade pip \
+#     && pip install -r /tmp/requirements.txt
+# COPY . /tmp/
 
 # # Install OpenColorIO
 # RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
