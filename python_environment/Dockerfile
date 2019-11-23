@@ -1,8 +1,21 @@
 FROM ubuntu:18.04
 
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN echo 'root:Xi.eVkRu|+~&' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
+
 # Install OpenImageIO
 RUN apt-get update && apt-get -y install \
-    cmake \
     g++ \
     gdb \
     git \
@@ -15,7 +28,13 @@ RUN apt-get update && apt-get -y install \
     ffmpeg \
     libopenjp2-7-dev \
     curl \
-    unzip
+    unzip \
+    libssl-dev
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/Kitware/CMake.git \
+    && cd CMake \
+    && ./bootstrap && make && make install
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
     && git clone https://github.com/OpenImageIO/oiio.git \
@@ -40,11 +59,12 @@ RUN apt-get update && apt-get -y install \
     libsm-dev \
     libxrender-dev \
     python3-tk
-RUN python3 -m venv /work && \
-    echo "source /work/bin/activate" >> ~/.bashrc
-ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
+RUN mkdir /work && cd /work \
+    && python3 -m venv env \
+    echo "source /work/env/bin/activate" >> ~/.bashrc
+# ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
 COPY requirements.txt /tmp/
-RUN . /work/bin/activate \
+RUN . /work/env/bin/activate \
     && pip install --upgrade pip \
     && pip install -r /tmp/requirements.txt
 COPY . /tmp/
@@ -83,10 +103,11 @@ RUN apt-get update \
 
 # Git init settings
 RUN git config --global user.name toru.yoshihara \
-    && git config --global user.email toru.ver.11@gmail.com
+    && git config --global user.email toru.ver.11@gmail.com \
+    && git config --global core.autocrlf true
+
+ENV PYTHONPATH="$PYTHONPATH:/work/lib"
 
 # Clean
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-CMD ["python", "--version"]
