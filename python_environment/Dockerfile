@@ -106,6 +106,8 @@ RUN git config --global user.name toru.yoshihara \
     && git config --global user.email toru.ver.11@gmail.com \
     && git config --global core.autocrlf true
 
+ENV PYTHONPATH="$PYTHONPATH:/work/lib"
+
 # Clean
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*

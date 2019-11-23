@@ -22,6 +22,8 @@ docker build -t takuver4/python_dev:rev06 .
 
 ```cmd
 docker run -it -d -P --name sample_rev06 -v c:\home\sample_code:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev06
+docker run -it -d -P --name sip_rev06 -v c:\home\sip:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev06
+docker run -it -d -P --name lib_rev06 -v c:\home\ColorScienceLib\src:/work/lib -v c:\home\ColorScienceLib:/work/src -e DISPLAY=10.0.75.1:0.0 --rm takuver4/python_dev:rev06
 ```
 
 ## Todo
