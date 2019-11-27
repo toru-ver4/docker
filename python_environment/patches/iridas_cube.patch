@@ -1,0 +1,11 @@
+--- iridas_cube.py.bak	2019-11-26 22:29:33.093011300 +0900
++++ iridas_cube.py	2019-11-27 18:10:43.302356900 +0900
+@@ -233,7 +233,7 @@
+         Formats given array as an *Iridas* *.cube* data row.
+         """
+ 
+-        return '{1:0.{0}f} {2:0.{0}f} {3:0.{0}f}'.format(decimals, *array)
++        return '{1:0.{0}e} {2:0.{0}e} {3:0.{0}e}'.format(decimals, *array)
+ 
+     with open(path, 'w') as cube_file:
+         cube_file.write('TITLE "{0}"\n'.format(LUT.name))
