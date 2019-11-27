@@ -108,6 +108,16 @@ RUN git config --global user.name toru.yoshihara \
 
 ENV PYTHONPATH="$PYTHONPATH:/work/lib"
 
+# Add patches to colour-science
+COPY patches/iridas_cube.patch /tmp/
+COPY patches/sony_spi1d.patch /tmp/
+COPY patches/sony_spi3d.patch /tmp/
+RUN cd /work/env/lib/python3.6/site-packages/colour/io/luts/ \
+    && patch -u iridas_cube.py < /tmp/iridas_cube.patch \
+    && patch -u sony_spi1d.py < /tmp/sony_spi1d.patch \
+    && patch -u sony_spi3d.py < /tmp/sony_spi3d.patch \
+    && cd /home
+
 # Clean
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*

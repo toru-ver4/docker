@@ -1,0 +1,20 @@
+--- sony_spi1d.py.bak	2019-11-27 18:11:03.855189300 +0900
++++ sony_spi1d.py	2019-11-27 18:19:26.429911700 +0900
+@@ -198,7 +198,7 @@
+         Formats given array as a *Sony* *.spi1d* data row.
+         """
+ 
+-        return ' {1:0.{0}f} {2:0.{0}f} {3:0.{0}f}'.format(decimals, *array)
++        return ' {1:0.{0}e} {2:0.{0}e} {3:0.{0}e}'.format(decimals, *array)
+ 
+     with open(path, 'w') as spi1d_file:
+         spi1d_file.write('Version 1\n')
+@@ -214,7 +214,7 @@
+         spi1d_file.write('{\n')
+         for row in LUT.table:
+             if is_1D:
+-                spi1d_file.write(' {1:0.{0}f}\n'.format(decimals, row))
++                spi1d_file.write(' {1:0.{0}e}\n'.format(decimals, row))
+             else:
+                 spi1d_file.write('{0}\n'.format(_format_array(row)))
+         spi1d_file.write('}\n')
