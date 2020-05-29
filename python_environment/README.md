@@ -21,8 +21,7 @@ docker build -t takuver4/python_dev:rev06 .
 ### docker run
 
 ```cmd
-docker run -it -d -P --name sample_rev06 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -v D:\abuse:/work/overuse -e 
-DISPLAY=docker.for.win.localhost:0.0 -e PYTHONPATH="/usr/local/lib/python3.6/site-packages:/work/src/ty_lib" --rm takuver4/python_dev:rev06
+docker run -it -d -P --name sample_rev06 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -v D:\abuse:/work/overuse -e DISPLAY=docker.for.win.localhost:0.0 -e PYTHONPATH="/usr/local/lib/python3.6/site-packages:/work/src/ty_lib" --rm takuver4/python_dev:rev06
 ```
 
 ## Todo
