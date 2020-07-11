@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+    python_dev:
+        image: takuver4/python_dev:rev07
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment: 
+            PYTHONPATH: "/usr/local/lib/python3.8/site-packages:/work/src/ty_lib"
+            DISPLAY: docker.for.win.localhost:0.0
+        ports:
+            - "8888"
+        volumes:
+            - C:\Users\toruv\OneDrive\work\sample_code:/work/src
+            - D:\abuse:/work/overuse
