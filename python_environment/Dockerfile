@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
@@ -25,26 +25,25 @@ RUN apt-get update && apt-get -y install \
     libpng-dev \
     libopenexr-dev \
     libraw-dev \
+    libheif-dev \
     ffmpeg \
     libopenjp2-7-dev \
     curl \
     unzip \
-    libssl-dev
-RUN mkdir -p /root/local/src \
-    && cd /root/local/src \
-    && git clone https://github.com/Kitware/CMake.git \
-    && cd CMake \
-    && ./bootstrap && make && make install
+    libssl-dev \
+    cmake \
+    python3-pybind11
+
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
     && git clone https://github.com/OpenImageIO/oiio.git \
     && cd oiio \
     && mkdir build \
     && cd build \
-    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.6 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.8 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
     && make install -j4 \
     && make clean
-ENV PYTHONPATH="/usr/local/lib/python3.6/site-packages"
+ENV PYTHONPATH="/usr/local/lib/python3.8/site-packages"
 
 # Install Basic Python Libraries
 ENV DEBIAN_FRONTEND=noninteractive
@@ -61,8 +60,7 @@ RUN apt-get update && apt-get -y install \
     python3-tk
 RUN mkdir /work && cd /work \
     && python3 -m venv env \
-    echo "source /work/env/bin/activate" >> ~/.bashrc
-# ENV PYTHONPATH="$PYTHONPATH:/work/src/lib"
+    && echo "source /work/env/bin/activate" >> ~/.bashrc
 COPY requirements.txt /tmp/
 RUN . /work/env/bin/activate \
     && pip install --upgrade pip \
@@ -72,6 +70,7 @@ COPY . /tmp/
 # Install OpenColorIO
 RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
 RUN mkdir -p /root/local/src \
+    && . /work/env/bin/activate \
     && cd /root/local/src \
     && git clone https://github.com/imageworks/OpenColorIO.git \
     && mkdir -p /tmp/ociobuild \
@@ -82,7 +81,7 @@ RUN mkdir -p /root/local/src \
 
 # Install CTL
 RUN cd /root/local/src \
-    && git clone https://github.com/ampas/CTL.git \
+    && git clone https://github.com/toru-ver4/CTL.git \
     && cd CTL \
     && mkdir build && cd build && cmake .. && make && make install
 
@@ -106,18 +105,7 @@ RUN git config --global user.name toru.yoshihara \
     && git config --global user.email toru.ver.11@gmail.com \
     && git config --global core.autocrlf true
 
-ENV PYTHONPATH="$PYTHONPATH:/work/lib"
-
-# Add patches to colour-science
-COPY patches/iridas_cube.patch /tmp/
-COPY patches/sony_spi1d.patch /tmp/
-COPY patches/sony_spi3d.patch /tmp/
-RUN cd /work/env/lib/python3.6/site-packages/colour/io/luts/ \
-    && patch -u iridas_cube.py < /tmp/iridas_cube.patch \
-    && patch -u sony_spi1d.py < /tmp/sony_spi1d.patch \
-    && patch -u sony_spi3d.py < /tmp/sony_spi3d.patch \
-    && cd /home
-
 # Clean
 RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /roor/local/src

@@ -9,3 +9,7 @@ sphinx_rtd_theme
 sympy
 flake8
 pytest
+jupyter
+ipywidgets
+pysimplegui
+jupyterlab
