@@ -13,3 +13,4 @@ jupyter
 ipywidgets
 pysimplegui
 jupyterlab
+wavio
