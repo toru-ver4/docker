@@ -13,13 +13,17 @@ Build a python development environment.
 ## Build
 
 ```powershell
-docker build -t takuver4/python_dev:rev07 .
+docker build -t takuver4/python_dev:rev08 .
 ```
 
 ## Push
 
 ```powershell
-docker push takuver4/python_dev:rev07
+docker push takuver4/python_dev:rev08
+```
+
+```
+docker run -it -P --name python_dev_08aa -v C:\Users\toruv\OneDrive\work\sample_code:/work/src --rm takuver4/python_dev:rev08 bash
 ```
 
 ## Create a container using `docker-compose up`
