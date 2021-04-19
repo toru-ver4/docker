@@ -42,11 +42,17 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     libxcomposite-dev \
     libxkbcommon-x11-dev \
     mesa-common-dev \
-    qt5dxcb-plugin \
     imagemagick \
     python3-pip \
     python3-pybind11 \
-    libwebp-dev
+    libwebp-dev \
+    qt5dxcb-plugin \
+    libxcb-icccm4 \
+    libxcb-image0-dev \
+    libxcb-keysyms1-dev \
+    libxcb-randr0-dev \
+    libxcb-render-util0-dev \
+    libxcb-xinerama0-dev
 
 # Install Basic Python Libraries
 ENV DEBIAN_FRONTEND=noninteractive
@@ -115,8 +121,6 @@ RUN mkdir font_install \
 RUN git config --global user.name toru.yoshihara \
     && git config --global user.email toru.ver.11@gmail.com \
     && git config --global core.autocrlf true
-
-RUN apt-get update && apt-get -y install --no-install-recommends\
 
 # Clean
 RUN apt-get clean \
