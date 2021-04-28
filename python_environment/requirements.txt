@@ -4,6 +4,7 @@ numpy
 matplotlib
 scipy
 colour-science
+colour-datasets
 pillow
 sphinx_rtd_theme
 sympy
