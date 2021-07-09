@@ -866,3 +866,21 @@ zlib1g/focal-updates,now 1:1.2.11.dfsg-2ubuntu1.2 amd64 [installed]
 The [X410](https://x410.dev/) is recommended.
 
 If you want to use the [VcXsrv](https://sourceforge.net/projects/vcxsrv/), please change the environment variable `DISPLAY`.
+
+## Appendix A pyenv-win
+
+### Install
+
+```powershell
+pip install pyenv-win --target "$env:USERPROFILE/.pyenv"
+[System.Environment]::SetEnvironmentVariable("PYENV", "$env:USERPROFILE\.pyenv\pyenv-win", "Machine")
+$modifiedSystemPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+echo $modifiedSystemPath > c:\path_backup.txt  # just in case
+$modifiedSystemPath += ";$env:USERPROFILE\.pyenv\pyenv-win\bin;$env:USERPROFILE\.pyenv\pyenv-win\shims"
+[System.Environment]::SetEnvironmentVariable("Path", $modifiedSystemPath, "Machine")
+```
+
+### Install specific python version
+
+```
+```
