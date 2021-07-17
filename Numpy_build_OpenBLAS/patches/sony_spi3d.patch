@@ -1,0 +1,11 @@
+--- sony_spi3d.py.bak	2019-11-27 18:11:11.986853500 +0900
++++ sony_spi3d.py	2019-11-27 18:16:26.824554800 +0900
+@@ -152,7 +152,7 @@
+         Formats given array as a *Sony* *.spi3d* data row.
+         """
+ 
+-        return '{1:d} {2:d} {3:d} {4:0.{0}f} {5:0.{0}f} {6:0.{0}f}'.format(
++        return '{1:d} {2:d} {3:d} {4:0.{0}e} {5:0.{0}e} {6:0.{0}e}'.format(
+             decimals, *array)
+ 
+     with open(path, 'w') as spi3d_file:
