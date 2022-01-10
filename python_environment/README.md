@@ -13,18 +13,18 @@ Build a python development environment.
 ## Build
 
 ```powershell
-docker build -t takuver4/python_dev:rev08 .
-# docker build --no-cache -t takuver4/python_dev:rev08 .
+docker build -t takuver4/python_dev:rev09 .
+# docker build --no-cache -t takuver4/python_dev:rev09 .
 ```
 
 ## Push
 
 ```powershell
-docker push takuver4/python_dev:rev08
+docker push takuver4/python_dev:rev09
 ```
 
 ```
-docker run -it -P --name python_dev_08aa -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev08 bash
+docker run -it -P --name python_dev_08aa -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev09 bash
 ```
 
 ## Create a container using `docker-compose up`
@@ -39,10 +39,10 @@ docker-compose up -d
 $WORKING_DIR = "C:\Users\toruv\OneDrive\work\sample_code";
 $DATA_DIR = "D:\abuse";
 $PYTHON_LIB_DIR_ON_LINUX = "/usr/local/lib/python3.8/site-packages:/work/src/ty_lib";
-docker run -it -d -P --name python_dev_08 `
+docker run -it -d -P --name python_dev_09 `
 -v ${WORKING_DIR}:/work/src -v ${DATA_DIR}:/work/overuse `
 -e DISPLAY=host.docker.internal:0.0 `
--e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev08
+-e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev09
 ```
 
 ## Attach Visual Studio Code
@@ -57,808 +57,823 @@ docker run -it -d -P --name python_dev_08 `
 Package                       Version
 ----------------------------- ---------
 alabaster                     0.7.12
-anyio                         2.2.0
-argon2-cffi                   20.1.0
-async-generator               1.10
-attrs                         20.3.0
-Babel                         2.9.0
+anyio                         3.4.0
+argon2-cffi                   21.3.0
+argon2-cffi-bindings          21.2.0
+attrs                         21.4.0
+Babel                         2.9.1
 backcall                      0.2.0
-bleach                        3.3.0
-certifi                       2020.12.5
-cffi                          1.14.5
-chardet                       4.0.0
+bleach                        4.1.0
+cachetools                    5.0.0
+certifi                       2021.10.8
+cffi                          1.15.0
+charset-normalizer            2.0.10
+colour-datasets               0.1.1
 colour-science                0.3.16
-cycler                        0.10.0
-decorator                     5.0.7
+cycler                        0.11.0
+debugpy                       1.5.1
+decorator                     5.1.1
 defusedxml                    0.7.1
-deprecation                   2.1.0
-docutils                      0.16
+docutils                      0.17.1
 entrypoints                   0.3
-flake8                        3.9.1
-idna                          2.10
-imageio                       2.9.0
-imagesize                     1.2.0
+flake8                        4.0.1
+fonttools                     4.28.5
+idna                          3.3
+imageio                       2.13.5
+imagesize                     1.3.0
+importlib-resources           5.4.0
 iniconfig                     1.1.1
-ipykernel                     5.5.3
-ipython                       7.22.0
+ipykernel                     6.6.1
+ipython                       7.31.0
 ipython-genutils              0.2.0
-ipywidgets                    7.6.3
-jedi                          0.18.0
-Jinja2                        2.11.3
-json5                         0.9.5
-jsonschema                    3.2.0
+ipywidgets                    7.6.5
+jedi                          0.18.1
+Jinja2                        3.0.3
+json5                         0.9.6
+jsonschema                    4.3.3
 jupyter                       1.0.0
-jupyter-client                6.1.12
+jupyter-client                7.1.0
 jupyter-console               6.4.0
-jupyter-core                  4.7.1
-jupyter-packaging             0.9.1
-jupyter-server                1.6.2
-jupyterlab                    3.0.14
+jupyter-core                  4.9.1
+jupyter-server                1.13.1
+jupyterlab                    3.2.5
 jupyterlab-pygments           0.1.2
-jupyterlab-server             2.4.0
-jupyterlab-widgets            1.0.0
-kiwisolver                    1.3.1
-MarkupSafe                    1.1.1
-matplotlib                    3.4.1
+jupyterlab-server             2.10.2
+jupyterlab-widgets            1.0.2
+kiwisolver                    1.3.2
+MarkupSafe                    2.0.1
+matplotlib                    3.5.1
+matplotlib-inline             0.1.3
 mccabe                        0.6.1
 mistune                       0.8.4
 mpmath                        1.2.1
-nbclassic                     0.2.7
-nbclient                      0.5.3
-nbconvert                     6.0.7
+nbclassic                     0.3.4
+nbclient                      0.5.9
+nbconvert                     6.4.0
 nbformat                      5.1.3
-nest-asyncio                  1.5.1
-notebook                      6.3.0
-numpy                         1.20.2
-opencv-python                 4.5.1.48
-packaging                     20.9
-pandocfilters                 1.4.3
-parso                         0.8.2
+nest-asyncio                  1.5.4
+notebook                      6.4.6
+numpy                         1.22.0
+opencv-python-headless        4.5.5.62
+packaging                     21.3
+pandocfilters                 1.5.0
+parso                         0.8.3
 pexpect                       4.8.0
 pickleshare                   0.7.5
-Pillow                        8.2.0
-pip                           21.0.1
-pkg-resources                 0.0.0
-pluggy                        0.13.1
-prometheus-client             0.10.1
-prompt-toolkit                3.0.18
+Pillow                        9.0.0
+pip                           21.3.1
+pkg_resources                 0.0.0
+pluggy                        1.0.0
+prometheus-client             0.12.0
+prompt-toolkit                3.0.24
 ptyprocess                    0.7.0
-py                            1.10.0
-pycodestyle                   2.7.0
-pycparser                     2.20
-pyflakes                      2.3.1
-Pygments                      2.8.1
-pyparsing                     2.4.7
-pyrsistent                    0.17.3
+py                            1.11.0
+pycodestyle                   2.8.0
+pycparser                     2.21
+pyflakes                      2.4.0
+Pygments                      2.11.2
+pyparsing                     3.0.6
+pyqtgraph                     0.12.3
+pyrsistent                    0.18.0
 PySide2                       5.15.2
-PySimpleGUI                   4.39.1
-pytest                        6.2.3
-python-dateutil               2.8.1
-pytz                          2021.1
-pyzmq                         22.0.3
-qtconsole                     5.0.3
-QtPy                          1.9.0
-requests                      2.25.1
-scipy                         1.6.2
-Send2Trash                    1.5.0
-setuptools                    56.0.0
+PySimpleGUI                   4.56.0
+pytest                        6.2.5
+python-dateutil               2.8.2
+pytz                          2021.3
+pyzmq                         22.3.0
+qtconsole                     5.2.2
+QtPy                          2.0.0
+requests                      2.27.1
+scipy                         1.7.3
+Send2Trash                    1.8.0
+setuptools                    44.0.0
 shiboken2                     5.15.2
-six                           1.15.0
+six                           1.16.0
 sniffio                       1.2.0
-snowballstemmer               2.1.0
-Sphinx                        3.5.4
-sphinx-rtd-theme              0.5.2
+snowballstemmer               2.2.0
+Sphinx                        4.3.2
+sphinx-rtd-theme              1.0.0
 sphinxcontrib-applehelp       1.0.2
 sphinxcontrib-devhelp         1.0.2
-sphinxcontrib-htmlhelp        1.0.3
+sphinxcontrib-htmlhelp        2.0.0
 sphinxcontrib-jsmath          1.0.1
 sphinxcontrib-qthelp          1.0.3
-sphinxcontrib-serializinghtml 1.1.4
-sympy                         1.8
-terminado                     0.9.4
-testpath                      0.4.4
+sphinxcontrib-serializinghtml 1.1.5
+sympy                         1.9
+terminado                     0.12.1
+testpath                      0.5.0
 toml                          0.10.2
-tomlkit                       0.7.0
 tornado                       6.1
-traitlets                     5.0.5
-urllib3                       1.26.4
+tqdm                          4.62.3
+traitlets                     5.1.1
+urllib3                       1.26.7
 wavio                         0.0.4
 wcwidth                       0.2.5
 webencodings                  0.5.1
-wheel                         0.36.2
-widgetsnbextension            3.5.1
+websocket-client              1.2.3
+widgetsnbextension            3.5.2
+xlrd                          2.0.1
+zipp                          3.7.0
 ```
 
-### apt list --installed
+### dpkg -l
 
 ```
-adduser/focal,now 3.118ubuntu2 all [installed]
-apt/focal-updates,now 2.0.5 amd64 [installed]
-autoconf/focal,now 2.69-11.1 all [installed,automatic]
-automake/focal,now 1:1.16.1-4ubuntu6 all [installed,automatic]
-autotools-dev/focal,now 20180224.1 all [installed,automatic]
-base-files/focal-updates,now 11ubuntu5.3 amd64 [installed]
-base-passwd/focal,now 3.5.47 amd64 [installed]
-bash/focal-updates,now 5.0-6ubuntu1.1 amd64 [installed]
-binutils-common/focal-updates,focal-security,now 2.34-6ubuntu1.1 amd64 [installed,automatic]
-binutils-x86-64-linux-gnu/focal-updates,focal-security,now 2.34-6ubuntu1.1 amd64 [installed,automatic]
-binutils/focal-updates,focal-security,now 2.34-6ubuntu1.1 amd64 [installed,automatic]
-blt/focal,now 2.5.3+dfsg-4 amd64 [installed,automatic]
-bsdutils/focal-updates,now 1:2.34-0.1ubuntu9.1 amd64 [installed]
-build-essential/focal-updates,now 12.8ubuntu1.1 amd64 [installed]
-bzip2/focal,now 1.0.8-2 amd64 [installed]
-ca-certificates/focal-updates,focal-security,now 20210119~20.04.1 all [installed,automatic]
-cargo/focal-updates,focal-security,now 0.47.0-1~exp1ubuntu1~20.04.1 amd64 [installed]
-cbindgen/focal,now 0.12.1-1build1 amd64 [installed]
-cmake-data/focal,now 3.16.3-1ubuntu1 all [installed,automatic]
-cmake/focal,now 3.16.3-1ubuntu1 amd64 [installed]
-coreutils/focal,now 8.30-3ubuntu2 amd64 [installed]
-cpp-8/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-cpp-9/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-cpp/focal,now 4:9.3.0-1ubuntu2 amd64 [installed,automatic]
-curl/focal-updates,focal-security,now 7.68.0-1ubuntu2.5 amd64 [installed]
-dash/focal,now 0.5.10.2-6 amd64 [installed]
-dbus/focal-updates,focal-security,now 1.12.16-2ubuntu2.1 amd64 [installed,automatic]
-debconf/focal,now 1.5.73 all [installed]
-debianutils/focal,now 4.9.1 amd64 [installed]
-diffutils/focal,now 1:3.7-3 amd64 [installed]
-distro-info-data/focal-updates,focal-security,now 0.43ubuntu1.4 all [installed,automatic]
-dmsetup/focal,now 2:1.02.167-1ubuntu1 amd64 [installed,automatic]
-dpkg-dev/focal,now 1.19.7ubuntu3 all [installed,automatic]
-dpkg/focal,now 1.19.7ubuntu3 amd64 [installed]
-e2fsprogs/focal,now 1.45.5-2ubuntu1 amd64 [installed]
-fdisk/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-ffmpeg/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed]
-file/focal,now 1:5.38-4 amd64 [installed,automatic]
-findutils/focal,now 4.7.0-1ubuntu1 amd64 [installed]
-fontconfig-config/focal,now 2.13.1-2ubuntu3 all [installed,automatic]
-fontconfig/focal,now 2.13.1-2ubuntu3 amd64 [installed,automatic]
-fonts-dejavu-core/focal,now 2.37-1 all [installed,automatic]
-fonts-droid-fallback/focal,now 1:6.0.1r16-1.1 all [installed,automatic]
-fonts-noto-mono/focal-updates,now 20200323-1build1~ubuntu20.04.1 all [installed,automatic]
-fonts-urw-base35/focal,now 20170801.1-3 all [installed,automatic]
-freeglut3-dev/focal,now 2.8.1-3 amd64 [installed]
-freeglut3/focal,now 2.8.1-3 amd64 [installed,automatic]
-g++-9/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-g++/focal,now 4:9.3.0-1ubuntu2 amd64 [installed,automatic]
-gcc-10-base/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed]
-gcc-8-base/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-gcc-8/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-gcc-9-base/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-gcc-9/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-gcc/focal,now 4:9.3.0-1ubuntu2 amd64 [installed,automatic]
-gfortran-8/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-ghostscript/focal-updates,focal-security,now 9.50~dfsg-5ubuntu4.2 amd64 [installed,automatic]
-gir1.2-glib-2.0/focal-updates,now 1.64.1-1~ubuntu20.04.1 amd64 [installed,automatic]
-git-man/focal-updates,focal-security,now 1:2.25.1-1ubuntu3.1 all [installed,automatic]
-git/focal-updates,focal-security,now 1:2.25.1-1ubuntu3.1 amd64 [installed]
-gpac-modules-base/focal,now 0.5.2-426-gc5ad4e4+dfsg5-5 amd64 [installed,automatic]
-gpac/focal,now 0.5.2-426-gc5ad4e4+dfsg5-5 amd64 [installed]
-gpgv/focal-updates,now 2.2.19-3ubuntu2.1 amd64 [installed]
-grep/focal,now 3.4-1 amd64 [installed]
-gsfonts/focal,now 1:8.11+urwcyr1.0.7~pre44-4.4 all [installed,automatic]
-gzip/focal,now 1.10-0ubuntu4 amd64 [installed]
-hicolor-icon-theme/focal,now 0.17-2 all [installed,automatic]
-hostname/focal,now 3.23 amd64 [installed]
-ibverbs-providers/focal,now 28.0-1ubuntu1 amd64 [installed,automatic]
-icu-devtools/focal,now 66.1-2ubuntu2 amd64 [installed,automatic]
-imagemagick-6-common/focal-updates,focal-security,now 8:6.9.10.23+dfsg-2.1ubuntu11.2 all [installed,automatic] 
-imagemagick-6.q16/focal-updates,focal-security,now 8:6.9.10.23+dfsg-2.1ubuntu11.2 amd64 [installed,automatic]  
-imagemagick/focal-updates,focal-security,now 8:6.9.10.23+dfsg-2.1ubuntu11.2 amd64 [installed]
-init-system-helpers/focal,now 1.57 all [installed]
-krb5-locales/focal-updates,focal-security,now 1.17-6ubuntu4.1 all [installed,automatic]
-liba52-0.7.4/focal,now 0.7.4-20 amd64 [installed,automatic]
-libacl1/focal,now 2.2.53-6 amd64 [installed]
-libaom0/focal,now 1.0.0.errata1-3build1 amd64 [installed,automatic]
-libapparmor1/focal-updates,now 2.13.3-7ubuntu5.1 amd64 [installed,automatic]
-libapt-pkg6.0/focal-updates,now 2.0.5 amd64 [installed]
-libarchive13/focal,now 3.4.0-2ubuntu1 amd64 [installed,automatic]
-libargon2-1/focal,now 0~20171227-0.2 amd64 [installed,automatic]
-libasan5/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-libasn1-8-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libasound2-data/focal-updates,now 1.2.2-2.1ubuntu2.3 all [installed,automatic]
-libasound2/focal-updates,now 1.2.2-2.1ubuntu2.3 amd64 [installed,automatic]
-libass9/focal,now 1:0.14.0-2 amd64 [installed,automatic]
-libasyncns0/focal,now 0.8-6 amd64 [installed,automatic]
-libatomic1/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libattr1/focal,now 1:2.4.48-5 amd64 [installed]
-libaudit-common/focal,now 1:2.8.5-2ubuntu6 all [installed]
-libaudit1/focal,now 1:2.8.5-2ubuntu6 amd64 [installed]
-libavahi-client3/focal,now 0.7-4ubuntu7 amd64 [installed,automatic]
-libavahi-common-data/focal,now 0.7-4ubuntu7 amd64 [installed,automatic]
-libavahi-common3/focal,now 0.7-4ubuntu7 amd64 [installed,automatic]
-libavc1394-0/focal,now 0.5.4-5 amd64 [installed,automatic]
-libavcodec58/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libavdevice58/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libavfilter7/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libavformat58/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libavresample4/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libavutil56/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libbinutils/focal-updates,focal-security,now 2.34-6ubuntu1.1 amd64 [installed,automatic]
-libblkid1/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-libbluray2/focal,now 1:1.2.0-1 amd64 [installed,automatic]
-libboost-all-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed]
-libboost-atomic-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-atomic1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-atomic1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-chrono-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-chrono1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-chrono1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-container-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-container1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-container1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-context-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-context1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-context1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-coroutine-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-coroutine1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-coroutine1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-date-time-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-date-time1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-date-time1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-exception-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-exception1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-fiber-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-fiber1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-fiber1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-filesystem-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-filesystem1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-filesystem1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-graph-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-graph-parallel-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-graph-parallel1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-graph-parallel1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-graph1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-graph1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-iostreams-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-iostreams1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-iostreams1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-locale-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-locale1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-locale1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-log-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-log1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-log1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-math-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-math1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-math1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-mpi-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-mpi-python-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-mpi-python1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-mpi-python1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-mpi1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-mpi1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-numpy-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-numpy1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-numpy1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-program-options-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-program-options1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-program-options1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-python-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-python1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-python1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-random-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-random1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-random1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-regex-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-regex1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-regex1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-serialization-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-serialization1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-serialization1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-stacktrace-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-stacktrace1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-stacktrace1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-system-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-system1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-system1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-test-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-test1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-test1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-thread-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-thread1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-thread1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-timer-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-timer1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-timer1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-tools-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-type-erasure-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-type-erasure1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-type-erasure1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-wave-dev/focal,now 1.71.0.0ubuntu2 amd64 [installed,automatic]
-libboost-wave1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost-wave1.71.0/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost1.71-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libboost1.71-tools-dev/focal,now 1.71.0-6ubuntu6 amd64 [installed,automatic]
-libbrotli1/focal-updates,focal-security,now 1.0.7-6ubuntu0.1 amd64 [installed,automatic]
-libbs2b0/focal,now 3.1.0+dfsg-2.2build1 amd64 [installed,automatic]
-libbsd0/focal,now 0.10.0-1 amd64 [installed,automatic]
-libbz2-1.0/focal,now 1.0.8-2 amd64 [installed]
-libc-bin/focal-updates,now 2.31-0ubuntu9.2 amd64 [installed]
-libc-dev-bin/focal-updates,now 2.31-0ubuntu9.2 amd64 [installed,automatic]
-libc6-dev/focal-updates,now 2.31-0ubuntu9.2 amd64 [installed,automatic]
-libc6/focal-updates,now 2.31-0ubuntu9.2 amd64 [installed]
-libcaca0/focal,now 0.99.beta19-2.1ubuntu1 amd64 [installed,automatic]
-libcairo-gobject2/focal,now 1.16.0-4ubuntu1 amd64 [installed,automatic]
-libcairo2/focal,now 1.16.0-4ubuntu1 amd64 [installed,automatic]
-libcap-ng0/focal,now 0.7.9-2.1build1 amd64 [installed]
-libcap2/focal,now 1:2.32-1 amd64 [installed,automatic]
-libcbor0.6/focal,now 0.6.0-0ubuntu1 amd64 [installed,automatic]
-libcc1-0/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libcdio-cdda2/focal,now 10.2+2.0.0-1 amd64 [installed,automatic]
-libcdio-paranoia2/focal,now 10.2+2.0.0-1 amd64 [installed,automatic]
-libcdio18/focal,now 2.0.0-2 amd64 [installed,automatic]
-libchromaprint1/focal,now 1.4.3-3build1 amd64 [installed,automatic]
-libcodec2-0.9/focal,now 0.9.2-2 amd64 [installed,automatic]
-libcom-err2/focal,now 1.45.5-2ubuntu1 amd64 [installed]
-libcrypt-dev/focal,now 1:4.4.10-10ubuntu4 amd64 [installed,automatic]
-libcrypt1/focal,now 1:4.4.10-10ubuntu4 amd64 [installed]
-libcryptsetup12/focal-updates,now 2:2.2.2-3ubuntu2.3 amd64 [installed,automatic]
-libctf-nobfd0/focal-updates,focal-security,now 2.34-6ubuntu1.1 amd64 [installed,automatic]
-libctf0/focal-updates,focal-security,now 2.34-6ubuntu1.1 amd64 [installed,automatic]
-libcups2/focal-updates,focal-security,now 2.3.1-9ubuntu1.1 amd64 [installed,automatic]
-libcurl3-gnutls/focal-updates,focal-security,now 7.68.0-1ubuntu2.5 amd64 [installed,automatic]
-libcurl4/focal-updates,focal-security,now 7.68.0-1ubuntu2.5 amd64 [installed,automatic]
-libdatrie1/focal,now 0.2.12-3 amd64 [installed,automatic]
-libdb5.3/focal,now 5.3.28+dfsg1-0.6ubuntu2 amd64 [installed]
-libdbus-1-3/focal-updates,focal-security,now 1.12.16-2ubuntu2.1 amd64 [installed,automatic]
-libdc1394-22/focal,now 2.2.5-2.1 amd64 [installed,automatic]
-libde265-0/focal,now 1.0.4-1build1 amd64 [installed,automatic]
-libdebconfclient0/focal,now 0.251ubuntu1 amd64 [installed]
-libdevmapper1.02.1/focal,now 2:1.02.167-1ubuntu1 amd64 [installed,automatic]
-libdjvulibre-text/focal,now 3.5.27.1-14build1 all [installed,automatic]
-libdjvulibre21/focal,now 3.5.27.1-14build1 amd64 [installed,automatic]
-libdpkg-perl/focal,now 1.19.7ubuntu3 all [installed,automatic]
-libdrm-amdgpu1/focal-updates,now 2.4.102-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libdrm-common/focal-updates,now 2.4.102-1ubuntu1~20.04.1 all [installed,automatic]
-libdrm-dev/focal-updates,now 2.4.102-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libdrm-intel1/focal-updates,now 2.4.102-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libdrm-nouveau2/focal-updates,now 2.4.102-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libdrm-radeon1/focal-updates,now 2.4.102-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libdrm2/focal-updates,now 2.4.102-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libedit2/focal,now 3.1-20191231-1 amd64 [installed,automatic]
-libegl-dev/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libegl-mesa0/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libegl1/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libelf1/focal,now 0.176-1.1build1 amd64 [installed,automatic]
-liberror-perl/focal,now 0.17029-1 all [installed,automatic]
-libevent-2.1-7/focal,now 2.1.11-stable-1 amd64 [installed,automatic]
-libevent-core-2.1-7/focal,now 2.1.11-stable-1 amd64 [installed,automatic]
-libevent-dev/focal,now 2.1.11-stable-1 amd64 [installed,automatic]
-libevent-extra-2.1-7/focal,now 2.1.11-stable-1 amd64 [installed,automatic]
-libevent-openssl-2.1-7/focal,now 2.1.11-stable-1 amd64 [installed,automatic]
-libevent-pthreads-2.1-7/focal,now 2.1.11-stable-1 amd64 [installed,automatic]
-libexpat1-dev/focal,now 2.2.9-1build1 amd64 [installed,automatic]
-libexpat1/focal,now 2.2.9-1build1 amd64 [installed,automatic]
-libext2fs2/focal,now 1.45.5-2ubuntu1 amd64 [installed]
-libfaad2/focal,now 2.9.1-1 amd64 [installed,automatic]
-libfabric1/focal,now 1.6.2-3 amd64 [installed,automatic]
-libfdisk1/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-libffi7/focal,now 3.3-4 amd64 [installed]
-libfftw3-double3/focal,now 3.3.8-2ubuntu1 amd64 [installed,automatic]
-libfido2-1/focal,now 1.3.1-1ubuntu2 amd64 [installed,automatic]
-libflac8/focal,now 1.3.3-1build1 amd64 [installed,automatic]
-libflite1/focal,now 2.1-release-3 amd64 [installed,automatic]
-libfontconfig1/focal,now 2.13.1-2ubuntu3 amd64 [installed,automatic]
-libfreenect0.5/focal,now 1:0.5.3-2 amd64 [installed,automatic]
-libfreetype6/focal-updates,focal-security,now 2.10.1-2ubuntu0.1 amd64 [installed,automatic]
-libfribidi0/focal,now 1.0.8-2 amd64 [installed,automatic]
-libgbm1/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libgcc-8-dev/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-libgcc-9-dev/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-libgcc-s1/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed]
-libgcrypt20/focal,now 1.8.5-5ubuntu1 amd64 [installed]
-libgdbm-compat4/focal,now 1.18.1-5 amd64 [installed,automatic]
-libgdbm6/focal,now 1.18.1-5 amd64 [installed,automatic]
-libgdk-pixbuf2.0-0/focal-updates,focal-security,now 2.40.0+dfsg-3ubuntu0.2 amd64 [installed,automatic]
-libgdk-pixbuf2.0-common/focal-updates,focal-security,now 2.40.0+dfsg-3ubuntu0.2 all [installed,automatic]      
-libgfortran-8-dev/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-libgfortran5/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libgirepository-1.0-1/focal-updates,now 1.64.1-1~ubuntu20.04.1 amd64 [installed,automatic]
-libgl-dev/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libgl1-mesa-dev/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libgl1-mesa-dri/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libgl1/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libglapi-mesa/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libgles-dev/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libgles1/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libgles2/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libglew-dev/focal,now 2.1.0-4 amd64 [installed]
-libglew2.1/focal,now 2.1.0-4 amd64 [installed,automatic]
-libglib2.0-0/focal-updates,focal-security,now 2.64.6-1~ubuntu20.04.3 amd64 [installed,automatic]
-libglib2.0-data/focal-updates,focal-security,now 2.64.6-1~ubuntu20.04.3 all [installed,automatic]
-libglu1-mesa-dev/focal,now 9.0.1-1build1 amd64 [installed,automatic]
-libglu1-mesa/focal,now 9.0.1-1build1 amd64 [installed,automatic]
-libglvnd-dev/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libglvnd0/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libglx-dev/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libglx-mesa0/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libglx0/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libgme0/focal,now 0.6.2-1build1 amd64 [installed,automatic]
-libgmp10/focal,now 2:6.2.0+dfsg-4 amd64 [installed]
-libgnutls30/focal-updates,focal-security,now 3.6.13-2ubuntu1.3 amd64 [installed]
-libgomp1/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libgpac4/focal,now 0.5.2-426-gc5ad4e4+dfsg5-5 amd64 [installed,automatic]
-libgpg-error0/focal,now 1.37-1 amd64 [installed]
-libgraphite2-3/focal,now 1.3.13-11build1 amd64 [installed,automatic]
-libgs9-common/focal-updates,focal-security,now 9.50~dfsg-5ubuntu4.2 all [installed,automatic]
-libgs9/focal-updates,focal-security,now 9.50~dfsg-5ubuntu4.2 amd64 [installed,automatic]
-libgsm1/focal,now 1.0.18-2 amd64 [installed,automatic]
-libgssapi-krb5-2/focal-updates,focal-security,now 1.17-6ubuntu4.1 amd64 [installed,automatic]
-libgssapi3-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libharfbuzz0b/focal,now 2.6.4-1ubuntu4 amd64 [installed,automatic]
-libhcrypto4-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libheif-dev/focal,now 1.6.1-1build1 amd64 [installed]
-libheif1/focal,now 1.6.1-1build1 amd64 [installed,automatic]
-libheimbase1-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libheimntlm0-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libhogweed5/focal-updates,focal-security,now 3.5.1+really3.5.1-2ubuntu0.1 amd64 [installed]
-libhttp-parser2.9/focal,now 2.9.2-2 amd64 [installed,automatic]
-libhwloc-dev/focal,now 2.1.0+dfsg-4 amd64 [installed,automatic]
-libhwloc-plugins/focal,now 2.1.0+dfsg-4 amd64 [installed,automatic]
-libhwloc15/focal,now 2.1.0+dfsg-4 amd64 [installed,automatic]
-libhx509-5-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libibverbs-dev/focal,now 28.0-1ubuntu1 amd64 [installed,automatic]
-libibverbs1/focal,now 28.0-1ubuntu1 amd64 [installed,automatic]
-libice-dev/focal,now 2:1.0.10-0ubuntu1 amd64 [installed,automatic]
-libice6/focal,now 2:1.0.10-0ubuntu1 amd64 [installed,automatic]
-libicu-dev/focal,now 66.1-2ubuntu2 amd64 [installed,automatic]
-libicu66/focal,now 66.1-2ubuntu2 amd64 [installed,automatic]
-libidn11/focal,now 1.33-2.2ubuntu2 amd64 [installed,automatic]
-libidn2-0/focal,now 2.2.0-2 amd64 [installed]
-libiec61883-0/focal,now 1.2.0-3 amd64 [installed,automatic]
-libijs-0.35/focal,now 0.35-15 amd64 [installed,automatic]
-libilmbase-dev/focal,now 2.3.0-6build1 amd64 [installed]
-libilmbase24/focal,now 2.3.0-6build1 amd64 [installed,automatic]
-libip4tc2/focal,now 1.8.4-3ubuntu2 amd64 [installed,automatic]
-libisl22/focal,now 0.22.1-1 amd64 [installed,automatic]
-libitm1/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libjack-jackd2-0/focal,now 1.9.12~dfsg-2ubuntu2 amd64 [installed,automatic]
-libjbig-dev/focal,now 2.1-3.1build1 amd64 [installed,automatic]
-libjbig0/focal,now 2.1-3.1build1 amd64 [installed,automatic]
-libjbig2dec0/focal,now 0.18-1ubuntu1 amd64 [installed,automatic]
-libjpeg-dev/focal,now 8c-2ubuntu8 amd64 [installed,automatic]
-libjpeg-turbo8-dev/focal-updates,focal-security,now 2.0.3-0ubuntu1.20.04.1 amd64 [installed,automatic]
-libjpeg-turbo8/focal-updates,focal-security,now 2.0.3-0ubuntu1.20.04.1 amd64 [installed,automatic]
-libjpeg8-dev/focal,now 8c-2ubuntu8 amd64 [installed,automatic]
-libjpeg8/focal,now 8c-2ubuntu8 amd64 [installed,automatic]
-libjson-c4/focal-updates,focal-security,now 0.13.1+dfsg-7ubuntu0.3 amd64 [installed,automatic]
-libjsoncpp1/focal,now 1.7.4-3.1ubuntu2 amd64 [installed,automatic]
-libk5crypto3/focal-updates,focal-security,now 1.17-6ubuntu4.1 amd64 [installed,automatic]
-libkeyutils1/focal,now 1.6-6ubuntu1 amd64 [installed,automatic]
-libkmod2/focal,now 27-1ubuntu2 amd64 [installed,automatic]
-libkrb5-26-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libkrb5-3/focal-updates,focal-security,now 1.17-6ubuntu4.1 amd64 [installed,automatic]
-libkrb5support0/focal-updates,focal-security,now 1.17-6ubuntu4.1 amd64 [installed,automatic]
-liblcms2-2/focal,now 2.9-4 amd64 [installed,automatic]
-liblcms2-dev/focal,now 2.9-4 amd64 [installed,automatic]
-libldap-2.4-2/focal-updates,focal-security,now 2.4.49+dfsg-2ubuntu1.7 amd64 [installed,automatic]
-libldap-common/focal-updates,focal-security,now 2.4.49+dfsg-2ubuntu1.7 all [installed,automatic]
-liblilv-0-0/focal-updates,now 0.24.6-1ubuntu0.1 amd64 [installed,automatic]
-libllvm11/focal-updates,now 1:11.0.0-2~ubuntu20.04.1 amd64 [installed,automatic]
-liblqr-1-0/focal,now 0.4.2-2.1 amd64 [installed,automatic]
-liblsan0/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libltdl-dev/focal,now 2.4.6-14 amd64 [installed,automatic]
-libltdl7/focal,now 2.4.6-14 amd64 [installed,automatic]
-liblz4-1/focal,now 1.9.2-2 amd64 [installed]
-liblzma-dev/focal-updates,now 5.2.4-1ubuntu1 amd64 [installed,automatic]
-liblzma5/focal-updates,now 5.2.4-1ubuntu1 amd64 [installed]
-libmad0/focal,now 0.15.1b-10ubuntu1 amd64 [installed,automatic]
-libmagic-mgc/focal,now 1:5.38-4 amd64 [installed,automatic]
-libmagic1/focal,now 1:5.38-4 amd64 [installed,automatic]
-libmagickcore-6.q16-6-extra/focal-updates,focal-security,now 8:6.9.10.23+dfsg-2.1ubuntu11.2 amd64 [installed,automatic]
-libmagickcore-6.q16-6/focal-updates,focal-security,now 8:6.9.10.23+dfsg-2.1ubuntu11.2 amd64 [installed,automatic]
-libmagickwand-6.q16-6/focal-updates,focal-security,now 8:6.9.10.23+dfsg-2.1ubuntu11.2 amd64 [installed,automatic]
-libmount1/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-libmp3lame0/focal,now 3.100-3 amd64 [installed,automatic]
-libmpc3/focal,now 1.1.0-1 amd64 [installed,automatic]
-libmpdec2/focal,now 2.4.2-3 amd64 [installed,automatic]
-libmpfr6/focal,now 4.0.2-1 amd64 [installed,automatic]
-libmpg123-0/focal,now 1.25.13-1 amd64 [installed,automatic]
-libmpx2/focal,now 8.4.0-3ubuntu2 amd64 [installed,automatic]
-libmysofa1/focal,now 1.0~dfsg0-1 amd64 [installed,automatic]
-libncurses6/focal,now 6.2-0ubuntu2 amd64 [installed]
-libncursesw6/focal,now 6.2-0ubuntu2 amd64 [installed]
-libnetpbm10/focal,now 2:10.0-15.3build1 amd64 [installed,automatic]
-libnettle7/focal-updates,focal-security,now 3.5.1+really3.5.1-2ubuntu0.1 amd64 [installed]
-libnghttp2-14/focal,now 1.40.0-1build1 amd64 [installed,automatic]
-libnl-3-200/focal,now 3.4.0-1 amd64 [installed,automatic]
-libnl-3-dev/focal,now 3.4.0-1 amd64 [installed,automatic]
-libnl-route-3-200/focal,now 3.4.0-1 amd64 [installed,automatic]
-libnl-route-3-dev/focal,now 3.4.0-1 amd64 [installed,automatic]
-libnorm1/focal,now 1.5.8+dfsg2-2build1 amd64 [installed,automatic]
-libnss-systemd/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed,automatic]
-libnuma-dev/focal,now 2.0.12-1 amd64 [installed,automatic]
-libnuma1/focal,now 2.0.12-1 amd64 [installed,automatic]
-libogg0/focal,now 1.3.4-0ubuntu1 amd64 [installed,automatic]
-libopenal-data/focal,now 1:1.19.1-1 all [installed,automatic]
-libopenal1/focal,now 1:1.19.1-1 amd64 [installed,automatic]
-libopenexr-dev/focal-updates,focal-security,now 2.3.0-6ubuntu0.5 amd64 [installed]
-libopenexr24/focal-updates,focal-security,now 2.3.0-6ubuntu0.5 amd64 [installed,automatic]
-libopengl-dev/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libopengl0/focal-updates,now 1.3.2-1~ubuntu0.20.04.1 amd64 [installed,automatic]
-libopenjp2-7-dev/focal-updates,focal-security,now 2.3.1-1ubuntu4.20.04.1 amd64 [installed]
-libopenjp2-7/focal-updates,focal-security,now 2.3.1-1ubuntu4.20.04.1 amd64 [installed,automatic]
-libopenmpi-dev/focal,now 4.0.3-0ubuntu1 amd64 [installed,automatic]
-libopenmpi3/focal,now 4.0.3-0ubuntu1 amd64 [installed,automatic]
-libopenmpt0/focal,now 0.4.11-1build1 amd64 [installed,automatic]
-libopus0/focal,now 1.3.1-0ubuntu1 amd64 [installed,automatic]
-libp11-kit0/focal-updates,focal-security,now 0.23.20-1ubuntu0.1 amd64 [installed]
-libpam-modules-bin/focal-updates,now 1.3.1-5ubuntu4.1 amd64 [installed]
-libpam-modules/focal-updates,now 1.3.1-5ubuntu4.1 amd64 [installed]
-libpam-runtime/focal-updates,now 1.3.1-5ubuntu4.1 all [installed]
-libpam-systemd/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed,automatic]
-libpam0g/focal-updates,now 1.3.1-5ubuntu4.1 amd64 [installed]
-libpango-1.0-0/focal,now 1.44.7-2ubuntu4 amd64 [installed,automatic]
-libpangocairo-1.0-0/focal,now 1.44.7-2ubuntu4 amd64 [installed,automatic]
-libpangoft2-1.0-0/focal,now 1.44.7-2ubuntu4 amd64 [installed,automatic]
-libpaper-utils/focal,now 1.1.28 amd64 [installed,automatic]
-libpaper1/focal,now 1.1.28 amd64 [installed,automatic]
-libpciaccess0/focal,now 0.16-0ubuntu1 amd64 [installed,automatic]
-libpcre2-8-0/focal,now 10.34-7 amd64 [installed]
-libpcre3/focal,now 2:8.39-12build1 amd64 [installed]
-libperl5.30/focal-updates,focal-security,now 5.30.0-9ubuntu0.2 amd64 [installed,automatic]
-libpgm-5.2-0/focal,now 5.2.122~dfsg-3ubuntu1 amd64 [installed,automatic]
-libpixman-1-0/focal,now 0.38.4-0ubuntu1 amd64 [installed,automatic]
-libpmix2/focal,now 3.1.5-1 amd64 [installed,automatic]
-libpng-dev/focal,now 1.6.37-2 amd64 [installed]
-libpng16-16/focal,now 1.6.37-2 amd64 [installed,automatic]
-libpostproc55/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libprocps8/focal-updates,now 2:3.3.16-1ubuntu2.1 amd64 [installed]
-libpsl5/focal,now 0.21.0-1ubuntu1 amd64 [installed,automatic]
-libpsm-infinipath1/focal,now 3.3+20.604758e7-6 amd64 [installed,automatic]
-libpsm2-2/focal,now 11.2.86-1 amd64 [installed,automatic]
-libpthread-stubs0-dev/focal,now 0.4-1 amd64 [installed,automatic]
-libpulse0/focal-updates,now 1:13.99.1-1ubuntu3.10 amd64 [installed,automatic]
-libpython3-dev/focal,now 3.8.2-0ubuntu2 amd64 [installed,automatic]
-libpython3-stdlib/focal,now 3.8.2-0ubuntu2 amd64 [installed,automatic]
-libpython3.8-dev/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-libpython3.8-minimal/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-libpython3.8-stdlib/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-libpython3.8/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-libquadmath0/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libraw-dev/focal,now 0.19.5-1ubuntu1 amd64 [installed]
-libraw1394-11/focal,now 2.1.2-1 amd64 [installed,automatic]
-libraw19/focal,now 0.19.5-1ubuntu1 amd64 [installed,automatic]
-librdmacm1/focal,now 28.0-1ubuntu1 amd64 [installed,automatic]
-libreadline8/focal,now 8.0-4 amd64 [installed,automatic]
-librhash0/focal,now 1.3.9-1 amd64 [installed,automatic]
-libroken18-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-librsvg2-2/focal-updates,now 2.48.9-1ubuntu0.20.04.1 amd64 [installed,automatic]
-librtmp1/focal,now 2.4+20151223.gitfa8646d.1-2build1 amd64 [installed,automatic]
-librubberband2/focal,now 1.8.2-1build1 amd64 [installed,automatic]
-libsamplerate0/focal,now 0.1.9-2 amd64 [installed,automatic]
-libsasl2-2/focal,now 2.1.27+dfsg-2 amd64 [installed,automatic]
-libsasl2-modules-db/focal,now 2.1.27+dfsg-2 amd64 [installed,automatic]
-libsdl1.2debian/focal,now 1.2.15+dfsg2-5 amd64 [installed,automatic]
-libsdl2-2.0-0/focal,now 2.0.10+dfsg1-3 amd64 [installed,automatic]
-libseccomp2/focal-updates,now 2.5.1-1ubuntu1~20.04.1 amd64 [installed]
-libselinux1/focal,now 3.0-1build2 amd64 [installed]
-libsemanage-common/focal,now 3.0-1build2 all [installed]
-libsemanage1/focal,now 3.0-1build2 amd64 [installed]
-libsensors-config/focal,now 1:3.6.0-2ubuntu1 all [installed,automatic]
-libsensors5/focal,now 1:3.6.0-2ubuntu1 amd64 [installed,automatic]
-libsepol1/focal,now 3.0-1 amd64 [installed]
-libserd-0-0/focal,now 0.30.2-1 amd64 [installed,automatic]
-libshine3/focal,now 3.1.1-2 amd64 [installed,automatic]
-libsigsegv2/focal,now 2.12-2 amd64 [installed,automatic]
-libslang2/focal,now 2.3.2-4 amd64 [installed,automatic]
-libsm-dev/focal,now 2:1.2.3-1 amd64 [installed]
-libsm6/focal,now 2:1.2.3-1 amd64 [installed,automatic]
-libsmartcols1/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-libsnappy1v5/focal,now 1.1.8-1build1 amd64 [installed,automatic]
-libsndfile1/focal,now 1.0.28-7 amd64 [installed,automatic]
-libsndio7.0/focal,now 1.5.0-3 amd64 [installed,automatic]
-libsodium23/focal,now 1.0.18-1 amd64 [installed,automatic]
-libsord-0-0/focal,now 0.16.4-1 amd64 [installed,automatic]
-libsoxr0/focal,now 0.1.3-2build1 amd64 [installed,automatic]
-libspeex1/focal,now 1.2~rc1.2-1.1ubuntu1 amd64 [installed,automatic]
-libsqlite3-0/focal-updates,focal-security,now 3.31.1-4ubuntu0.2 amd64 [installed,automatic]
-libsratom-0-0/focal,now 0.6.4-1 amd64 [installed,automatic]
-libss2/focal,now 1.45.5-2ubuntu1 amd64 [installed]
-libssh-4/focal-updates,focal-security,now 0.9.3-2ubuntu2.1 amd64 [installed,automatic]
-libssh-gcrypt-4/focal-updates,focal-security,now 0.9.3-2ubuntu2.1 amd64 [installed,automatic]
-libssh2-1/focal,now 1.8.0-2.1build1 amd64 [installed,automatic]
-libssl-dev/focal-updates,focal-security,now 1.1.1f-1ubuntu2.3 amd64 [installed]
-libssl1.1/focal-updates,focal-security,now 1.1.1f-1ubuntu2.3 amd64 [installed,automatic]
-libstd-rust-1.47/focal-updates,focal-security,now 1.47.0+dfsg1+llvm-1ubuntu1~20.04.1 amd64 [installed,automatic]
-libstd-rust-dev/focal-updates,focal-security,now 1.47.0+dfsg1+llvm-1ubuntu1~20.04.1 amd64 [installed,automatic]libstdc++-9-dev/focal-updates,focal-security,now 9.3.0-17ubuntu1~20.04 amd64 [installed,automatic]
-libstdc++6/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed]
-libswresample3/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libswscale5/focal-updates,focal-security,now 7:4.2.4-1ubuntu0.1 amd64 [installed,automatic]
-libsystemd0/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed]
-libtasn1-6/focal,now 4.16.0-2 amd64 [installed]
-libtcl8.6/focal,now 8.6.10+dfsg-1 amd64 [installed,automatic]
-libthai-data/focal,now 0.1.28-3 all [installed,automatic]
-libthai0/focal,now 0.1.28-3 amd64 [installed,automatic]
-libtheora0/focal,now 1.1.1+dfsg.1-15ubuntu2 amd64 [installed,automatic]
-libtiff-dev/focal-updates,focal-security,now 4.1.0+git191117-2ubuntu0.20.04.1 amd64 [installed,automatic]      
-libtiff5-dev/focal-updates,focal-security,now 4.1.0+git191117-2ubuntu0.20.04.1 amd64 [installed]
-libtiff5/focal-updates,focal-security,now 4.1.0+git191117-2ubuntu0.20.04.1 amd64 [installed,automatic]
-libtiffxx5/focal-updates,focal-security,now 4.1.0+git191117-2ubuntu0.20.04.1 amd64 [installed,automatic]       
-libtinfo6/focal,now 6.2-0ubuntu2 amd64 [installed]
-libtk8.6/focal,now 8.6.10-1 amd64 [installed,automatic]
-libtsan0/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libtwolame0/focal,now 0.4.0-2 amd64 [installed,automatic]
-libubsan1/focal-updates,focal-security,now 10.2.0-5ubuntu1~20.04 amd64 [installed,automatic]
-libudev1/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed]
-libunistring2/focal,now 0.9.10-2 amd64 [installed]
-libusb-1.0-0/focal,now 2:1.0.23-2build1 amd64 [installed,automatic]
-libuuid1/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-libuv1/focal-updates,focal-security,now 1.34.2-1ubuntu1.1 amd64 [installed,automatic]
-libva-drm2/focal,now 2.7.0-2 amd64 [installed,automatic]
-libva-x11-2/focal,now 2.7.0-2 amd64 [installed,automatic]
-libva2/focal,now 2.7.0-2 amd64 [installed,automatic]
-libvdpau1/focal,now 1.3-1ubuntu2 amd64 [installed,automatic]
-libvidstab1.1/focal,now 1.1.0-2 amd64 [installed,automatic]
-libvorbis0a/focal,now 1.3.6-2ubuntu1 amd64 [installed,automatic]
-libvorbisenc2/focal,now 1.3.6-2ubuntu1 amd64 [installed,automatic]
-libvorbisfile3/focal,now 1.3.6-2ubuntu1 amd64 [installed,automatic]
-libvpx6/focal,now 1.8.2-1build1 amd64 [installed,automatic]
-libvulkan1/focal,now 1.2.131.2-1 amd64 [installed,automatic]
-libwavpack1/focal-updates,focal-security,now 5.2.0-1ubuntu0.1 amd64 [installed,automatic]
-libwayland-client0/focal,now 1.18.0-1 amd64 [installed,automatic]
-libwayland-cursor0/focal,now 1.18.0-1 amd64 [installed,automatic]
-libwayland-egl1/focal,now 1.18.0-1 amd64 [installed,automatic]
-libwayland-server0/focal,now 1.18.0-1 amd64 [installed,automatic]
-libwebp-dev/focal,now 0.6.1-2 amd64 [installed]
-libwebp6/focal,now 0.6.1-2 amd64 [installed,automatic]
-libwebpdemux2/focal,now 0.6.1-2 amd64 [installed,automatic]
-libwebpmux3/focal,now 0.6.1-2 amd64 [installed,automatic]
-libwind0-heimdal/focal,now 7.7.0+dfsg-1ubuntu1 amd64 [installed,automatic]
-libwmf0.2-7/focal,now 0.2.8.4-17ubuntu1 amd64 [installed,automatic]
-libwrap0/focal,now 7.6.q-30 amd64 [installed,automatic]
-libx11-6/focal-updates,focal-security,now 2:1.6.9-2ubuntu1.1 amd64 [installed,automatic]
-libx11-data/focal-updates,focal-security,now 2:1.6.9-2ubuntu1.1 all [installed,automatic]
-libx11-dev/focal-updates,focal-security,now 2:1.6.9-2ubuntu1.1 amd64 [installed,automatic]
-libx11-xcb1/focal-updates,focal-security,now 2:1.6.9-2ubuntu1.1 amd64 [installed,automatic]
-libx264-155/focal,now 2:0.155.2917+git0a84d98-2 amd64 [installed,automatic]
-libx265-179/focal,now 3.2.1-1build1 amd64 [installed,automatic]
-libxau-dev/focal,now 1:1.0.9-0ubuntu1 amd64 [installed,automatic]
-libxau6/focal,now 1:1.0.9-0ubuntu1 amd64 [installed,automatic]
-libxcb-dri2-0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-dri3-0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-glx0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-present0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-render0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-shape0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-shm0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-sync1/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-xfixes0/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-xkb-dev/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb-xkb1/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb1-dev/focal,now 1.14-2 amd64 [installed,automatic]
-libxcb1/focal,now 1.14-2 amd64 [installed,automatic]
-libxcomposite-dev/focal,now 1:0.4.5-1 amd64 [installed]
-libxcomposite1/focal,now 1:0.4.5-1 amd64 [installed,automatic]
-libxcursor1/focal,now 1:1.2.0-2 amd64 [installed,automatic]
-libxdamage1/focal,now 1:1.1.5-2 amd64 [installed,automatic]
-libxdmcp-dev/focal,now 1:1.1.3-0ubuntu1 amd64 [installed,automatic]
-libxdmcp6/focal,now 1:1.1.3-0ubuntu1 amd64 [installed,automatic]
-libxext-dev/focal,now 2:1.3.4-0ubuntu1 amd64 [installed,automatic]
-libxext6/focal,now 2:1.3.4-0ubuntu1 amd64 [installed,automatic]
-libxfixes-dev/focal,now 1:5.0.3-2 amd64 [installed,automatic]
-libxfixes3/focal,now 1:5.0.3-2 amd64 [installed,automatic]
-libxft2/focal,now 2.3.3-0ubuntu1 amd64 [installed,automatic]
-libxi6/focal,now 2:1.7.10-0ubuntu1 amd64 [installed,automatic]
-libxinerama1/focal,now 2:1.1.4-2 amd64 [installed,automatic]
-libxkbcommon-dev/focal,now 0.10.0-1 amd64 [installed,automatic]
-libxkbcommon-x11-0/focal,now 0.10.0-1 amd64 [installed,automatic]
-libxkbcommon-x11-dev/focal,now 0.10.0-1 amd64 [installed]
-libxkbcommon0/focal,now 0.10.0-1 amd64 [installed,automatic]
-libxml2/focal,now 2.9.10+dfsg-5 amd64 [installed,automatic]
-libxmuu1/focal,now 2:1.1.3-0ubuntu1 amd64 [installed,automatic]
-libxnvctrl0/focal-updates,now 460.39-0ubuntu0.20.04.1 amd64 [installed,automatic]
-libxrandr2/focal,now 2:1.5.2-0ubuntu1 amd64 [installed,automatic]
-libxrender-dev/focal,now 1:0.9.10-1 amd64 [installed]
-libxrender1/focal,now 1:0.9.10-1 amd64 [installed,automatic]
-libxshmfence1/focal,now 1.3-1 amd64 [installed,automatic]
-libxss1/focal,now 1:1.2.3-1 amd64 [installed,automatic]
-libxt-dev/focal,now 1:1.1.5-1 amd64 [installed,automatic]
-libxt6/focal,now 1:1.1.5-1 amd64 [installed,automatic]
-libxv1/focal,now 2:1.0.11-1 amd64 [installed,automatic]
-libxvidcore4/focal,now 2:1.3.7-1 amd64 [installed,automatic]
-libxxf86vm1/focal,now 1:1.1.4-1build1 amd64 [installed,automatic]
-libyaml-cpp-dev/focal,now 0.6.2-4ubuntu1 amd64 [installed]
-libyaml-cpp0.6/focal,now 0.6.2-4ubuntu1 amd64 [installed,automatic]
-libzmq5/focal,now 4.3.2-2ubuntu1 amd64 [installed,automatic]
-libzstd1/focal-updates,focal-security,now 1.4.4+dfsg-3ubuntu0.1 amd64 [installed]
-libzvbi-common/focal,now 0.2.35-17 all [installed,automatic]
-libzvbi0/focal,now 0.2.35-17 amd64 [installed,automatic]
-linux-libc-dev/focal-updates,focal-security,now 5.4.0-72.80 amd64 [installed,automatic]
-login/focal-updates,now 1:4.8.1-1ubuntu5.20.04 amd64 [installed]
-logsave/focal,now 1.45.5-2ubuntu1 amd64 [installed]
-lsb-base/focal,now 11.1.0ubuntu2 all [installed]
-lsb-release/focal,now 11.1.0ubuntu2 all [installed,automatic]
-m4/focal,now 1.4.18-4 amd64 [installed,automatic]
-make/focal,now 4.2.1-1.2 amd64 [installed,automatic]
-mawk/focal,now 1.3.4.20200120-2 amd64 [installed]
-mesa-common-dev/focal-updates,now 20.2.6-0ubuntu0.20.04.1 amd64 [installed]
-mime-support/focal,now 3.64ubuntu1 all [installed,automatic]
-mount/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-mpi-default-bin/focal,now 1.13 amd64 [installed,automatic]
-mpi-default-dev/focal,now 1.13 amd64 [installed,automatic]
-nasm/focal,now 2.14.02-1 amd64 [installed]
-ncurses-base/focal,now 6.2-0ubuntu2 all [installed]
-ncurses-bin/focal,now 6.2-0ubuntu2 amd64 [installed]
-ncurses-term/focal,now 6.2-0ubuntu2 all [installed,automatic]
-netpbm/focal,now 2:10.0-15.3build1 amd64 [installed,automatic]
-networkd-dispatcher/focal,now 2.0.1-1 all [installed,automatic]
-ninja-build/focal,now 1.10.0-1build1 amd64 [installed]
-ocl-icd-libopencl1/focal,now 2.2.11-1ubuntu1 amd64 [installed,automatic]
-openmpi-bin/focal,now 4.0.3-0ubuntu1 amd64 [installed,automatic]
-openmpi-common/focal,now 4.0.3-0ubuntu1 all [installed,automatic]
-openssh-client/focal-updates,focal-security,now 1:8.2p1-4ubuntu0.2 amd64 [installed,automatic]
-openssh-server/focal-updates,focal-security,now 1:8.2p1-4ubuntu0.2 amd64 [installed]
-openssh-sftp-server/focal-updates,focal-security,now 1:8.2p1-4ubuntu0.2 amd64 [installed,automatic]
-openssl/focal-updates,focal-security,now 1.1.1f-1ubuntu2.3 amd64 [installed,automatic]
-passwd/focal-updates,now 1:4.8.1-1ubuntu5.20.04 amd64 [installed]
-patch/focal,now 2.7.6-6 amd64 [installed,automatic]
-perl-base/focal-updates,focal-security,now 5.30.0-9ubuntu0.2 amd64 [installed]
-perl-modules-5.30/focal-updates,focal-security,now 5.30.0-9ubuntu0.2 all [installed,automatic]
-perl/focal-updates,focal-security,now 5.30.0-9ubuntu0.2 amd64 [installed,automatic]
-poppler-data/focal,now 0.4.9-2 all [installed,automatic]
-procps/focal-updates,now 2:3.3.16-1ubuntu2.1 amd64 [installed]
-publicsuffix/focal,now 20200303.0012-1 all [installed,automatic]
-pybind11-dev/focal,now 2.4.3-2build2 all [installed,automatic]
-python-pip-whl/focal-updates,focal-security,now 20.0.2-5ubuntu1.1 all [installed,automatic]
-python3-certifi/focal,now 2019.11.28-1 all [installed,automatic]
-python3-chardet/focal,now 3.0.4-4build1 all [installed,automatic]
-python3-dbus/focal,now 1.2.16-1build1 amd64 [installed,automatic]
-python3-dev/focal,now 3.8.2-0ubuntu2 amd64 [installed,automatic]
-python3-distro/focal,now 1.4.0-1 all [installed,automatic]
-python3-distutils/focal-updates,focal-security,now 3.8.5-1~20.04.1 all [installed,automatic]
-python3-gi/focal,now 3.36.0-1 amd64 [installed,automatic]
-python3-idna/focal,now 2.8-1 all [installed,automatic]
-python3-lib2to3/focal-updates,focal-security,now 3.8.5-1~20.04.1 all [installed,automatic]
-python3-minimal/focal,now 3.8.2-0ubuntu2 amd64 [installed,automatic]
-python3-pip/focal-updates,focal-security,now 20.0.2-5ubuntu1.1 all [installed]
-python3-pkg-resources/focal,now 45.2.0-1 all [installed,automatic]
-python3-pybind11/focal,now 2.4.3-2build2 all [installed]
-python3-requests/focal,now 2.22.0-2ubuntu1 all [installed,automatic]
-python3-setuptools/focal,now 45.2.0-1 all [installed,automatic]
-python3-six/focal,now 1.14.0-2 all [installed,automatic]
-python3-tk/focal-updates,focal-security,now 3.8.5-1~20.04.1 amd64 [installed]
-python3-urllib3/focal-updates,focal-security,now 1.25.8-2ubuntu0.1 all [installed,automatic]
-python3-venv/focal,now 3.8.2-0ubuntu2 amd64 [installed]
-python3-wheel/focal,now 0.34.2-1 all [installed,automatic]
-python3.8-dev/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-python3.8-minimal/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-python3.8-venv/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-python3.8/focal-updates,focal-security,now 3.8.5-1~20.04.2 amd64 [installed,automatic]
-python3/focal,now 3.8.2-0ubuntu2 amd64 [installed,automatic]
-readline-common/focal,now 8.0-4 all [installed,automatic]
-rustc/focal-updates,focal-security,now 1.47.0+dfsg1+llvm-1ubuntu1~20.04.1 amd64 [installed,automatic]
-sed/focal,now 4.7-1 amd64 [installed]
-sensible-utils/focal,now 0.0.12+nmu1 all [installed]
-shared-mime-info/focal,now 1.15-1 amd64 [installed,automatic]
-ssh-import-id/focal,now 5.10-0ubuntu1 all [installed,automatic]
-systemd-sysv/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed,automatic]
-systemd-timesyncd/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed,automatic]
-systemd/focal-updates,now 245.4-4ubuntu3.6 amd64 [installed,automatic]
-sysvinit-utils/focal,now 2.96-2.1ubuntu1 amd64 [installed]
-tar/focal-updates,focal-security,now 1.30+dfsg-7ubuntu0.20.04.1 amd64 [installed]
-tk8.6-blt2.5/focal,now 2.5.3+dfsg-4 amd64 [installed,automatic]
-tzdata/focal-updates,focal-security,now 2021a-0ubuntu0.20.04 all [installed]
-ubuntu-keyring/focal-updates,now 2020.02.11.4 all [installed]
-ucf/focal,now 3.0038+nmu1 all [installed,automatic]
-unzip/focal,now 6.0-25ubuntu1 amd64 [installed]
-util-linux/focal-updates,now 2.34-0.1ubuntu9.1 amd64 [installed]
-wget/focal,now 1.20.3-1ubuntu1 amd64 [installed,automatic]
-x11-common/focal,now 1:7.7+19ubuntu14 all [installed,automatic]
-x11proto-core-dev/focal,now 2019.2-1ubuntu1 all [installed,automatic]
-x11proto-dev/focal,now 2019.2-1ubuntu1 all [installed,automatic]
-x11proto-xext-dev/focal,now 2019.2-1ubuntu1 all [installed,automatic]
-xauth/focal,now 1:1.1-0ubuntu1 amd64 [installed,automatic]
-xdg-user-dirs/focal,now 0.17-2ubuntu1 amd64 [installed,automatic]
-xkb-data/focal,now 2.29-2 all [installed,automatic]
-xorg-sgml-doctools/focal,now 1:1.11-1 all [installed,automatic]
-xtrans-dev/focal,now 1.4.0-1 all [installed,automatic]
-xz-utils/focal-updates,now 5.2.4-1ubuntu1 amd64 [installed,automatic]
-yasm/focal,now 1.3.0-2ubuntu1 amd64 [installed]
-zlib1g-dev/focal-updates,now 1:1.2.11.dfsg-2ubuntu1.2 amd64 [installed,automatic]
-zlib1g/focal-updates,now 1:1.2.11.dfsg-2ubuntu1.2 amd64 [installed]
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                                   Version                            Architecture Description
++++-======================================-==================================-============-================================================================================================
+ii  adduser                                3.118ubuntu2                       all          add and remove users and groups
+ii  apt                                    2.0.6                              amd64        commandline package manager
+ii  autoconf                               2.69-11.1                          all          automatic configure script builder
+ii  automake                               1:1.16.1-4ubuntu6                  all          Tool for generating GNU Standards-compliant Makefiles
+ii  autotools-dev                          20180224.1                         all          Update infrastructure for config.{guess,sub} files
+ii  base-files                             11ubuntu5.4                        amd64        Debian base system miscellaneous files
+ii  base-passwd                            3.5.47                             amd64        Debian base system master password and group files
+ii  bash                                   5.0-6ubuntu1.1                     amd64        GNU Bourne Again SHell
+ii  binutils                               2.34-6ubuntu1.3                    amd64        GNU assembler, linker and binary utilities
+ii  binutils-common:amd64                  2.34-6ubuntu1.3                    amd64        Common files for the GNU assembler, linker and binary utilities
+ii  binutils-x86-64-linux-gnu              2.34-6ubuntu1.3                    amd64        GNU binary utilities, for x86-64-linux-gnu target
+ii  blt                                    2.5.3+dfsg-4                       amd64        graphics extension library for Tcl/Tk - run-time
+ii  bsdutils                               1:2.34-0.1ubuntu9.1                amd64        basic utilities from 4.4BSD-Lite
+ii  build-essential                        12.8ubuntu1.1                      amd64        Informational list of build-essential packages
+ii  bzip2                                  1.0.8-2                            amd64        high-quality block-sorting file compressor - utilities
+ii  ca-certificates                        20210119~20.04.2                   all          Common CA certificates
+ii  cargo                                  0.54.0-0ubuntu1~20.04.1            amd64        Rust package manager
+ii  cbindgen                               0.12.1-1build1                     amd64        Generates C bindings from Rust code
+ii  cmake                                  3.16.3-1ubuntu1                    amd64        cross-platform, open-source make system
+ii  cmake-data                             3.16.3-1ubuntu1                    all          CMake data files (modules, templates and documentation)
+ii  coreutils                              8.30-3ubuntu2                      amd64        GNU core utilities
+ii  cpp                                    4:9.3.0-1ubuntu2                   amd64        GNU C preprocessor (cpp)
+ii  cpp-8                                  8.4.0-3ubuntu2                     amd64        GNU C preprocessor
+ii  cpp-9                                  9.3.0-17ubuntu1~20.04              amd64        GNU C preprocessor
+ii  curl                                   7.68.0-1ubuntu2.7                  amd64        command line tool for transferring data with URL syntax
+ii  dash                                   0.5.10.2-6                         amd64        POSIX-compliant shell
+ii  dbus                                   1.12.16-2ubuntu2.1                 amd64        simple interprocess messaging system (daemon and utilities)
+ii  debconf                                1.5.73                             all          Debian configuration management system
+ii  debianutils                            4.9.1                              amd64        Miscellaneous utilities specific to Debian
+ii  diffutils                              1:3.7-3                            amd64        File comparison utilities
+ii  distro-info-data                       0.43ubuntu1.9                      all          information about the distributions' releases (data files)
+ii  dmsetup                                2:1.02.167-1ubuntu1                amd64        Linux Kernel Device Mapper userspace library
+ii  doxygen                                1.8.17-0ubuntu2                    amd64        Documentation system for C, C++, Java, Python and other languages
+ii  dpkg                                   1.19.7ubuntu3                      amd64        Debian package management system
+ii  dpkg-dev                               1.19.7ubuntu3                      all          Debian package development tools
+ii  e2fsprogs                              1.45.5-2ubuntu1                    amd64        ext2/ext3/ext4 file system utilities
+ii  fdisk                                  2.34-0.1ubuntu9.1                  amd64        collection of partitioning utilities
+ii  ffmpeg                                 7:4.2.4-1ubuntu0.1                 amd64        Tools for transcoding, streaming and playing of multimedia files
+ii  file                                   1:5.38-4                           amd64        Recognize the type of data in a file using "magic" numbers
+ii  findutils                              4.7.0-1ubuntu1                     amd64        utilities for finding files--find, xargs
+ii  fontconfig                             2.13.1-2ubuntu3                    amd64        generic font configuration library - support binaries
+ii  fontconfig-config                      2.13.1-2ubuntu3                    all          generic font configuration library - configuration
+ii  fonts-dejavu-core                      2.37-1                             all          Vera font family derivate with additional characters
+ii  freeglut3:amd64                        2.8.1-3                            amd64        OpenGL Utility Toolkit
+ii  freeglut3-dev:amd64                    2.8.1-3                            amd64        OpenGL Utility Toolkit development files
+ii  g++                                    4:9.3.0-1ubuntu2                   amd64        GNU C++ compiler
+ii  g++-9                                  9.3.0-17ubuntu1~20.04              amd64        GNU C++ compiler
+ii  gcc                                    4:9.3.0-1ubuntu2                   amd64        GNU C compiler
+ii  gcc-10-base:amd64                      10.3.0-1ubuntu1~20.04              amd64        GCC, the GNU Compiler Collection (base package)
+ii  gcc-8                                  8.4.0-3ubuntu2                     amd64        GNU C compiler
+ii  gcc-8-base:amd64                       8.4.0-3ubuntu2                     amd64        GCC, the GNU Compiler Collection (base package)
+ii  gcc-9                                  9.3.0-17ubuntu1~20.04              amd64        GNU C compiler
+ii  gcc-9-base:amd64                       9.3.0-17ubuntu1~20.04              amd64        GCC, the GNU Compiler Collection (base package)
+ii  gfortran-8                             8.4.0-3ubuntu2                     amd64        GNU Fortran compiler
+ii  gir1.2-glib-2.0:amd64                  1.64.1-1~ubuntu20.04.1             amd64        Introspection data for GLib, GObject, Gio and GModule
+ii  git                                    1:2.25.1-1ubuntu3.2                amd64        fast, scalable, distributed revision control system
+ii  git-man                                1:2.25.1-1ubuntu3.2                all          fast, scalable, distributed revision control system (manual pages)
+ii  gpac                                   0.5.2-426-gc5ad4e4+dfsg5-5         amd64        GPAC Project on Advanced Content - utilities
+ii  gpac-modules-base:amd64                0.5.2-426-gc5ad4e4+dfsg5-5         amd64        GPAC Project on Advanced Content - modules
+ii  gpgv                                   2.2.19-3ubuntu2.1                  amd64        GNU privacy guard - signature verification tool
+ii  grep                                   3.4-1                              amd64        GNU grep, egrep and fgrep
+ii  gzip                                   1.10-0ubuntu4                      amd64        GNU compression utilities
+ii  hicolor-icon-theme                     0.17-2                             all          default fallback theme for FreeDesktop.org icon themes
+ii  hostname                               3.23                               amd64        utility to set/show the host name or domain name
+ii  ibverbs-providers:amd64                28.0-1ubuntu1                      amd64        User space provider drivers for libibverbs
+ii  icu-devtools                           66.1-2ubuntu2.1                    amd64        Development utilities for International Components for Unicode
+ii  imagemagick                            8:6.9.10.23+dfsg-2.1ubuntu11.4     amd64        image manipulation programs -- binaries
+ii  imagemagick-6-common                   8:6.9.10.23+dfsg-2.1ubuntu11.4     all          image manipulation programs -- infrastructure
+ii  imagemagick-6.q16                      8:6.9.10.23+dfsg-2.1ubuntu11.4     amd64        image manipulation programs -- quantum depth Q16
+ii  init-system-helpers                    1.57                               all          helper tools for all init systems
+ii  krb5-locales                           1.17-6ubuntu4.1                    all          internationalization support for MIT Kerberos
+ii  liba52-0.7.4:amd64                     0.7.4-20                           amd64        library for decoding ATSC A/52 streams
+ii  libacl1:amd64                          2.2.53-6                           amd64        access control list - shared library
+ii  libaom0:amd64                          1.0.0.errata1-3build1              amd64        AV1 Video Codec Library
+ii  libapparmor1:amd64                     2.13.3-7ubuntu5.1                  amd64        changehat AppArmor library
+ii  libapt-pkg6.0:amd64                    2.0.6                              amd64        package management runtime library
+ii  libarchive13:amd64                     3.4.0-2ubuntu1                     amd64        Multi-format archive and compression library (shared library)
+ii  libargon2-1:amd64                      0~20171227-0.2                     amd64        memory-hard hashing function - runtime library
+ii  libasan5:amd64                         9.3.0-17ubuntu1~20.04              amd64        AddressSanitizer -- a fast memory error detector
+ii  libasn1-8-heimdal:amd64                7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - ASN.1 library
+ii  libasound2:amd64                       1.2.2-2.1ubuntu2.5                 amd64        shared library for ALSA applications
+ii  libasound2-data                        1.2.2-2.1ubuntu2.5                 all          Configuration files and profiles for ALSA drivers
+ii  libass9:amd64                          1:0.14.0-2                         amd64        library for SSA/ASS subtitles rendering
+ii  libasyncns0:amd64                      0.8-6                              amd64        Asynchronous name service query library
+ii  libatomic1:amd64                       10.3.0-1ubuntu1~20.04              amd64        support library providing __atomic built-in functions
+ii  libattr1:amd64                         1:2.4.48-5                         amd64        extended attribute handling - shared library
+ii  libaudit-common                        1:2.8.5-2ubuntu6                   all          Dynamic library for security auditing - common files
+ii  libaudit1:amd64                        1:2.8.5-2ubuntu6                   amd64        Dynamic library for security auditing
+ii  libavc1394-0:amd64                     0.5.4-5                            amd64        control IEEE 1394 audio/video devices
+ii  libavcodec58:amd64                     7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library with de/encoders for audio/video codecs - runtime files
+ii  libavdevice58:amd64                    7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library for handling input and output devices - runtime files
+ii  libavfilter7:amd64                     7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library containing media filters - runtime files
+ii  libavformat58:amd64                    7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library with (de)muxers for multimedia containers - runtime files
+ii  libavresample4:amd64                   7:4.2.4-1ubuntu0.1                 amd64        FFmpeg compatibility library for resampling - runtime files
+ii  libavutil56:amd64                      7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library with functions for simplifying programming - runtime files
+ii  libbinutils:amd64                      2.34-6ubuntu1.3                    amd64        GNU binary utilities (private shared library)
+ii  libblkid1:amd64                        2.34-0.1ubuntu9.1                  amd64        block device ID library
+ii  libbluray2:amd64                       1:1.2.0-1                          amd64        Blu-ray disc playback support library (shared library)
+ii  libboost-all-dev                       1.71.0.0ubuntu2                    amd64        Boost C++ Libraries development files (ALL) (default version)
+ii  libboost-atomic-dev:amd64              1.71.0.0ubuntu2                    amd64        atomic data types, operations, and memory ordering constraints (default version)
+ii  libboost-atomic1.71-dev:amd64          1.71.0-6ubuntu6                    amd64        atomic data types, operations, and memory ordering constraints
+ii  libboost-atomic1.71.0:amd64            1.71.0-6ubuntu6                    amd64        atomic data types, operations, and memory ordering constraints
+ii  libboost-chrono-dev:amd64              1.71.0.0ubuntu2                    amd64        C++ representation of time duration, time point, and clocks (default version)
+ii  libboost-chrono1.71-dev:amd64          1.71.0-6ubuntu6                    amd64        C++ representation of time duration, time point, and clocks
+ii  libboost-chrono1.71.0:amd64            1.71.0-6ubuntu6                    amd64        C++ representation of time duration, time point, and clocks
+ii  libboost-container-dev:amd64           1.71.0.0ubuntu2                    amd64        C++ library that implements several well-known containers - dev files (default version)
+ii  libboost-container1.71-dev:amd64       1.71.0-6ubuntu6                    amd64        C++ library that implements several well-known containers - dev files
+ii  libboost-container1.71.0:amd64         1.71.0-6ubuntu6                    amd64        C++ library that implements several well-known containers
+ii  libboost-context-dev:amd64             1.71.0.0ubuntu2                    amd64        provides a sort of cooperative multitasking on a single thread (default version)
+ii  libboost-context1.71-dev:amd64         1.71.0-6ubuntu6                    amd64        provides a sort of cooperative multitasking on a single thread
+ii  libboost-context1.71.0:amd64           1.71.0-6ubuntu6                    amd64        provides a sort of cooperative multitasking on a single thread
+ii  libboost-coroutine-dev:amd64           1.71.0.0ubuntu2                    amd64        provides a sort of cooperative multitasking on a single thread (default version)
+ii  libboost-coroutine1.71-dev:amd64       1.71.0-6ubuntu6                    amd64        provides a sort of cooperative multitasking on a single thread
+ii  libboost-coroutine1.71.0:amd64         1.71.0-6ubuntu6                    amd64        provides a sort of cooperative multitasking on a single thread
+ii  libboost-date-time-dev:amd64           1.71.0.0ubuntu2                    amd64        set of date-time libraries based on generic programming concepts (default version)
+ii  libboost-date-time1.71-dev:amd64       1.71.0-6ubuntu6                    amd64        set of date-time libraries based on generic programming concepts
+ii  libboost-date-time1.71.0:amd64         1.71.0-6ubuntu6                    amd64        set of date-time libraries based on generic programming concepts
+ii  libboost-dev:amd64                     1.71.0.0ubuntu2                    amd64        Boost C++ Libraries development files (default version)
+ii  libboost-exception-dev:amd64           1.71.0.0ubuntu2                    amd64        library to help write exceptions and handlers (default version)
+ii  libboost-exception1.71-dev:amd64       1.71.0-6ubuntu6                    amd64        library to help write exceptions and handlers
+ii  libboost-fiber-dev:amd64               1.71.0.0ubuntu2                    amd64        cooperatively-scheduled micro-/userland-threads (default version)
+ii  libboost-fiber1.71-dev:amd64           1.71.0-6ubuntu6                    amd64        cooperatively-scheduled micro-/userland-threads
+ii  libboost-fiber1.71.0:amd64             1.71.0-6ubuntu6                    amd64        cooperatively-scheduled micro-/userland-threads
+ii  libboost-filesystem-dev:amd64          1.71.0.0ubuntu2                    amd64        filesystem operations (portable paths, iteration over directories, etc) in C++ (default version)
+ii  libboost-filesystem1.71-dev:amd64      1.71.0-6ubuntu6                    amd64        filesystem operations (portable paths, iteration over directories, etc) in C++
+ii  libboost-filesystem1.71.0:amd64        1.71.0-6ubuntu6                    amd64        filesystem operations (portable paths, iteration over directories, etc) in C++
+ii  libboost-graph-dev:amd64               1.71.0.0ubuntu2                    amd64        generic graph components and algorithms in C++ (default version)
+ii  libboost-graph-parallel-dev            1.71.0.0ubuntu2                    amd64        generic graph components and algorithms in C++ (default version)
+ii  libboost-graph-parallel1.71-dev        1.71.0-6ubuntu6                    amd64        generic graph components and algorithms in C++
+ii  libboost-graph-parallel1.71.0          1.71.0-6ubuntu6                    amd64        generic graph components and algorithms in C++
+ii  libboost-graph1.71-dev:amd64           1.71.0-6ubuntu6                    amd64        generic graph components and algorithms in C++
+ii  libboost-graph1.71.0:amd64             1.71.0-6ubuntu6                    amd64        generic graph components and algorithms in C++
+ii  libboost-iostreams-dev:amd64           1.71.0.0ubuntu2                    amd64        Boost.Iostreams Library development files (default version)
+ii  libboost-iostreams1.71-dev:amd64       1.71.0-6ubuntu6                    amd64        Boost.Iostreams Library development files
+ii  libboost-iostreams1.71.0:amd64         1.71.0-6ubuntu6                    amd64        Boost.Iostreams Library
+ii  libboost-locale-dev:amd64              1.71.0.0ubuntu2                    amd64        C++ facilities for localization (default version)
+ii  libboost-locale1.71-dev:amd64          1.71.0-6ubuntu6                    amd64        C++ facilities for localization
+ii  libboost-locale1.71.0:amd64            1.71.0-6ubuntu6                    amd64        C++ facilities for localization
+ii  libboost-log-dev                       1.71.0.0ubuntu2                    amd64        C++ logging library (default version)
+ii  libboost-log1.71-dev                   1.71.0-6ubuntu6                    amd64        C++ logging library
+ii  libboost-log1.71.0                     1.71.0-6ubuntu6                    amd64        C++ logging library
+ii  libboost-math-dev:amd64                1.71.0.0ubuntu2                    amd64        Boost.Math Library development files (default version)
+ii  libboost-math1.71-dev:amd64            1.71.0-6ubuntu6                    amd64        Boost.Math Library development files
+ii  libboost-math1.71.0:amd64              1.71.0-6ubuntu6                    amd64        Boost.Math Library
+ii  libboost-mpi-dev                       1.71.0.0ubuntu2                    amd64        C++ interface to the Message Passing Interface (MPI) (default version)
+ii  libboost-mpi-python-dev                1.71.0.0ubuntu2                    amd64        C++ interface to the Message Passing Interface (MPI), Python Bindings (default version)
+ii  libboost-mpi-python1.71-dev            1.71.0-6ubuntu6                    amd64        C++ interface to the Message Passing Interface (MPI), Python Bindings
+ii  libboost-mpi-python1.71.0              1.71.0-6ubuntu6                    amd64        C++ interface to the Message Passing Interface (MPI), Python Bindings
+ii  libboost-mpi1.71-dev                   1.71.0-6ubuntu6                    amd64        C++ interface to the Message Passing Interface (MPI)
+ii  libboost-mpi1.71.0                     1.71.0-6ubuntu6                    amd64        C++ interface to the Message Passing Interface (MPI)
+ii  libboost-numpy-dev                     1.71.0.0ubuntu2                    amd64        Boost.Python NumPy extensions development files (default version)
+ii  libboost-numpy1.71-dev                 1.71.0-6ubuntu6                    amd64        Boost.Python NumPy extensions development files
+ii  libboost-numpy1.71.0                   1.71.0-6ubuntu6                    amd64        Boost.Python NumPy extensions
+ii  libboost-program-options-dev:amd64     1.71.0.0ubuntu2                    amd64        program options library for C++ (default version)
+ii  libboost-program-options1.71-dev:amd64 1.71.0-6ubuntu6                    amd64        program options library for C++
+ii  libboost-program-options1.71.0:amd64   1.71.0-6ubuntu6                    amd64        program options library for C++
+ii  libboost-python-dev                    1.71.0.0ubuntu2                    amd64        Boost.Python Library development files (default version)
+ii  libboost-python1.71-dev                1.71.0-6ubuntu6                    amd64        Boost.Python Library development files
+ii  libboost-python1.71.0                  1.71.0-6ubuntu6                    amd64        Boost.Python Library
+ii  libboost-random-dev:amd64              1.71.0.0ubuntu2                    amd64        Boost Random Number Library (default version)
+ii  libboost-random1.71-dev:amd64          1.71.0-6ubuntu6                    amd64        Boost Random Number Library
+ii  libboost-random1.71.0:amd64            1.71.0-6ubuntu6                    amd64        Boost Random Number Library
+ii  libboost-regex-dev:amd64               1.71.0.0ubuntu2                    amd64        regular expression library for C++ (default version)
+ii  libboost-regex1.71-dev:amd64           1.71.0-6ubuntu6                    amd64        regular expression library for C++
+ii  libboost-regex1.71.0:amd64             1.71.0-6ubuntu6                    amd64        regular expression library for C++
+ii  libboost-serialization-dev:amd64       1.71.0.0ubuntu2                    amd64        serialization library for C++ (default version)
+ii  libboost-serialization1.71-dev:amd64   1.71.0-6ubuntu6                    amd64        serialization library for C++
+ii  libboost-serialization1.71.0:amd64     1.71.0-6ubuntu6                    amd64        serialization library for C++
+ii  libboost-stacktrace-dev:amd64          1.71.0.0ubuntu2                    amd64        library to capture and print stack traces - development files (default version)
+ii  libboost-stacktrace1.71-dev:amd64      1.71.0-6ubuntu6                    amd64        library to capture and print stack traces - development files
+ii  libboost-stacktrace1.71.0:amd64        1.71.0-6ubuntu6                    amd64        library to capture and print stack traces
+ii  libboost-system-dev:amd64              1.71.0.0ubuntu2                    amd64        Operating system (e.g. diagnostics support) library (default version)
+ii  libboost-system1.71-dev:amd64          1.71.0-6ubuntu6                    amd64        Operating system (e.g. diagnostics support) library
+ii  libboost-system1.71.0:amd64            1.71.0-6ubuntu6                    amd64        Operating system (e.g. diagnostics support) library
+ii  libboost-test-dev:amd64                1.71.0.0ubuntu2                    amd64        components for writing and executing test suites (default version)
+ii  libboost-test1.71-dev:amd64            1.71.0-6ubuntu6                    amd64        components for writing and executing test suites
+ii  libboost-test1.71.0:amd64              1.71.0-6ubuntu6                    amd64        components for writing and executing test suites
+ii  libboost-thread-dev:amd64              1.71.0.0ubuntu2                    amd64        portable C++ multi-threading (default version)
+ii  libboost-thread1.71-dev:amd64          1.71.0-6ubuntu6                    amd64        portable C++ multi-threading
+ii  libboost-thread1.71.0:amd64            1.71.0-6ubuntu6                    amd64        portable C++ multi-threading
+ii  libboost-timer-dev:amd64               1.71.0.0ubuntu2                    amd64        C++ wall clock and CPU process timers (default version)
+ii  libboost-timer1.71-dev:amd64           1.71.0-6ubuntu6                    amd64        C++ wall clock and CPU process timers
+ii  libboost-timer1.71.0:amd64             1.71.0-6ubuntu6                    amd64        C++ wall clock and CPU process timers
+ii  libboost-tools-dev                     1.71.0.0ubuntu2                    amd64        Boost C++ Libraries development tools (default version)
+ii  libboost-type-erasure-dev:amd64        1.71.0.0ubuntu2                    amd64        C++ runtime polymorphism based on concepts (default version)
+ii  libboost-type-erasure1.71-dev:amd64    1.71.0-6ubuntu6                    amd64        C++ runtime polymorphism based on concepts
+ii  libboost-type-erasure1.71.0:amd64      1.71.0-6ubuntu6                    amd64        C++ runtime polymorphism based on concepts
+ii  libboost-wave-dev:amd64                1.71.0.0ubuntu2                    amd64        C99/C++ preprocessor library (default version)
+ii  libboost-wave1.71-dev:amd64            1.71.0-6ubuntu6                    amd64        C99/C++ preprocessor library
+ii  libboost-wave1.71.0:amd64              1.71.0-6ubuntu6                    amd64        C99/C++ preprocessor library
+ii  libboost1.71-dev:amd64                 1.71.0-6ubuntu6                    amd64        Boost C++ Libraries development files
+ii  libboost1.71-tools-dev                 1.71.0-6ubuntu6                    amd64        Boost C++ Libraries development tools
+ii  libbrotli1:amd64                       1.0.7-6ubuntu0.1                   amd64        library implementing brotli encoder and decoder (shared libraries)
+ii  libbs2b0:amd64                         3.1.0+dfsg-2.2build1               amd64        Bauer stereophonic-to-binaural DSP library
+ii  libbsd0:amd64                          0.10.0-1                           amd64        utility functions from BSD systems - shared library
+ii  libbz2-1.0:amd64                       1.0.8-2                            amd64        high-quality block-sorting file compressor library - runtime
+ii  libc-bin                               2.31-0ubuntu9.2                    amd64        GNU C Library: Binaries
+ii  libc-dev-bin                           2.31-0ubuntu9.2                    amd64        GNU C Library: Development binaries
+ii  libc6:amd64                            2.31-0ubuntu9.2                    amd64        GNU C Library: Shared libraries
+ii  libc6-dev:amd64                        2.31-0ubuntu9.2                    amd64        GNU C Library: Development Libraries and Header Files
+ii  libcaca0:amd64                         0.99.beta19-2.1ubuntu1.20.04.2     amd64        colour ASCII art library
+ii  libcairo-gobject2:amd64                1.16.0-4ubuntu1                    amd64        Cairo 2D vector graphics library (GObject library)
+ii  libcairo2:amd64                        1.16.0-4ubuntu1                    amd64        Cairo 2D vector graphics library
+ii  libcap-ng0:amd64                       0.7.9-2.1build1                    amd64        An alternate POSIX capabilities library
+ii  libcap2:amd64                          1:2.32-1                           amd64        POSIX 1003.1e capabilities (library)
+ii  libcbor0.6:amd64                       0.6.0-0ubuntu1                     amd64        library for parsing and generating CBOR (RFC 7049)
+ii  libcc1-0:amd64                         10.3.0-1ubuntu1~20.04              amd64        GCC cc1 plugin for GDB
+ii  libcdio-cdda2:amd64                    10.2+2.0.0-1                       amd64        library to read and control digital audio CDs
+ii  libcdio-paranoia2:amd64                10.2+2.0.0-1                       amd64        library to read digital audio CDs with error correction
+ii  libcdio18:amd64                        2.0.0-2                            amd64        library to read and control CD-ROM
+ii  libchromaprint1:amd64                  1.4.3-3build1                      amd64        audio fingerprint library
+ii  libclang1-10                           1:10.0.0-4ubuntu1                  amd64        C interface to the Clang library
+ii  libcodec2-0.9:amd64                    0.9.2-2                            amd64        Codec2 runtime library
+ii  libcom-err2:amd64                      1.45.5-2ubuntu1                    amd64        common error description library
+ii  libcrypt-dev:amd64                     1:4.4.10-10ubuntu4                 amd64        libcrypt development files
+ii  libcrypt1:amd64                        1:4.4.10-10ubuntu4                 amd64        libcrypt shared library
+ii  libcryptsetup12:amd64                  2:2.2.2-3ubuntu2.3                 amd64        disk encryption support - shared library
+ii  libctf-nobfd0:amd64                    2.34-6ubuntu1.3                    amd64        Compact C Type Format library (runtime, no BFD dependency)
+ii  libctf0:amd64                          2.34-6ubuntu1.3                    amd64        Compact C Type Format library (runtime, BFD dependency)
+ii  libcurl3-gnutls:amd64                  7.68.0-1ubuntu2.7                  amd64        easy-to-use client-side URL transfer library (GnuTLS flavour)
+ii  libcurl4:amd64                         7.68.0-1ubuntu2.7                  amd64        easy-to-use client-side URL transfer library (OpenSSL flavour)
+ii  libdatrie1:amd64                       0.2.12-3                           amd64        Double-array trie library
+ii  libdb5.3:amd64                         5.3.28+dfsg1-0.6ubuntu2            amd64        Berkeley v5.3 Database Libraries [runtime]
+ii  libdbus-1-3:amd64                      1.12.16-2ubuntu2.1                 amd64        simple interprocess messaging system (library)
+ii  libdc1394-22:amd64                     2.2.5-2.1                          amd64        high level programming interface for IEEE 1394 digital cameras
+ii  libde265-0:amd64                       1.0.4-1build1                      amd64        Open H.265 video codec implementation
+ii  libdebconfclient0:amd64                0.251ubuntu1                       amd64        Debian Configuration Management System (C-implementation library)
+ii  libdevmapper1.02.1:amd64               2:1.02.167-1ubuntu1                amd64        Linux Kernel Device Mapper userspace library
+ii  libdouble-conversion3:amd64            3.1.5-4ubuntu1                     amd64        routines to convert IEEE floats to and from strings
+ii  libdpkg-perl                           1.19.7ubuntu3                      all          Dpkg perl modules
+ii  libdrm-amdgpu1:amd64                   2.4.105-3~20.04.2                  amd64        Userspace interface to amdgpu-specific kernel DRM services -- runtime
+ii  libdrm-common                          2.4.105-3~20.04.2                  all          Userspace interface to kernel DRM services -- common files
+ii  libdrm-dev:amd64                       2.4.105-3~20.04.2                  amd64        Userspace interface to kernel DRM services -- development files
+ii  libdrm-intel1:amd64                    2.4.105-3~20.04.2                  amd64        Userspace interface to intel-specific kernel DRM services -- runtime
+ii  libdrm-nouveau2:amd64                  2.4.105-3~20.04.2                  amd64        Userspace interface to nouveau-specific kernel DRM services -- runtime
+ii  libdrm-radeon1:amd64                   2.4.105-3~20.04.2                  amd64        Userspace interface to radeon-specific kernel DRM services -- runtime
+ii  libdrm2:amd64                          2.4.105-3~20.04.2                  amd64        Userspace interface to kernel DRM services -- runtime
+ii  libedit2:amd64                         3.1-20191231-1                     amd64        BSD editline and history libraries
+ii  libegl-mesa0:amd64                     21.0.3-0ubuntu0.3~20.04.5          amd64        free implementation of the EGL API -- Mesa vendor library
+ii  libegl1:amd64                          1.3.2-1~ubuntu0.20.04.1            amd64        Vendor neutral GL dispatch library -- EGL support
+ii  libelf1:amd64                          0.176-1.1build1                    amd64        library to read and write ELF files
+ii  liberror-perl                          0.17029-1                          all          Perl module for error/exception handling in an OO-ish way
+ii  libevdev2:amd64                        1.9.0+dfsg-1ubuntu0.1              amd64        wrapper library for evdev devices
+ii  libevent-2.1-7:amd64                   2.1.11-stable-1                    amd64        Asynchronous event notification library
+ii  libevent-core-2.1-7:amd64              2.1.11-stable-1                    amd64        Asynchronous event notification library (core)
+ii  libevent-dev                           2.1.11-stable-1                    amd64        Asynchronous event notification library (development files)
+ii  libevent-extra-2.1-7:amd64             2.1.11-stable-1                    amd64        Asynchronous event notification library (extra)
+ii  libevent-openssl-2.1-7:amd64           2.1.11-stable-1                    amd64        Asynchronous event notification library (openssl)
+ii  libevent-pthreads-2.1-7:amd64          2.1.11-stable-1                    amd64        Asynchronous event notification library (pthreads)
+ii  libexpat1:amd64                        2.2.9-1build1                      amd64        XML parsing C library - runtime library
+ii  libexpat1-dev:amd64                    2.2.9-1build1                      amd64        XML parsing C library - development kit
+ii  libext2fs2:amd64                       1.45.5-2ubuntu1                    amd64        ext2/ext3/ext4 file system libraries
+ii  libfaad2:amd64                         2.9.1-1                            amd64        freeware Advanced Audio Decoder - runtime files
+ii  libfabric1                             1.6.2-3                            amd64        libfabric communication library
+ii  libfdisk1:amd64                        2.34-0.1ubuntu9.1                  amd64        fdisk partitioning library
+ii  libffi7:amd64                          3.3-4                              amd64        Foreign Function Interface library runtime
+ii  libfftw3-double3:amd64                 3.3.8-2ubuntu1                     amd64        Library for computing Fast Fourier Transforms - Double precision
+ii  libfido2-1:amd64                       1.3.1-1ubuntu2                     amd64        library for generating and verifying FIDO 2.0 objects
+ii  libflac8:amd64                         1.3.3-1build1                      amd64        Free Lossless Audio Codec - runtime C library
+ii  libflite1:amd64                        2.1-release-3                      amd64        Small run-time speech synthesis engine - shared libraries
+ii  libfontconfig1:amd64                   2.13.1-2ubuntu3                    amd64        generic font configuration library - runtime
+ii  libfreenect0.5:amd64                   1:0.5.3-2                          amd64        library for accessing Kinect device
+ii  libfreetype6:amd64                     2.10.1-2ubuntu0.1                  amd64        FreeType 2 font engine, shared library files
+ii  libfribidi0:amd64                      1.0.8-2                            amd64        Free Implementation of the Unicode BiDi algorithm
+ii  libgbm1:amd64                          21.0.3-0ubuntu0.3~20.04.5          amd64        generic buffer management API -- runtime
+ii  libgcc-8-dev:amd64                     8.4.0-3ubuntu2                     amd64        GCC support library (development files)
+ii  libgcc-9-dev:amd64                     9.3.0-17ubuntu1~20.04              amd64        GCC support library (development files)
+ii  libgcc-s1:amd64                        10.3.0-1ubuntu1~20.04              amd64        GCC support library
+ii  libgcrypt20:amd64                      1.8.5-5ubuntu1.1                   amd64        LGPL Crypto library - runtime library
+ii  libgdbm-compat4:amd64                  1.18.1-5                           amd64        GNU dbm database routines (legacy support runtime version) 
+ii  libgdbm6:amd64                         1.18.1-5                           amd64        GNU dbm database routines (runtime version) 
+ii  libgdk-pixbuf2.0-0:amd64               2.40.0+dfsg-3ubuntu0.2             amd64        GDK Pixbuf library
+ii  libgdk-pixbuf2.0-common                2.40.0+dfsg-3ubuntu0.2             all          GDK Pixbuf library - data files
+ii  libgfortran-8-dev:amd64                8.4.0-3ubuntu2                     amd64        Runtime library for GNU Fortran applications (development files)
+ii  libgfortran5:amd64                     10.3.0-1ubuntu1~20.04              amd64        Runtime library for GNU Fortran applications
+ii  libgirepository-1.0-1:amd64            1.64.1-1~ubuntu20.04.1             amd64        Library for handling GObject introspection data (runtime library)
+ii  libgl-dev:amd64                        1.3.2-1~ubuntu0.20.04.1            amd64        Vendor neutral GL dispatch library -- GL development files
+ii  libgl1:amd64                           1.3.2-1~ubuntu0.20.04.1            amd64        Vendor neutral GL dispatch library -- legacy GL support
+ii  libgl1-mesa-dri:amd64                  21.0.3-0ubuntu0.3~20.04.5          amd64        free implementation of the OpenGL API -- DRI modules
+ii  libglapi-mesa:amd64                    21.0.3-0ubuntu0.3~20.04.5          amd64        free implementation of the GL API -- shared library
+ii  libglew-dev:amd64                      2.1.0-4                            amd64        OpenGL Extension Wrangler - development environment
+ii  libglew2.1:amd64                       2.1.0-4                            amd64        OpenGL Extension Wrangler - runtime environment
+ii  libglib2.0-0:amd64                     2.64.6-1~ubuntu20.04.4             amd64        GLib library of C routines
+ii  libglib2.0-data                        2.64.6-1~ubuntu20.04.4             all          Common files for GLib library
+ii  libglu1-mesa:amd64                     9.0.1-1build1                      amd64        Mesa OpenGL utility library (GLU)
+ii  libglu1-mesa-dev:amd64                 9.0.1-1build1                      amd64        Mesa OpenGL utility library -- development files
+ii  libglvnd0:amd64                        1.3.2-1~ubuntu0.20.04.1            amd64        Vendor neutral GL dispatch library
+ii  libglx-dev:amd64                       1.3.2-1~ubuntu0.20.04.1            amd64        Vendor neutral GL dispatch library -- GLX development files
+ii  libglx-mesa0:amd64                     21.0.3-0ubuntu0.3~20.04.5          amd64        free implementation of the OpenGL API -- GLX vendor library
+ii  libglx0:amd64                          1.3.2-1~ubuntu0.20.04.1            amd64        Vendor neutral GL dispatch library -- GLX support
+ii  libgme0:amd64                          0.6.2-1build1                      amd64        Playback library for video game music files - shared library
+ii  libgmp10:amd64                         2:6.2.0+dfsg-4                     amd64        Multiprecision arithmetic library
+ii  libgnutls30:amd64                      3.6.13-2ubuntu1.6                  amd64        GNU TLS library - main runtime library
+ii  libgomp1:amd64                         10.3.0-1ubuntu1~20.04              amd64        GCC OpenMP (GOMP) support library
+ii  libgpac4:amd64                         0.5.2-426-gc5ad4e4+dfsg5-5         amd64        GPAC Project on Advanced Content - shared libraries
+ii  libgpg-error0:amd64                    1.37-1                             amd64        GnuPG development runtime library
+ii  libgraphite2-3:amd64                   1.3.13-11build1                    amd64        Font rendering engine for Complex Scripts -- library
+ii  libgsm1:amd64                          1.0.18-2                           amd64        Shared libraries for GSM speech compressor
+ii  libgssapi-krb5-2:amd64                 1.17-6ubuntu4.1                    amd64        MIT Kerberos runtime libraries - krb5 GSS-API Mechanism
+ii  libgssapi3-heimdal:amd64               7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - GSSAPI support library
+ii  libgudev-1.0-0:amd64                   1:233-1                            amd64        GObject-based wrapper library for libudev
+ii  libharfbuzz0b:amd64                    2.6.4-1ubuntu4                     amd64        OpenType text shaping engine (shared library)
+ii  libhcrypto4-heimdal:amd64              7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - crypto library
+ii  libheif-dev:amd64                      1.6.1-1build1                      amd64        ISO/IEC 23008-12:2017 HEIF file format decoder - development files
+ii  libheif1:amd64                         1.6.1-1build1                      amd64        ISO/IEC 23008-12:2017 HEIF file format decoder - shared library
+ii  libheimbase1-heimdal:amd64             7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - Base library
+ii  libheimntlm0-heimdal:amd64             7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - NTLM support library
+ii  libhogweed5:amd64                      3.5.1+really3.5.1-2ubuntu0.2       amd64        low level cryptographic library (public-key cryptos)
+ii  libhwloc-dev:amd64                     2.1.0+dfsg-4                       amd64        Hierarchical view of the machine - static libs and headers
+ii  libhwloc-plugins:amd64                 2.1.0+dfsg-4                       amd64        Hierarchical view of the machine - plugins
+ii  libhwloc15:amd64                       2.1.0+dfsg-4                       amd64        Hierarchical view of the machine - shared libs
+ii  libhx509-5-heimdal:amd64               7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - X509 support library
+ii  libibverbs-dev:amd64                   28.0-1ubuntu1                      amd64        Development files for the libibverbs library
+ii  libibverbs1:amd64                      28.0-1ubuntu1                      amd64        Library for direct userspace use of RDMA (InfiniBand/iWARP)
+ii  libice-dev:amd64                       2:1.0.10-0ubuntu1                  amd64        X11 Inter-Client Exchange library (development headers)
+ii  libice6:amd64                          2:1.0.10-0ubuntu1                  amd64        X11 Inter-Client Exchange library
+ii  libicu-dev:amd64                       66.1-2ubuntu2.1                    amd64        Development files for International Components for Unicode
+ii  libicu66:amd64                         66.1-2ubuntu2.1                    amd64        International Components for Unicode
+ii  libidn2-0:amd64                        2.2.0-2                            amd64        Internationalized domain names (IDNA2008/TR46) library
+ii  libiec61883-0:amd64                    1.2.0-3                            amd64        partial implementation of IEC 61883 (shared lib)
+ii  libilmbase-dev:amd64                   2.3.0-6build1                      amd64        development files for IlmBase
+ii  libilmbase24:amd64                     2.3.0-6build1                      amd64        several utility libraries from ILM used by OpenEXR
+ii  libinput-bin                           1.15.5-1ubuntu0.2                  amd64        input device management and event handling library - udev quirks
+ii  libinput10:amd64                       1.15.5-1ubuntu0.2                  amd64        input device management and event handling library - shared library
+ii  libip4tc2:amd64                        1.8.4-3ubuntu2                     amd64        netfilter libip4tc library
+ii  libisl22:amd64                         0.22.1-1                           amd64        manipulating sets and relations of integer points bounded by linear constraints
+ii  libitm1:amd64                          10.3.0-1ubuntu1~20.04              amd64        GNU Transactional Memory Library
+ii  libjack-jackd2-0:amd64                 1.9.12~dfsg-2ubuntu2               amd64        JACK Audio Connection Kit (libraries)
+ii  libjbig-dev:amd64                      2.1-3.1build1                      amd64        JBIGkit development files
+ii  libjbig0:amd64                         2.1-3.1build1                      amd64        JBIGkit libraries
+ii  libjpeg-dev:amd64                      8c-2ubuntu8                        amd64        Independent JPEG Group's JPEG runtime library (dependency package)
+ii  libjpeg-turbo8:amd64                   2.0.3-0ubuntu1.20.04.1             amd64        IJG JPEG compliant runtime library.
+ii  libjpeg-turbo8-dev:amd64               2.0.3-0ubuntu1.20.04.1             amd64        Development files for the IJG JPEG library
+ii  libjpeg8:amd64                         8c-2ubuntu8                        amd64        Independent JPEG Group's JPEG runtime library (dependency package)
+ii  libjpeg8-dev:amd64                     8c-2ubuntu8                        amd64        Independent JPEG Group's JPEG runtime library (dependency package)
+ii  libjson-c4:amd64                       0.13.1+dfsg-7ubuntu0.3             amd64        JSON manipulation library - shared library
+ii  libjsoncpp1:amd64                      1.7.4-3.1ubuntu2                   amd64        library for reading and writing JSON for C++
+ii  libk5crypto3:amd64                     1.17-6ubuntu4.1                    amd64        MIT Kerberos runtime libraries - Crypto Library
+ii  libkeyutils1:amd64                     1.6-6ubuntu1                       amd64        Linux Key Management Utilities (library)
+ii  libkmod2:amd64                         27-1ubuntu2                        amd64        libkmod shared library
+ii  libkrb5-26-heimdal:amd64               7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - libraries
+ii  libkrb5-3:amd64                        1.17-6ubuntu4.1                    amd64        MIT Kerberos runtime libraries
+ii  libkrb5support0:amd64                  1.17-6ubuntu4.1                    amd64        MIT Kerberos runtime libraries - Support library
+ii  liblcms2-2:amd64                       2.9-4                              amd64        Little CMS 2 color management library
+ii  liblcms2-dev:amd64                     2.9-4                              amd64        Little CMS 2 color management library development headers
+ii  libldap-2.4-2:amd64                    2.4.49+dfsg-2ubuntu1.8             amd64        OpenLDAP libraries
+ii  libldap-common                         2.4.49+dfsg-2ubuntu1.8             all          OpenLDAP common files for libraries
+ii  liblilv-0-0:amd64                      0.24.6-1ubuntu0.1                  amd64        library for simple use of LV2 plugins
+ii  libllvm10:amd64                        1:10.0.0-4ubuntu1                  amd64        Modular compiler and toolchain technologies, runtime library
+ii  libllvm12:amd64                        1:12.0.0-3ubuntu1~20.04.4          amd64        Modular compiler and toolchain technologies, runtime library
+ii  liblqr-1-0:amd64                       0.4.2-2.1                          amd64        converts plain array images into multi-size representation
+ii  liblsan0:amd64                         10.3.0-1ubuntu1~20.04              amd64        LeakSanitizer -- a memory leak detector (runtime)
+ii  libltdl-dev:amd64                      2.4.6-14                           amd64        System independent dlopen wrapper for GNU libtool
+ii  libltdl7:amd64                         2.4.6-14                           amd64        System independent dlopen wrapper for GNU libtool
+ii  liblz4-1:amd64                         1.9.2-2ubuntu0.20.04.1             amd64        Fast LZ compression algorithm library - runtime
+ii  liblzma-dev:amd64                      5.2.4-1ubuntu1                     amd64        XZ-format compression library - development files
+ii  liblzma5:amd64                         5.2.4-1ubuntu1                     amd64        XZ-format compression library
+ii  libmad0:amd64                          0.15.1b-10ubuntu1                  amd64        MPEG audio decoder library
+ii  libmagic-mgc                           1:5.38-4                           amd64        File type determination library using "magic" numbers (compiled magic file)
+ii  libmagic1:amd64                        1:5.38-4                           amd64        Recognize the type of data in a file using "magic" numbers - library
+ii  libmagickcore-6.q16-6:amd64            8:6.9.10.23+dfsg-2.1ubuntu11.4     amd64        low-level image manipulation library -- quantum depth Q16
+ii  libmagickwand-6.q16-6:amd64            8:6.9.10.23+dfsg-2.1ubuntu11.4     amd64        image manipulation library -- quantum depth Q16
+ii  libmount1:amd64                        2.34-0.1ubuntu9.1                  amd64        device mounting library
+ii  libmp3lame0:amd64                      3.100-3                            amd64        MP3 encoding library
+ii  libmpc3:amd64                          1.1.0-1                            amd64        multiple precision complex floating-point library
+ii  libmpdec2:amd64                        2.4.2-3                            amd64        library for decimal floating point arithmetic (runtime library)
+ii  libmpfr6:amd64                         4.0.2-1                            amd64        multiple precision floating-point computation
+ii  libmpg123-0:amd64                      1.25.13-1                          amd64        MPEG layer 1/2/3 audio decoder (shared library)
+ii  libmpx2:amd64                          8.4.0-3ubuntu2                     amd64        Intel memory protection extensions (runtime)
+ii  libmtdev1:amd64                        1.1.5-1.1                          amd64        Multitouch Protocol Translation Library - shared library
+ii  libmysofa1:amd64                       1.0~dfsg0-1                        amd64        library to read HRTFs stored in the AES69-2015 SOFA format
+ii  libncurses6:amd64                      6.2-0ubuntu2                       amd64        shared libraries for terminal handling
+ii  libncursesw6:amd64                     6.2-0ubuntu2                       amd64        shared libraries for terminal handling (wide character support)
+ii  libnettle7:amd64                       3.5.1+really3.5.1-2ubuntu0.2       amd64        low level cryptographic library (symmetric and one-way cryptos)
+ii  libnghttp2-14:amd64                    1.40.0-1build1                     amd64        library implementing HTTP/2 protocol (shared library)
+ii  libnl-3-200:amd64                      3.4.0-1                            amd64        library for dealing with netlink sockets
+ii  libnl-3-dev:amd64                      3.4.0-1                            amd64        development library and headers for libnl-3
+ii  libnl-route-3-200:amd64                3.4.0-1                            amd64        library for dealing with netlink sockets - route interface
+ii  libnl-route-3-dev:amd64                3.4.0-1                            amd64        development library and headers for libnl-route-3
+ii  libnorm1:amd64                         1.5.8+dfsg2-2build1                amd64        NACK-Oriented Reliable Multicast (NORM) library
+ii  libnss-systemd:amd64                   245.4-4ubuntu3.14                  amd64        nss module providing dynamic user and group name resolution
+ii  libnuma-dev:amd64                      2.0.12-1                           amd64        Development files for libnuma
+ii  libnuma1:amd64                         2.0.12-1                           amd64        Libraries for controlling NUMA policy
+ii  libogg0:amd64                          1.3.4-0ubuntu1                     amd64        Ogg bitstream library
+ii  libopenal-data                         1:1.19.1-1                         all          Software implementation of the OpenAL audio API (data files)
+ii  libopenal1:amd64                       1:1.19.1-1                         amd64        Software implementation of the OpenAL audio API (shared library)
+ii  libopenexr-dev                         2.3.0-6ubuntu0.5                   amd64        development files for the OpenEXR image library
+ii  libopenexr24:amd64                     2.3.0-6ubuntu0.5                   amd64        runtime files for the OpenEXR image library
+ii  libopenjp2-7:amd64                     2.3.1-1ubuntu4.20.04.1             amd64        JPEG 2000 image compression/decompression library
+ii  libopenjp2-7-dev                       2.3.1-1ubuntu4.20.04.1             amd64        development files for OpenJPEG, a JPEG 2000 image library
+ii  libopenmpi-dev:amd64                   4.0.3-0ubuntu1                     amd64        high performance message passing library -- header files
+ii  libopenmpi3:amd64                      4.0.3-0ubuntu1                     amd64        high performance message passing library -- shared library
+ii  libopenmpt0:amd64                      0.4.11-1build1                     amd64        module music library based on OpenMPT -- shared library
+ii  libopus0:amd64                         1.3.1-0ubuntu1                     amd64        Opus codec runtime library
+ii  libp11-kit0:amd64                      0.23.20-1ubuntu0.1                 amd64        library for loading and coordinating access to PKCS#11 modules - runtime
+ii  libpam-modules:amd64                   1.3.1-5ubuntu4.3                   amd64        Pluggable Authentication Modules for PAM
+ii  libpam-modules-bin                     1.3.1-5ubuntu4.3                   amd64        Pluggable Authentication Modules for PAM - helper binaries
+ii  libpam-runtime                         1.3.1-5ubuntu4.3                   all          Runtime support for the PAM library
+ii  libpam-systemd:amd64                   245.4-4ubuntu3.14                  amd64        system and service manager - PAM module
+ii  libpam0g:amd64                         1.3.1-5ubuntu4.3                   amd64        Pluggable Authentication Modules library
+ii  libpango-1.0-0:amd64                   1.44.7-2ubuntu4                    amd64        Layout and rendering of internationalized text
+ii  libpangocairo-1.0-0:amd64              1.44.7-2ubuntu4                    amd64        Layout and rendering of internationalized text
+ii  libpangoft2-1.0-0:amd64                1.44.7-2ubuntu4                    amd64        Layout and rendering of internationalized text
+ii  libpciaccess0:amd64                    0.16-0ubuntu1                      amd64        Generic PCI access library for X
+ii  libpcre2-16-0:amd64                    10.34-7                            amd64        New Perl Compatible Regular Expression Library - 16 bit runtime files
+ii  libpcre2-8-0:amd64                     10.34-7                            amd64        New Perl Compatible Regular Expression Library- 8 bit runtime files
+ii  libpcre3:amd64                         2:8.39-12build1                    amd64        Old Perl 5 Compatible Regular Expression Library - runtime files
+ii  libperl5.30:amd64                      5.30.0-9ubuntu0.2                  amd64        shared Perl library
+ii  libpgm-5.2-0:amd64                     5.2.122~dfsg-3ubuntu1              amd64        OpenPGM shared library
+ii  libpixman-1-0:amd64                    0.38.4-0ubuntu1                    amd64        pixel-manipulation library for X and cairo
+ii  libpmix2:amd64                         3.1.5-1                            amd64        Process Management Interface (Exascale) library
+ii  libpng-dev:amd64                       1.6.37-2                           amd64        PNG library - development (version 1.6)
+ii  libpng16-16:amd64                      1.6.37-2                           amd64        PNG library - runtime (version 1.6)
+ii  libpostproc55:amd64                    7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library for post processing - runtime files
+ii  libprocps8:amd64                       2:3.3.16-1ubuntu2.3                amd64        library for accessing process information from /proc
+ii  libpsl5:amd64                          0.21.0-1ubuntu1                    amd64        Library for Public Suffix List (shared libraries)
+ii  libpsm-infinipath1                     3.3+20.604758e7-6                  amd64        PSM Messaging library for Intel Truescale adapters
+ii  libpsm2-2                              11.2.86-1                          amd64        Intel PSM2 library
+ii  libpthread-stubs0-dev:amd64            0.4-1                              amd64        pthread stubs not provided by native libc, development files
+ii  libpulse0:amd64                        1:13.99.1-1ubuntu3.13              amd64        PulseAudio client libraries
+ii  libpython3-dev:amd64                   3.8.2-0ubuntu2                     amd64        header files and a static library for Python (default)
+ii  libpython3-stdlib:amd64                3.8.2-0ubuntu2                     amd64        interactive high-level object-oriented language (default python3 version)
+ii  libpython3.8:amd64                     3.8.10-0ubuntu1~20.04.2            amd64        Shared Python runtime library (version 3.8)
+ii  libpython3.8-dev:amd64                 3.8.10-0ubuntu1~20.04.2            amd64        Header files and a static library for Python (v3.8)
+ii  libpython3.8-minimal:amd64             3.8.10-0ubuntu1~20.04.2            amd64        Minimal subset of the Python language (version 3.8)
+ii  libpython3.8-stdlib:amd64              3.8.10-0ubuntu1~20.04.2            amd64        Interactive high-level object-oriented language (standard library, version 3.8)
+ii  libqt5core5a:amd64                     5.12.8+dfsg-0ubuntu2.1             amd64        Qt 5 core module
+ii  libqt5dbus5:amd64                      5.12.8+dfsg-0ubuntu2.1             amd64        Qt 5 D-Bus module
+ii  libqt5gui5:amd64                       5.12.8+dfsg-0ubuntu2.1             amd64        Qt 5 GUI module
+ii  libqt5network5:amd64                   5.12.8+dfsg-0ubuntu2.1             amd64        Qt 5 network module
+ii  libqt5widgets5:amd64                   5.12.8+dfsg-0ubuntu2.1             amd64        Qt 5 widgets module
+ii  libqt5x11extras5:amd64                 5.12.8-0ubuntu1                    amd64        Qt 5 X11 extras
+ii  libquadmath0:amd64                     10.3.0-1ubuntu1~20.04              amd64        GCC Quad-Precision Math Library
+ii  libraw-dev:amd64                       0.19.5-1ubuntu1                    amd64        raw image decoder library (development files)
+ii  libraw1394-11:amd64                    2.1.2-1                            amd64        library for direct access to IEEE 1394 bus (aka FireWire)
+ii  libraw19:amd64                         0.19.5-1ubuntu1                    amd64        raw image decoder library
+ii  librdmacm1:amd64                       28.0-1ubuntu1                      amd64        Library for managing RDMA connections
+ii  libreadline8:amd64                     8.0-4                              amd64        GNU readline and history libraries, run-time libraries
+ii  librhash0:amd64                        1.3.9-1                            amd64        shared library for hash functions computing
+ii  libroken18-heimdal:amd64               7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - roken support library
+ii  librsvg2-2:amd64                       2.48.9-1ubuntu0.20.04.1            amd64        SAX-based renderer library for SVG files (runtime)
+ii  librtmp1:amd64                         2.4+20151223.gitfa8646d.1-2build1  amd64        toolkit for RTMP streams (shared library)
+ii  librubberband2:amd64                   1.8.2-1build1                      amd64        audio time-stretching and pitch-shifting library
+ii  libsamplerate0:amd64                   0.1.9-2                            amd64        Audio sample rate conversion library
+ii  libsasl2-2:amd64                       2.1.27+dfsg-2                      amd64        Cyrus SASL - authentication abstraction library
+ii  libsasl2-modules-db:amd64              2.1.27+dfsg-2                      amd64        Cyrus SASL - pluggable authentication modules (DB)
+ii  libsdl1.2debian:amd64                  1.2.15+dfsg2-5                     amd64        Simple DirectMedia Layer
+ii  libsdl2-2.0-0:amd64                    2.0.10+dfsg1-3                     amd64        Simple DirectMedia Layer
+ii  libseccomp2:amd64                      2.5.1-1ubuntu1~20.04.2             amd64        high level interface to Linux seccomp filter
+ii  libselinux1:amd64                      3.0-1build2                        amd64        SELinux runtime shared libraries
+ii  libsemanage-common                     3.0-1build2                        all          Common files for SELinux policy management libraries
+ii  libsemanage1:amd64                     3.0-1build2                        amd64        SELinux policy management library
+ii  libsensors-config                      1:3.6.0-2ubuntu1                   all          lm-sensors configuration files
+ii  libsensors5:amd64                      1:3.6.0-2ubuntu1                   amd64        library to read temperature/voltage/fan sensors
+ii  libsepol1:amd64                        3.0-1                              amd64        SELinux library for manipulating binary security policies
+ii  libserd-0-0:amd64                      0.30.2-1                           amd64        lightweight RDF syntax library
+ii  libshine3:amd64                        3.1.1-2                            amd64        Fixed-point MP3 encoding library - runtime files
+ii  libsigsegv2:amd64                      2.12-2                             amd64        Library for handling page faults in a portable way
+ii  libslang2:amd64                        2.3.2-4                            amd64        S-Lang programming library - runtime version
+ii  libsm-dev:amd64                        2:1.2.3-1                          amd64        X11 Session Management library (development headers)
+ii  libsm6:amd64                           2:1.2.3-1                          amd64        X11 Session Management library
+ii  libsmartcols1:amd64                    2.34-0.1ubuntu9.1                  amd64        smart column output alignment library
+ii  libsnappy1v5:amd64                     1.1.8-1build1                      amd64        fast compression/decompression library
+ii  libsndfile1:amd64                      1.0.28-7ubuntu0.1                  amd64        Library for reading/writing audio files
+ii  libsndio7.0:amd64                      1.5.0-3                            amd64        Small audio and MIDI framework from OpenBSD, runtime libraries
+ii  libsodium23:amd64                      1.0.18-1                           amd64        Network communication, cryptography and signaturing library
+ii  libsord-0-0:amd64                      0.16.4-1                           amd64        library for storing RDF data in memory
+ii  libsoxr0:amd64                         0.1.3-2build1                      amd64        High quality 1D sample-rate conversion library
+ii  libspeex1:amd64                        1.2~rc1.2-1.1ubuntu1               amd64        The Speex codec runtime library
+ii  libsqlite3-0:amd64                     3.31.1-4ubuntu0.2                  amd64        SQLite 3 shared library
+ii  libsratom-0-0:amd64                    0.6.4-1                            amd64        library for serialising LV2 atoms to/from Turtle
+ii  libss2:amd64                           1.45.5-2ubuntu1                    amd64        command-line interface parsing library
+ii  libssh-4:amd64                         0.9.3-2ubuntu2.2                   amd64        tiny C SSH library (OpenSSL flavor)
+ii  libssh-gcrypt-4:amd64                  0.9.3-2ubuntu2.2                   amd64        tiny C SSH library (gcrypt flavor)
+ii  libssh2-1:amd64                        1.8.0-2.1build1                    amd64        SSH2 client-side library
+ii  libssl-dev:amd64                       1.1.1f-1ubuntu2.10                 amd64        Secure Sockets Layer toolkit - development files
+ii  libssl1.1:amd64                        1.1.1f-1ubuntu2.10                 amd64        Secure Sockets Layer toolkit - shared libraries
+ii  libstd-rust-1.53:amd64                 1.53.0+dfsg1+llvm-4ubuntu1~20.04.1 amd64        Rust standard libraries
+ii  libstd-rust-dev:amd64                  1.53.0+dfsg1+llvm-4ubuntu1~20.04.1 amd64        Rust standard libraries - development files
+ii  libstdc++-9-dev:amd64                  9.3.0-17ubuntu1~20.04              amd64        GNU Standard C++ Library v3 (development files)
+ii  libstdc++6:amd64                       10.3.0-1ubuntu1~20.04              amd64        GNU Standard C++ Library v3
+ii  libswresample3:amd64                   7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library for audio resampling, rematrixing etc. - runtime files
+ii  libswscale5:amd64                      7:4.2.4-1ubuntu0.1                 amd64        FFmpeg library for image scaling and various conversions - runtime files
+ii  libsystemd0:amd64                      245.4-4ubuntu3.14                  amd64        systemd utility library
+ii  libtasn1-6:amd64                       4.16.0-2                           amd64        Manage ASN.1 structures (runtime)
+ii  libtcl8.6:amd64                        8.6.10+dfsg-1                      amd64        Tcl (the Tool Command Language) v8.6 - run-time library files
+ii  libthai-data                           0.1.28-3                           all          Data files for Thai language support library
+ii  libthai0:amd64                         0.1.28-3                           amd64        Thai language support library
+ii  libtheora0:amd64                       1.1.1+dfsg.1-15ubuntu2             amd64        Theora Video Compression Codec
+ii  libtiff-dev:amd64                      4.1.0+git191117-2ubuntu0.20.04.2   amd64        Tag Image File Format library (TIFF), development files
+ii  libtiff5:amd64                         4.1.0+git191117-2ubuntu0.20.04.2   amd64        Tag Image File Format (TIFF) library
+ii  libtiff5-dev                           4.1.0+git191117-2ubuntu0.20.04.2   amd64        Tag Image File Format library (TIFF), development files (transitional package)
+ii  libtiffxx5:amd64                       4.1.0+git191117-2ubuntu0.20.04.2   amd64        Tag Image File Format (TIFF) library -- C++ interface
+ii  libtinfo6:amd64                        6.2-0ubuntu2                       amd64        shared low-level terminfo library for terminal handling
+ii  libtk8.6:amd64                         8.6.10-1                           amd64        Tk toolkit for Tcl and X11 v8.6 - run-time files
+ii  libtsan0:amd64                         10.3.0-1ubuntu1~20.04              amd64        ThreadSanitizer -- a Valgrind-based detector of data races (runtime)
+ii  libtwolame0:amd64                      0.4.0-2                            amd64        MPEG Audio Layer 2 encoding library
+ii  libubsan1:amd64                        10.3.0-1ubuntu1~20.04              amd64        UBSan -- undefined behaviour sanitizer (runtime)
+ii  libudev1:amd64                         245.4-4ubuntu3.14                  amd64        libudev shared library
+ii  libunistring2:amd64                    0.9.10-2                           amd64        Unicode string library for C
+ii  libusb-1.0-0:amd64                     2:1.0.23-2build1                   amd64        userspace USB programming library
+ii  libuuid1:amd64                         2.34-0.1ubuntu9.1                  amd64        Universally Unique ID library
+ii  libuv1:amd64                           1.34.2-1ubuntu1.3                  amd64        asynchronous event notification library - runtime library
+ii  libva-drm2:amd64                       2.7.0-2                            amd64        Video Acceleration (VA) API for Linux -- DRM runtime
+ii  libva-x11-2:amd64                      2.7.0-2                            amd64        Video Acceleration (VA) API for Linux -- X11 runtime
+ii  libva2:amd64                           2.7.0-2                            amd64        Video Acceleration (VA) API for Linux -- runtime
+ii  libvdpau1:amd64                        1.3-1ubuntu2                       amd64        Video Decode and Presentation API for Unix (libraries)
+ii  libvidstab1.1:amd64                    1.1.0-2                            amd64        video stabilization library (shared library)
+ii  libvorbis0a:amd64                      1.3.6-2ubuntu1                     amd64        decoder library for Vorbis General Audio Compression Codec
+ii  libvorbisenc2:amd64                    1.3.6-2ubuntu1                     amd64        encoder library for Vorbis General Audio Compression Codec
+ii  libvorbisfile3:amd64                   1.3.6-2ubuntu1                     amd64        high-level API for Vorbis General Audio Compression Codec
+ii  libvpx6:amd64                          1.8.2-1build1                      amd64        VP8 and VP9 video codec (shared library)
+ii  libvulkan1:amd64                       1.2.131.2-1                        amd64        Vulkan loader library
+ii  libwacom-common                        1.3-2ubuntu3                       all          Wacom model feature query library (common files)
+ii  libwacom2:amd64                        1.3-2ubuntu3                       amd64        Wacom model feature query library
+ii  libwavpack1:amd64                      5.2.0-1ubuntu0.1                   amd64        audio codec (lossy and lossless) - library
+ii  libwayland-client0:amd64               1.18.0-1                           amd64        wayland compositor infrastructure - client library
+ii  libwayland-cursor0:amd64               1.18.0-1                           amd64        wayland compositor infrastructure - cursor library
+ii  libwayland-egl1:amd64                  1.18.0-1                           amd64        wayland compositor infrastructure - EGL library
+ii  libwayland-server0:amd64               1.18.0-1                           amd64        wayland compositor infrastructure - server library
+ii  libwebp-dev:amd64                      0.6.1-2ubuntu0.20.04.1             amd64        Lossy compression of digital photographic images.
+ii  libwebp6:amd64                         0.6.1-2ubuntu0.20.04.1             amd64        Lossy compression of digital photographic images.
+ii  libwebpdemux2:amd64                    0.6.1-2ubuntu0.20.04.1             amd64        Lossy compression of digital photographic images.
+ii  libwebpmux3:amd64                      0.6.1-2ubuntu0.20.04.1             amd64        Lossy compression of digital photographic images.
+ii  libwind0-heimdal:amd64                 7.7.0+dfsg-1ubuntu1                amd64        Heimdal Kerberos - stringprep implementation
+ii  libwrap0:amd64                         7.6.q-30                           amd64        Wietse Venema's TCP wrappers library
+ii  libx11-6:amd64                         2:1.6.9-2ubuntu1.2                 amd64        X11 client-side library
+ii  libx11-data                            2:1.6.9-2ubuntu1.2                 all          X11 client-side library
+ii  libx11-dev:amd64                       2:1.6.9-2ubuntu1.2                 amd64        X11 client-side library (development headers)
+ii  libx11-xcb1:amd64                      2:1.6.9-2ubuntu1.2                 amd64        Xlib/XCB interface library
+ii  libx264-155:amd64                      2:0.155.2917+git0a84d98-2          amd64        x264 video coding library
+ii  libx265-179:amd64                      3.2.1-1build1                      amd64        H.265/HEVC video stream encoder (shared library)
+ii  libxapian30:amd64                      1.4.14-2                           amd64        Search engine library
+ii  libxau-dev:amd64                       1:1.0.9-0ubuntu1                   amd64        X11 authorisation library (development headers)
+ii  libxau6:amd64                          1:1.0.9-0ubuntu1                   amd64        X11 authorisation library
+ii  libxcb-composite0:amd64                1.14-2                             amd64        X C Binding, composite extension
+ii  libxcb-damage0:amd64                   1.14-2                             amd64        X C Binding, damage extension
+ii  libxcb-dri2-0:amd64                    1.14-2                             amd64        X C Binding, dri2 extension
+ii  libxcb-dri3-0:amd64                    1.14-2                             amd64        X C Binding, dri3 extension
+ii  libxcb-glx0:amd64                      1.14-2                             amd64        X C Binding, glx extension
+ii  libxcb-icccm4:amd64                    0.4.1-1.1                          amd64        utility libraries for X C Binding -- icccm
+ii  libxcb-image0:amd64                    0.4.0-1build1                      amd64        utility libraries for X C Binding -- image
+ii  libxcb-image0-dev:amd64                0.4.0-1build1                      amd64        utility libraries for X C Binding -- image, development files
+ii  libxcb-keysyms1:amd64                  0.4.0-1build1                      amd64        utility libraries for X C Binding -- keysyms
+ii  libxcb-keysyms1-dev:amd64              0.4.0-1build1                      amd64        utility libraries for X C Binding -- keysyms, development files
+ii  libxcb-present0:amd64                  1.14-2                             amd64        X C Binding, present extension
+ii  libxcb-randr0:amd64                    1.14-2                             amd64        X C Binding, randr extension
+ii  libxcb-randr0-dev:amd64                1.14-2                             amd64        X C Binding, randr extension, development files
+ii  libxcb-render-util0:amd64              0.3.9-1build1                      amd64        utility libraries for X C Binding -- render-util
+ii  libxcb-render-util0-dev:amd64          0.3.9-1build1                      amd64        utility libraries for X C Binding -- render-util
+ii  libxcb-render0:amd64                   1.14-2                             amd64        X C Binding, render extension
+ii  libxcb-render0-dev:amd64               1.14-2                             amd64        X C Binding, render extension, development files
+ii  libxcb-shape0:amd64                    1.14-2                             amd64        X C Binding, shape extension
+ii  libxcb-shm0:amd64                      1.14-2                             amd64        X C Binding, shm extension
+ii  libxcb-shm0-dev:amd64                  1.14-2                             amd64        X C Binding, shm extension, development files
+ii  libxcb-sync1:amd64                     1.14-2                             amd64        X C Binding, sync extension
+ii  libxcb-util1:amd64                     0.4.0-0ubuntu3                     amd64        utility libraries for X C Binding -- atom, aux and event
+ii  libxcb-xfixes0:amd64                   1.14-2                             amd64        X C Binding, xfixes extension
+ii  libxcb-xinerama0:amd64                 1.14-2                             amd64        X C Binding, xinerama extension
+ii  libxcb-xinerama0-dev:amd64             1.14-2                             amd64        X C Binding, xinerama extension, development files
+ii  libxcb-xinput0:amd64                   1.14-2                             amd64        X C Binding, xinput extension
+ii  libxcb-xkb-dev:amd64                   1.14-2                             amd64        X C Binding, XKEYBOARD extension, development files
+ii  libxcb-xkb1:amd64                      1.14-2                             amd64        X C Binding, XKEYBOARD extension
+ii  libxcb1:amd64                          1.14-2                             amd64        X C Binding
+ii  libxcb1-dev:amd64                      1.14-2                             amd64        X C Binding, development files
+ii  libxcomposite-dev:amd64                1:0.4.5-1                          amd64        X11 Composite extension library (development headers)
+ii  libxcomposite1:amd64                   1:0.4.5-1                          amd64        X11 Composite extension library
+ii  libxcursor1:amd64                      1:1.2.0-2                          amd64        X cursor management library
+ii  libxdmcp-dev:amd64                     1:1.1.3-0ubuntu1                   amd64        X11 authorisation library (development headers)
+ii  libxdmcp6:amd64                        1:1.1.3-0ubuntu1                   amd64        X11 Display Manager Control Protocol library
+ii  libxext-dev:amd64                      2:1.3.4-0ubuntu1                   amd64        X11 miscellaneous extensions library (development headers)
+ii  libxext6:amd64                         2:1.3.4-0ubuntu1                   amd64        X11 miscellaneous extension library
+ii  libxfixes-dev:amd64                    1:5.0.3-2                          amd64        X11 miscellaneous 'fixes' extension library (development headers)
+ii  libxfixes3:amd64                       1:5.0.3-2                          amd64        X11 miscellaneous 'fixes' extension library
+ii  libxft2:amd64                          2.3.3-0ubuntu1                     amd64        FreeType-based font drawing library for X
+ii  libxi6:amd64                           2:1.7.10-0ubuntu1                  amd64        X11 Input extension library
+ii  libxinerama1:amd64                     2:1.1.4-2                          amd64        X11 Xinerama extension library
+ii  libxkbcommon-dev:amd64                 0.10.0-1                           amd64        library interface to the XKB compiler - development files
+ii  libxkbcommon-x11-0:amd64               0.10.0-1                           amd64        library to create keymaps with the XKB X11 protocol
+ii  libxkbcommon-x11-dev:amd64             0.10.0-1                           amd64        library to create keymaps with the XKB X11 protocol - development files
+ii  libxkbcommon0:amd64                    0.10.0-1                           amd64        library interface to the XKB compiler - shared library
+ii  libxml2:amd64                          2.9.10+dfsg-5ubuntu0.20.04.1       amd64        GNOME XML library
+ii  libxmuu1:amd64                         2:1.1.3-0ubuntu1                   amd64        X11 miscellaneous micro-utility library
+ii  libxnvctrl0:amd64                      470.57.01-0ubuntu0.20.04.2         amd64        NV-CONTROL X extension (runtime library)
+ii  libxrandr2:amd64                       2:1.5.2-0ubuntu1                   amd64        X11 RandR extension library
+ii  libxrender-dev:amd64                   1:0.9.10-1                         amd64        X Rendering Extension client library (development files)
+ii  libxrender1:amd64                      1:0.9.10-1                         amd64        X Rendering Extension client library
+ii  libxshmfence1:amd64                    1.3-1                              amd64        X shared memory fences - shared library
+ii  libxss1:amd64                          1:1.2.3-1                          amd64        X11 Screen Saver extension library
+ii  libxt-dev:amd64                        1:1.1.5-1                          amd64        X11 toolkit intrinsics library (development headers)
+ii  libxt6:amd64                           1:1.1.5-1                          amd64        X11 toolkit intrinsics library
+ii  libxv1:amd64                           2:1.0.11-1                         amd64        X11 Video extension library
+ii  libxvidcore4:amd64                     2:1.3.7-1                          amd64        Open source MPEG-4 video codec (library)
+ii  libxxf86vm1:amd64                      1:1.1.4-1build1                    amd64        X11 XFree86 video mode extension library
+ii  libzmq5:amd64                          4.3.2-2ubuntu1                     amd64        lightweight messaging kernel (shared library)
+ii  libzstd1:amd64                         1.4.4+dfsg-3ubuntu0.1              amd64        fast lossless compression algorithm
+ii  libzvbi-common                         0.2.35-17                          all          Vertical Blanking Interval decoder (VBI) - common files
+ii  libzvbi0:amd64                         0.2.35-17                          amd64        Vertical Blanking Interval decoder (VBI) - runtime files
+ii  linux-libc-dev:amd64                   5.4.0-92.103                       amd64        Linux Kernel Headers for development
+ii  login                                  1:4.8.1-1ubuntu5.20.04.1           amd64        system login tools
+ii  logsave                                1.45.5-2ubuntu1                    amd64        save the output of a command in a log file
+ii  lsb-base                               11.1.0ubuntu2                      all          Linux Standard Base init script functionality
+ii  lsb-release                            11.1.0ubuntu2                      all          Linux Standard Base version reporting utility
+ii  m4                                     1.4.18-4                           amd64        macro processing language
+ii  make                                   4.2.1-1.2                          amd64        utility for directing compilation
+ii  mawk                                   1.3.4.20200120-2                   amd64        Pattern scanning and text processing language
+ii  mesa-common-dev:amd64                  21.0.3-0ubuntu0.3~20.04.5          amd64        Developer documentation for Mesa
+ii  mime-support                           3.64ubuntu1                        all          MIME files 'mime.types' & 'mailcap', and support programs
+ii  mount                                  2.34-0.1ubuntu9.1                  amd64        tools for mounting and manipulating filesystems
+ii  mpi-default-bin                        1.13                               amd64        Standard MPI runtime programs (metapackage)
+ii  mpi-default-dev                        1.13                               amd64        Standard MPI development files (metapackage)
+ii  nasm                                   2.14.02-1                          amd64        General-purpose x86 assembler
+ii  ncurses-base                           6.2-0ubuntu2                       all          basic terminal type definitions
+ii  ncurses-bin                            6.2-0ubuntu2                       amd64        terminal-related programs and man pages
+ii  ncurses-term                           6.2-0ubuntu2                       all          additional terminal type definitions
+ii  networkd-dispatcher                    2.1-2~ubuntu20.04.1                all          Dispatcher service for systemd-networkd connection status changes
+ii  ninja-build                            1.10.0-1build1                     amd64        small build system closest in spirit to Make
+ii  ocl-icd-libopencl1:amd64               2.2.11-1ubuntu1                    amd64        Generic OpenCL ICD Loader
+ii  openmpi-bin                            4.0.3-0ubuntu1                     amd64        high performance message passing library -- binaries
+ii  openmpi-common                         4.0.3-0ubuntu1                     all          high performance message passing library -- common files
+ii  openssh-client                         1:8.2p1-4ubuntu0.4                 amd64        secure shell (SSH) client, for secure access to remote machines
+ii  openssh-server                         1:8.2p1-4ubuntu0.4                 amd64        secure shell (SSH) server, for secure access from remote machines
+ii  openssh-sftp-server                    1:8.2p1-4ubuntu0.4                 amd64        secure shell (SSH) sftp server module, for SFTP access from remote machines
+ii  openssl                                1.1.1f-1ubuntu2.10                 amd64        Secure Sockets Layer toolkit - cryptographic utility
+ii  passwd                                 1:4.8.1-1ubuntu5.20.04.1           amd64        change and administer password and group data
+ii  patch                                  2.7.6-6                            amd64        Apply a diff file to an original
+ii  perl                                   5.30.0-9ubuntu0.2                  amd64        Larry Wall's Practical Extraction and Report Language
+ii  perl-base                              5.30.0-9ubuntu0.2                  amd64        minimal Perl system
+ii  perl-modules-5.30                      5.30.0-9ubuntu0.2                  all          Core Perl modules
+ii  procps                                 2:3.3.16-1ubuntu2.3                amd64        /proc file system utilities
+ii  publicsuffix                           20200303.0012-1                    all          accurate, machine-readable list of domain name suffixes
+ii  pybind11-dev                           2.4.3-2build2                      all          seamless operability between C++11 and Python
+ii  python-pip-whl                         20.0.2-5ubuntu1.6                  all          Python package installer
+ii  python3                                3.8.2-0ubuntu2                     amd64        interactive high-level object-oriented language (default python3 version)
+ii  python3-certifi                        2019.11.28-1                       all          root certificates for validating SSL certs and verifying TLS hosts (python3)
+ii  python3-chardet                        3.0.4-4build1                      all          universal character encoding detector for Python3
+ii  python3-dbus                           1.2.16-1build1                     amd64        simple interprocess messaging system (Python 3 interface)
+ii  python3-dev                            3.8.2-0ubuntu2                     amd64        header files and a static library for Python (default)
+ii  python3-distro                         1.4.0-1                            all          Linux OS platform information API
+ii  python3-distutils                      3.8.10-0ubuntu1~20.04              all          distutils package for Python 3.x
+ii  python3-gi                             3.36.0-1                           amd64        Python 3 bindings for gobject-introspection libraries
+ii  python3-idna                           2.8-1                              all          Python IDNA2008 (RFC 5891) handling (Python 3)
+ii  python3-lib2to3                        3.8.10-0ubuntu1~20.04              all          Interactive high-level object-oriented language (lib2to3)
+ii  python3-minimal                        3.8.2-0ubuntu2                     amd64        minimal subset of the Python language (default python3 version)
+ii  python3-pip                            20.0.2-5ubuntu1.6                  all          Python package installer
+ii  python3-pkg-resources                  45.2.0-1                           all          Package Discovery and Resource Access using pkg_resources
+ii  python3-pybind11                       2.4.3-2build2                      all          pybind11 helper module for Python 3
+ii  python3-requests                       2.22.0-2ubuntu1                    all          elegant and simple HTTP library for Python3, built for human beings
+ii  python3-setuptools                     45.2.0-1                           all          Python3 Distutils Enhancements
+ii  python3-six                            1.14.0-2                           all          Python 2 and 3 compatibility library (Python 3 interface)
+ii  python3-tk:amd64                       3.8.10-0ubuntu1~20.04              amd64        Tkinter - Writing Tk applications with Python 3.x
+ii  python3-urllib3                        1.25.8-2ubuntu0.1                  all          HTTP library with thread-safe connection pooling for Python3
+ii  python3-venv                           3.8.2-0ubuntu2                     amd64        pyvenv-3 binary for python3 (default python3 version)
+ii  python3-wheel                          0.34.2-1                           all          built-package format for Python
+ii  python3.8                              3.8.10-0ubuntu1~20.04.2            amd64        Interactive high-level object-oriented language (version 3.8)
+ii  python3.8-dev                          3.8.10-0ubuntu1~20.04.2            amd64        Header files and a static library for Python (v3.8)
+ii  python3.8-minimal                      3.8.10-0ubuntu1~20.04.2            amd64        Minimal subset of the Python language (version 3.8)
+ii  python3.8-venv                         3.8.10-0ubuntu1~20.04.2            amd64        Interactive high-level object-oriented language (pyvenv binary, version 3.8)
+ii  qt5dxcb-plugin:amd64                   5.0.1-3ubuntu1                     amd64        Qt platform theme integration plugin for DDE
+ii  readline-common                        8.0-4                              all          GNU readline and history libraries, common files
+ii  rustc                                  1.53.0+dfsg1+llvm-4ubuntu1~20.04.1 amd64        Rust systems programming language
+ii  sed                                    4.7-1                              amd64        GNU stream editor for filtering/transforming text
+ii  sensible-utils                         0.0.12+nmu1                        all          Utilities for sensible alternative selection
+ii  shared-mime-info                       1.15-1                             amd64        FreeDesktop.org shared MIME database and spec
+ii  ssh-import-id                          5.10-0ubuntu1                      all          securely retrieve an SSH public key and install it locally
+ii  systemd                                245.4-4ubuntu3.14                  amd64        system and service manager
+ii  systemd-sysv                           245.4-4ubuntu3.14                  amd64        system and service manager - SysV links
+ii  systemd-timesyncd                      245.4-4ubuntu3.14                  amd64        minimalistic service to synchronize local time with NTP servers
+ii  sysvinit-utils                         2.96-2.1ubuntu1                    amd64        System-V-like utilities
+ii  tar                                    1.30+dfsg-7ubuntu0.20.04.1         amd64        GNU version of the tar archiving utility
+ii  tk8.6-blt2.5                           2.5.3+dfsg-4                       amd64        graphics extension library for Tcl/Tk - library
+ii  tzdata                                 2021e-0ubuntu0.20.04               all          time zone and daylight-saving time data
+ii  ubuntu-keyring                         2020.02.11.4                       all          GnuPG keys of the Ubuntu archive
+ii  ucf                                    3.0038+nmu1                        all          Update Configuration File(s): preserve user changes to config files
+ii  unzip                                  6.0-25ubuntu1                      amd64        De-archiver for .zip files
+ii  util-linux                             2.34-0.1ubuntu9.1                  amd64        miscellaneous system utilities
+ii  wget                                   1.20.3-1ubuntu2                    amd64        retrieves files from the web
+ii  x11-common                             1:7.7+19ubuntu14                   all          X Window System (X.Org) infrastructure
+ii  x11proto-core-dev                      2019.2-1ubuntu1                    all          transitional dummy package
+ii  x11proto-dev                           2019.2-1ubuntu1                    all          X11 extension protocols and auxiliary headers
+ii  x11proto-xext-dev                      2019.2-1ubuntu1                    all          transitional dummy package
+ii  xauth                                  1:1.1-0ubuntu1                     amd64        X authentication utility
+ii  xdg-user-dirs                          0.17-2ubuntu1                      amd64        tool to manage well known user directories
+ii  xkb-data                               2.29-2                             all          X Keyboard Extension (XKB) configuration data
+ii  xorg-sgml-doctools                     1:1.11-1                           all          Common tools for building X.Org SGML documentation
+ii  xtrans-dev                             1.4.0-1                            all          X transport library (development files)
+ii  xz-utils                               5.2.4-1ubuntu1                     amd64        XZ-format compression utilities
+ii  yasm                                   1.3.0-2ubuntu1                     amd64        modular assembler with multiple syntaxes support
+ii  zlib1g:amd64                           1:1.2.11.dfsg-2ubuntu1.2           amd64        compression library - runtime
+ii  zlib1g-dev:amd64                       1:1.2.11.dfsg-2ubuntu1.2           amd64        compression library - development
 ```
 
 ### X Server
@@ -878,9 +893,4 @@ $modifiedSystemPath = [System.Environment]::GetEnvironmentVariable("Path", "Mach
 echo $modifiedSystemPath > c:\path_backup.txt  # just in case
 $modifiedSystemPath += ";$env:USERPROFILE\.pyenv\pyenv-win\bin;$env:USERPROFILE\.pyenv\pyenv-win\shims"
 [System.Environment]::SetEnvironmentVariable("Path", $modifiedSystemPath, "Machine")
-```
-
-### Install specific python version
-
-```
 ```

@@ -37,7 +37,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     libssl-dev \
     cmake \
     gpac \
-    libyaml-cpp-dev \
+    doxygen \
     libilmbase-dev \
     libxcomposite-dev \
     libxkbcommon-x11-dev \
@@ -79,7 +79,7 @@ COPY . /tmp/
 # OpenImageIO
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
-    && git clone https://github.com/OpenImageIO/oiio.git \
+    && git clone https://github.com/OpenImageIO/oiio.git -b v2.3.10.1\
     && cd oiio \
     && mkdir build \
     && cd build \
@@ -93,7 +93,7 @@ RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
 RUN mkdir -p /root/local/src \
     && . /work/env/bin/activate \
     && cd /root/local/src \
-    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.0.0 \
+    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.1.1 \
     && mkdir -p /tmp/ociobuild \
     && cd /tmp/ociobuild \
     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local /root/local/src/OpenColorIO \
