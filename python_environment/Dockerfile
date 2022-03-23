@@ -117,6 +117,16 @@ RUN mkdir font_install \
     && cd .. \
     && rm -rf font_install
 
+# Install BUZ Fonts
+RUN mkdir /home/font_install \
+    && cd /home/font_install \
+    && git clone https://github.com/googlefonts/morisawa-biz-ud-gothic.git \
+    && cd morisawa-biz-ud-gothic/fonts/ttf/ \
+    && mkdir -p /usr/share/fonts/opentype/bizudp \
+    && cp *.ttf /usr/share/fonts/opentype/bizudp \
+    && fc-cache -f -v \
+    && rm -rf /home/font_install/morisawa-biz-ud-gothic
+
 # Git init settings
 RUN git config --global user.name toru.yoshihara \
     && git config --global user.email toru.ver.11@gmail.com \

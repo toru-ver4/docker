@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
     python_dev:
-        image: takuver4/python_dev:rev09
+        image: takuver4/python_dev:rev10
         build:
             context: .
             dockerfile: Dockerfile

@@ -13,18 +13,18 @@ Build a python development environment.
 ## Build
 
 ```powershell
-docker build -t takuver4/python_dev:rev09 .
-# docker build --no-cache -t takuver4/python_dev:rev09 .
+docker build -t takuver4/python_dev:rev10 .
+# docker build --no-cache -t takuver4/python_dev:rev10 .
 ```
 
 ## Push
 
 ```powershell
-docker push takuver4/python_dev:rev09
+docker push takuver4/python_dev:rev10
 ```
 
 ```
-docker run -it -P --name python_dev_08aa -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev09 bash
+docker run -it -P --name python_dev_08aa -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev10 bash
 ```
 
 ## Create a container using `docker-compose up`
@@ -42,7 +42,7 @@ $PYTHON_LIB_DIR_ON_LINUX = "/usr/local/lib/python3.8/site-packages:/work/src/ty_
 docker run -it -d -P --name python_dev_09 `
 -v ${WORKING_DIR}:/work/src -v ${DATA_DIR}:/work/overuse `
 -e DISPLAY=host.docker.internal:0.0 `
--e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev09
+-e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev10
 ```
 
 ## Attach Visual Studio Code
