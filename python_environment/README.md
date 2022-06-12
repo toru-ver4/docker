@@ -24,7 +24,7 @@ docker push takuver4/python_dev:rev10
 ```
 
 ```
-docker run -it -P --name python_dev_08aa -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev10 bash
+docker run -it -P --name python_dev_10 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev10 bash
 ```
 
 ## Create a container using `docker-compose up`
