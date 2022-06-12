@@ -24,6 +24,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     nasm \
     cbindgen \
     cargo \
+    libxml2-dev \
+    pkg-config \
     libtiff5-dev \
     libboost-all-dev \
     libpng-dev \
@@ -79,7 +81,7 @@ COPY . /tmp/
 # OpenImageIO
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
-    && git clone https://github.com/OpenImageIO/oiio.git -b v2.3.10.1\
+    && git clone https://github.com/OpenImageIO/oiio.git -b v2.3.16.0\
     && cd oiio \
     && mkdir build \
     && cd build \
@@ -93,46 +95,64 @@ RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
 RUN mkdir -p /root/local/src \
     && . /work/env/bin/activate \
     && cd /root/local/src \
-    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.1.1 \
+    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.1.2 \
     && mkdir -p /tmp/ociobuild \
     && cd /tmp/ociobuild \
     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local /root/local/src/OpenColorIO \
     && make -j8 \
     && make install
 
-# # Install CTL
+# Install CTL
 RUN cd /root/local/src \
     && git clone https://github.com/toru-ver4/CTL.git \
     && cd CTL \
     && mkdir build && cd build && cmake .. && make && make install
 
-# Install Noto Fonts
-RUN mkdir font_install \
-    && cd font_install \
-    && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
-    && unzip NotoSansCJKjp-hinted.zip \
-    && mkdir -p /usr/share/fonts/opentype/noto \
-    && cp *otf /usr/share/fonts/opentype/noto \
-    && fc-cache -f -v \
-    && cd .. \
-    && rm -rf font_install
+# Install SampleICC
+RUN cd /root/local/src \
+    && wget https://sourceforge.net/projects/sampleicc/files/sampleicc%20tar/SampleIcc-1.6.8/SampleICC-1.6.8.tar.gz \
+    && tar xvzf SampleICC-1.6.8.tar.gz \
+    && cd SampleICC-1.6.8 \
+    && ./configure \
+    && make -j8 \
+    && make install
 
-# Install BUZ Fonts
-RUN mkdir /home/font_install \
-    && cd /home/font_install \
-    && git clone https://github.com/googlefonts/morisawa-biz-ud-gothic.git \
-    && cd morisawa-biz-ud-gothic/fonts/ttf/ \
-    && mkdir -p /usr/share/fonts/opentype/bizudp \
-    && cp *.ttf /usr/share/fonts/opentype/bizudp \
-    && fc-cache -f -v \
-    && rm -rf /home/font_install/morisawa-biz-ud-gothic
+# # Install IccXML
+# RUN cd /root/local/src \
+#     && wget https://sourceforge.net/projects/iccxml/files/IccXML-Src/IccXML-0.9.8/IccXML-0.9.8.tar.gz \
+#     && tar -xzf IccXML-0.9.8.tar.gz \
+#     && cd IccXML-0.9.8 \
+#     && ./configure \
+#     && make -j8 \
+#     && make install
 
-# Git init settings
-RUN git config --global user.name toru.yoshihara \
-    && git config --global user.email toru.ver.11@gmail.com \
-    && git config --global core.autocrlf true
+# # Install Noto Fonts
+# RUN mkdir font_install \
+#     && cd font_install \
+#     && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+#     && unzip NotoSansCJKjp-hinted.zip \
+#     && mkdir -p /usr/share/fonts/opentype/noto \
+#     && cp *otf /usr/share/fonts/opentype/noto \
+#     && fc-cache -f -v \
+#     && cd .. \
+#     && rm -rf font_install
 
-# Clean
-RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /roor/local/src
+# # Install BUZ Fonts
+# RUN mkdir /home/font_install \
+#     && cd /home/font_install \
+#     && git clone https://github.com/googlefonts/morisawa-biz-ud-gothic.git \
+#     && cd morisawa-biz-ud-gothic/fonts/ttf/ \
+#     && mkdir -p /usr/share/fonts/opentype/bizudp \
+#     && cp *.ttf /usr/share/fonts/opentype/bizudp \
+#     && fc-cache -f -v \
+#     && rm -rf /home/font_install/morisawa-biz-ud-gothic
+
+# # Git init settings
+# RUN git config --global user.name toru.yoshihara \
+#     && git config --global user.email toru.ver.11@gmail.com \
+#     && git config --global core.autocrlf true
+
+# # Clean
+# RUN apt-get clean \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && rm -rf /roor/local/src
