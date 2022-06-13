@@ -37,7 +37,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     curl \
     unzip \
     libssl-dev \
-    cmake \
     gpac \
     doxygen \
     libilmbase-dev \
@@ -47,6 +46,9 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     imagemagick \
     python3-pip \
     python3-pybind11 \
+    python3-setuptools \
+    python3-wheel \
+    python3-tk \
     libwebp-dev \
     qt5dxcb-plugin \
     libxcb-icccm4 \
@@ -117,42 +119,71 @@ RUN cd /root/local/src \
     && make -j8 \
     && make install
 
-# # Install IccXML
-# RUN cd /root/local/src \
-#     && wget https://sourceforge.net/projects/iccxml/files/IccXML-Src/IccXML-0.9.8/IccXML-0.9.8.tar.gz \
-#     && tar -xzf IccXML-0.9.8.tar.gz \
-#     && cd IccXML-0.9.8 \
-#     && ./configure \
-#     && make -j8 \
-#     && make install
+# Install IccXML
+RUN cd /root/local/src \
+    && wget https://sourceforge.net/projects/iccxml/files/IccXML-Src/IccXML-0.9.8/IccXML-0.9.8.tar.gz \
+    && tar -xzf IccXML-0.9.8.tar.gz \
+    && cd IccXML-0.9.8 \
+    && ./configure \
+    && make -j8 \
+    && make install
 
-# # Install Noto Fonts
-# RUN mkdir font_install \
-#     && cd font_install \
-#     && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
-#     && unzip NotoSansCJKjp-hinted.zip \
-#     && mkdir -p /usr/share/fonts/opentype/noto \
-#     && cp *otf /usr/share/fonts/opentype/noto \
-#     && fc-cache -f -v \
-#     && cd .. \
-#     && rm -rf font_install
+# avifenc
+# RUN mkdir -p /opt \
+#     && cd /opt \
+#     && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 
-# # Install BUZ Fonts
-# RUN mkdir /home/font_install \
-#     && cd /home/font_install \
-#     && git clone https://github.com/googlefonts/morisawa-biz-ud-gothic.git \
-#     && cd morisawa-biz-ud-gothic/fonts/ttf/ \
-#     && mkdir -p /usr/share/fonts/opentype/bizudp \
-#     && cp *.ttf /usr/share/fonts/opentype/bizudp \
-#     && fc-cache -f -v \
-#     && rm -rf /home/font_install/morisawa-biz-ud-gothic
+# RUN mkdir -p /root/local/src/libyuv \
+#     && cd /root/local/src/libyuv \
+#     && export PATH=/opt/depot_tools:$PATH \
+#     && gclient config --name src https://chromium.googlesource.com/libyuv/libyuv \
+#     && gclient sync \
+#     && cd src \
+#     && gn gen out/Release "--args=is_debug=false" \
+#     && gn gen out/Debug "--args=is_debug=true" \
+#     && ninja -v -C out/Release \
+#     && ninja -v -C out/Debug
 
-# # Git init settings
-# RUN git config --global user.name toru.yoshihara \
-#     && git config --global user.email toru.ver.11@gmail.com \
-#     && git config --global core.autocrlf true
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/AOMediaCodec/libavif.git -b v0.10.1 libavif_aom \
+    && cd /root/local/src/libavif_aom/ext \
+    && $SHELL ./aom.cmd \
+    && $SHELL ./libjpeg.cmd \
+    && $SHELL ./libyuv.cmd \
+    && cd /root/local/src/libavif_aom/ \
+    && mkdir build && cd build \
+    && cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_LOCAL_JPEG=ON -DAVIF_LOCAL_LIBYUV=ON -DAVIF_BUILD_TESTS=1 -DAVIF_BUILD_APPS=1 \
+    && ninja \
+    && ninja install
 
-# # Clean
-# RUN apt-get clean \
-#     && rm -rf /var/lib/apt/lists/* \
-#     && rm -rf /roor/local/src
+# Install Noto Fonts
+RUN mkdir font_install \
+    && cd font_install \
+    && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && unzip NotoSansCJKjp-hinted.zip \
+    && mkdir -p /usr/share/fonts/opentype/noto \
+    && cp *otf /usr/share/fonts/opentype/noto \
+    && fc-cache -f -v \
+    && cd .. \
+    && rm -rf font_install
+
+# Install BUZ Fonts
+RUN mkdir /home/font_install \
+    && cd /home/font_install \
+    && git clone https://github.com/googlefonts/morisawa-biz-ud-gothic.git \
+    && cd morisawa-biz-ud-gothic/fonts/ttf/ \
+    && mkdir -p /usr/share/fonts/opentype/bizudp \
+    && cp *.ttf /usr/share/fonts/opentype/bizudp \
+    && fc-cache -f -v \
+    && rm -rf /home/font_install/morisawa-biz-ud-gothic
+
+# Git init settings
+RUN git config --global user.name toru.yoshihara \
+    && git config --global user.email toru.ver.11@gmail.com \
+    && git config --global core.autocrlf true
+
+# Clean
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /roor/local/src
