@@ -8,23 +8,23 @@ Build a python development environment.
 
 * Docker for Windows
 * Visual Studio Code
-* X410 (X Window server for Windows 10)
+* VcXsrv (X11 Server)
 
 ## Build
 
 ```powershell
-docker build -t takuver4/python_dev:rev10 .
-# docker build --no-cache -t takuver4/python_dev:rev10 .
+docker build -t takuver4/python_dev:rev11 .
+# docker build --no-cache -t takuver4/python_dev:rev11 .
 ```
 
 ## Push
 
 ```powershell
-docker push takuver4/python_dev:rev10
+docker push takuver4/python_dev:rev11
 ```
 
 ```
-docker run -it -P --name python_dev_10 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev10 bash
+docker run -it -P --name python_dev_11 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev11 bash
 ```
 
 ## Create a container using `docker-compose up`
@@ -38,11 +38,11 @@ docker-compose up -d
 ```powershell
 $WORKING_DIR = "C:\Users\toruv\OneDrive\work\sample_code";
 $DATA_DIR = "D:\abuse";
-$PYTHON_LIB_DIR_ON_LINUX = "/usr/local/lib/python3.8/site-packages:/work/src/ty_lib";
-docker run -it -d -P --name python_dev_10 `
+$PYTHON_LIB_DIR_ON_LINUX = "/usr/local/lib/python3.10/site-packages:/work/src/ty_lib";
+docker run -it -d -P --name python_dev_11 `
 -v ${WORKING_DIR}:/work/src -v ${DATA_DIR}:/work/overuse `
 -e DISPLAY=host.docker.internal:0.0 `
--e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev10
+-e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev11
 ```
 
 ## Attach Visual Studio Code
