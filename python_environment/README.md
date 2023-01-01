@@ -23,7 +23,7 @@ docker build -t takuver4/python_dev:rev11 .
 docker push takuver4/python_dev:rev11
 ```
 
-```
+```powershell
 docker run -it -P --name python_dev_11 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev11 bash
 ```
 
