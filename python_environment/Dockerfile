@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
@@ -13,6 +13,14 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get -y install tzdata
+ENV TZ Asia/Tokyo
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y \
+    tzdata
 
 # Install OpenImageIO
 RUN apt-get update && apt-get -y install --no-install-recommends \
@@ -56,16 +64,10 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     libxcb-keysyms1-dev \
     libxcb-randr0-dev \
     libxcb-render-util0-dev \
-    libxcb-xinerama0-dev
+    libxcb-xinerama0-dev \
+    libgtest-dev
 
 # Install Basic Python Libraries
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get -y install tzdata
-ENV TZ Asia/Tokyo
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y \
-    tzdata
 RUN apt-get update && apt-get -y install \
     python3-venv \
     libsm-dev \
@@ -80,14 +82,15 @@ RUN . /work/env/bin/activate \
     && pip install -r /tmp/requirements.txt
 COPY . /tmp/
 
-# OpenImageIO
+# # OpenImageIO
+RUN apt-get update && apt-get install libjpeg-turbo8-dev
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
-    && git clone https://github.com/OpenImageIO/oiio.git -b v2.3.16.0\
+    && git clone https://github.com/OpenImageIO/oiio.git -b v2.4.6.0\
     && cd oiio \
     && mkdir build \
     && cd build \
-    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.8 -DUSE_PYTHON=1 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_VERSION=3.10 -DUSE_PYTHON=1 -DVERBOSE=1 -DSTOP_ON_WARNING=0 .. \
     && make install -j4 \
     && make clean
 ENV PYTHONPATH="/usr/local/lib/python3.8/site-packages"
@@ -97,7 +100,7 @@ RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
 RUN mkdir -p /root/local/src \
     && . /work/env/bin/activate \
     && cd /root/local/src \
-    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.1.2 \
+    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.2.0 \
     && mkdir -p /tmp/ociobuild \
     && cd /tmp/ociobuild \
     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local /root/local/src/OpenColorIO \
@@ -106,7 +109,7 @@ RUN mkdir -p /root/local/src \
 
 # Install CTL
 RUN cd /root/local/src \
-    && git clone https://github.com/toru-ver4/CTL.git \
+    && git clone https://github.com/ampas/CTL.git \
     && cd CTL \
     && mkdir build && cd build && cmake .. && make && make install
 
@@ -128,29 +131,17 @@ RUN cd /root/local/src \
     && make -j8 \
     && make install
 
-# avifenc
-# RUN mkdir -p /opt \
-#     && cd /opt \
-#     && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-
-# RUN mkdir -p /root/local/src/libyuv \
-#     && cd /root/local/src/libyuv \
-#     && export PATH=/opt/depot_tools:$PATH \
-#     && gclient config --name src https://chromium.googlesource.com/libyuv/libyuv \
-#     && gclient sync \
-#     && cd src \
-#     && gn gen out/Release "--args=is_debug=false" \
-#     && gn gen out/Debug "--args=is_debug=true" \
-#     && ninja -v -C out/Release \
-#     && ninja -v -C out/Debug
+# Added /etc/ld.so.conf
+RUN echo "/usr/local/lib" >> /etc/ld.so.conf \
+    && ldconfig
 
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
-    && git clone https://github.com/AOMediaCodec/libavif.git -b v0.10.1 libavif_aom \
+    && git clone https://github.com/AOMediaCodec/libavif.git -b v0.11.1 libavif_aom \
     && cd /root/local/src/libavif_aom/ext \
-    && $SHELL ./aom.cmd \
-    && $SHELL ./libjpeg.cmd \
     && $SHELL ./libyuv.cmd \
+    && $SHELL ./libjpeg.cmd \
+    && $SHELL ./aom.cmd \
     && cd /root/local/src/libavif_aom/ \
     && mkdir build && cd build \
     && cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_LOCAL_JPEG=ON -DAVIF_LOCAL_LIBYUV=ON -DAVIF_BUILD_TESTS=1 -DAVIF_BUILD_APPS=1 \
