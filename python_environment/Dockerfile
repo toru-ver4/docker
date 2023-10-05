@@ -51,7 +51,12 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     libxcb-randr0-dev \
     libxcb-render-util0-dev \
     libxcb-xinerama0-dev \
-    libgtest-dev
+    libgtest-dev \
+    libbrotli-dev \
+    libgif-dev \
+    clang \
+    ca-certificates \
+    wget
 
 # Install Basic Python Libraries
 RUN apt-get update && apt-get -y install \
@@ -68,11 +73,25 @@ RUN . /work/env/bin/activate \
     && pip install -r /tmp/requirements.txt
 COPY . /tmp/
 
+# Install libjxl (JPEG XL)
+RUN echo "export CC=clang" >> /etc/profile \
+    && echo "export CXX=clang++" >> /etc/profile
+
+RUN mkdir -p /root/local/src \
+    && cd /root/local/src \
+    && git clone https://github.com/libjxl/libjxl.git --recursive --shallow-submodules \
+    && cd libjxl \
+    && git submodule update --init --recursive --depth 1 --recommend-shallow \
+    && mkdir build && cd build \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF .. \
+    && cmake --build . -- -j$(nproc) \
+    && cmake --install .
+
 # # OpenImageIO
 RUN apt-get update && apt-get install libjpeg-turbo8-dev
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
-    && git clone https://github.com/OpenImageIO/oiio.git -b v2.4.6.0\
+    && git clone https://github.com/OpenImageIO/oiio.git -b v2.4.15.0\
     && cd oiio \
     && mkdir build \
     && cd build \
@@ -86,7 +105,7 @@ RUN apt-get update && apt-get install freeglut3-dev libglew-dev -y
 RUN mkdir -p /root/local/src \
     && . /work/env/bin/activate \
     && cd /root/local/src \
-    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.2.0 \
+    && git clone https://github.com/imageworks/OpenColorIO.git -b v2.3.0 \
     && mkdir -p /tmp/ociobuild \
     && cd /tmp/ociobuild \
     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local /root/local/src/OpenColorIO \
@@ -98,6 +117,10 @@ RUN cd /root/local/src \
     && git clone https://github.com/ampas/CTL.git \
     && cd CTL \
     && mkdir build && cd build && cmake .. && make && make install
+
+# Added /etc/ld.so.conf
+RUN echo "/usr/local/lib" >> /etc/ld.so.conf \
+    && ldconfig
 
 # Install SampleICC
 RUN cd /root/local/src \
@@ -117,13 +140,9 @@ RUN cd /root/local/src \
     && make -j8 \
     && make install
 
-# Added /etc/ld.so.conf
-RUN echo "/usr/local/lib" >> /etc/ld.so.conf \
-    && ldconfig
-
 RUN mkdir -p /root/local/src \
     && cd /root/local/src \
-    && git clone https://github.com/AOMediaCodec/libavif.git -b v0.11.1 libavif_aom \
+    && git clone https://github.com/AOMediaCodec/libavif.git -b v1.0.1 libavif_aom \
     && cd /root/local/src/libavif_aom/ext \
     && $SHELL ./libyuv.cmd \
     && $SHELL ./libjpeg.cmd \
@@ -137,7 +156,7 @@ RUN mkdir -p /root/local/src \
 # Install Noto Fonts
 RUN mkdir font_install \
     && cd font_install \
-    && curl -OL https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && wget https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
     && unzip NotoSansCJKjp-hinted.zip \
     && mkdir -p /usr/share/fonts/opentype/noto \
     && cp *otf /usr/share/fonts/opentype/noto \
