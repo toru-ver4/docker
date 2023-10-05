@@ -13,18 +13,17 @@ Build a python development environment.
 ## Build
 
 ```powershell
-docker build -t takuver4/python_dev:rev11 .
-# docker build --no-cache -t takuver4/python_dev:rev11 .
+docker build -t takuver4/python_dev:rev12 .
 ```
 
 ## Push
 
 ```powershell
-docker push takuver4/python_dev:rev11
+docker push takuver4/python_dev:rev12
 ```
 
 ```powershell
-docker run -it -P --name python_dev_11 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev11 bash
+docker run -it -P --name python_dev_12 -v C:\Users\toruv\OneDrive\work\sample_code:/work/src -e DISPLAY=host.docker.internal:0.0 --rm takuver4/python_dev:rev12 bash
 ```
 
 ## Create a container using `docker-compose up`
@@ -39,10 +38,10 @@ docker-compose up -d
 $WORKING_DIR = "C:\Users\toruv\OneDrive\work\sample_code";
 $DATA_DIR = "D:\abuse";
 $PYTHON_LIB_DIR_ON_LINUX = "/usr/local/lib/python3.10/site-packages:/work/src/ty_lib";
-docker run -it -d -P --name python_dev_11 `
+docker run -it -d -P --name python_dev_12 `
 -v ${WORKING_DIR}:/work/src -v ${DATA_DIR}:/work/overuse `
 -e DISPLAY=host.docker.internal:0.0 `
--e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev11
+-e PYTHONPATH=$PYTHON_LIB_DIR_ON_LINUX --rm takuver4/python_dev:rev12
 ```
 
 ## Attach Visual Studio Code
